@@ -2,35 +2,18 @@ var jQueryScript = document.createElement('script');
 jQueryScript.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js');
 document.head.appendChild(jQueryScript);
 
-function doSomething() 
+function getAllUsers()
 {
     $.ajax({
         type: "GET",
-        url: "doSomething.php",
+        url: "PHP/Users.php",
         data: 
         {
-        },
-        success: function(response) {
-            console.log(response);
-        }
-    });
-}
-
-
-function updateIngredientQuantity()
-{
-    $.ajax({
-        type: "POST",
-        url: "ManagerBackend/Ingredients.php",
-        data: 
-        {
-            functionName: "updateIngredientQuantity",
-            name: name,
-            quantity: quantity
+            functionName: "getAllUsers",
         },
         success: function(response) 
         {
-            populateIngredientsView();
+            console.log(response);
         }
     });
 }
