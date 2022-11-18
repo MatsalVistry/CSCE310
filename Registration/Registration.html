@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../CSS/Registration.css" />
+    <title>Registration</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+
+<body>
+    <div class="signup">
+        <form action="../PHP/Registration.php" method="post">
+          <h1 class="title">Sign up</h1>
+    
+          <div class="inputContainer">
+            <label type="fname">First Name:</label>
+            <input class="input" type="text" id="fname" name="fname" required>
+          </div>
+    
+          <div class="inputContainer">
+            <label type="lname">Last Name:</label>
+            <input class="input" type="text" id="lname" name="lname" required>
+          </div>
+    
+          <div class="inputContainer">
+            <label for="email">Email Address:</label>
+            <input class="input" type="text" id="email" name="email" required>
+          </div>
+    
+          <div class="inputContainer">
+            <label for="password">Password:</label>
+            <input class="input" type="password" id="password" name="password" required>
+          </div>
+    
+          <div class="roleSelection"> 
+            <input type="radio" id="role" name="role" value="Tutor"
+               checked>
+            <label for="Tutor">Tutor</label>
+    
+            <input type="radio" id="role" name="role" value="Student"
+               checked>
+            <label for="Student">Student</label>
+          </div>
+    
+          <input class="submitBtn" type="submit" value="Sign Up">
+        </form>
+</body>
