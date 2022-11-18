@@ -1,0 +1,46 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: "lato", sans-serif;
+  }
+
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.title {
+    font-size: 50px;
+}
+
+.inputContainer {
+    position: relative;
+    height: 45px;
+    width: 85%;
+    margin-bottom: 10px;
+}
+
+label {
+    margin-bottom: 50px;
+    font-size: 17px;
+}
+
+.input {
+    width: 220px;
+}
+
+.submitBtn {
+    display: block;
+    margin-top: 20px;
+    margin-left: 110px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+
+}
