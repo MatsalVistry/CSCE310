@@ -2,17 +2,14 @@ var jQueryScript = document.createElement('script');
 jQueryScript.setAttribute('src', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js');
 document.head.appendChild(jQueryScript);
 
-function getAllUsers()
-{
+function getAllUsers() {
     $.ajax({
         type: "GET",
-        url: "PHP/Users.php",
-        data: 
-        {
+        url: "./PHP/Users.php",
+        data: {
             functionName: "getAllUsers",
         },
-        success: function(response) 
-        {
+        success: function(response) {
             console.log(response);
         }
     });

@@ -1,5 +1,4 @@
-$(document).ready(function () 
-{
+$(document).ready(function() {
     // get the tutorID from the url
     var urlParams = new URLSearchParams(window.location.search);
     var tutorID = urlParams.get('tutorID');
@@ -9,13 +8,11 @@ $(document).ready(function ()
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
-        data: 
-        {
+        data: {
             functionName: "getTutorInformation",
             tutorID: tutorID
         },
-        success: function(response) 
-        {
+        success: function(response) {
             console.log(response);
 
             // grab the tutor's information from the response
@@ -29,14 +26,13 @@ $(document).ready(function ()
 
             var tutorInfo = document.getElementsByClassName("tutorInfo")[0];
             tutorInfo.innerHTML = "ID: " + tutorID + "<br>" + "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
-            for(var i = 0; i < reviews.length; i++)
-            {
+            for (var i = 0; i < reviews.length; i++) {
                 var review = reviews[i];
                 var studentName = review.Student_Name;
                 var reviewString = review.Review_String;
 
                 var reviewDiv = document.createElement("div");
-                reviewDiv.innerHTML = "Student Name: " + studentName + "<br>" + "Review: " + reviewString+ "<br><br>";
+                reviewDiv.innerHTML = "Student Name: " + studentName + "<br>" + "Review: " + reviewString + "<br><br>";
                 tutorInfo.appendChild(reviewDiv);
             }
         }

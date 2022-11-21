@@ -5,6 +5,7 @@
 
     $is_get = $_SERVER['REQUEST_METHOD'] == 'GET';
     $is_post = $_SERVER['REQUEST_METHOD'] == 'POST';
+
     if($is_get)
     {
         if($_GET['functionName'] == "getAllUsers")
@@ -45,12 +46,12 @@
             $user['role'] = $row['User_Role'];
             $user['email'] = $row['User_Email'];
 
-            // grab all the reviews left on the tutor
-            $statement = "SELECT * FROM Reviews WHERE Tutor_ID=".$_GET['tutorID'].";";
+            // grab all the USERS left on the tutor
+            $statement = "SELECT * FROM Users WHERE Tutor_ID=".$_GET['tutorID'].";";
 
             $result = mysqli_query($conn, $statement);
 
-            $reviews = array();
+            $USERS = array();
 
             while($row = mysqli_fetch_array($result))
             {
@@ -66,10 +67,10 @@
                 $student_row = mysqli_fetch_array($student_result);
                 $review['Student_Name'] = $student_row['User_First_Name']." ".$student_row['User_Last_Name'];
 
-                array_push($reviews, $review);
+                array_push($USERS, $review);
             }
 
-            $user['Reviews'] = $reviews;
+            $user['Users'] = $USERS;
             
             echo json_encode($user);
         }

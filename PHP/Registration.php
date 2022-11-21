@@ -14,7 +14,7 @@
     include_once './Credentials.php';
 
     $conn = OpenCon();
-    $statement = "INSERT INTO users
+    $statement = "INSERT INTO Users
         (`User_First_Name`, 
         `User_Last_Name`, 
         `User_Role`, 
