@@ -38,6 +38,7 @@
                 u.User_Last_Name as tutor_last_name,
                 u.User_Email as tutor_email,
                 r.Review_ID as review_id,
+                r.Student_ID as student_id,
                 r.Review_String as review_string,
                 un.User_First_Name as student_first_name,
                 un.User_Last_Name as student_last_name
@@ -62,6 +63,7 @@
 
                 $review = array();
                 $review['id'] = $row['review_id'];
+                $review['student_id'] = $row['student_id'];
                 $review['Review_String'] = $row['review_string'];
                 $review['Student_Name'] = $row['student_first_name']." ".$row['student_last_name'];
 

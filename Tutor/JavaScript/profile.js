@@ -13,6 +13,15 @@ $(document).ready(function ()
     tutorID = urlParams.get('tutorID');
 
     refreshReviews();
+
+    if(userType == "t")
+    {
+        document.getElementById("addReview").style.display = "none";
+    }
+    else
+    {
+        document.getElementById("addReview").style.display = "block";
+    }
 });
 
 function refreshReviews()
@@ -28,6 +37,7 @@ function refreshReviews()
         success: function(response) 
         {
             console.log(response);
+            var studentID = localStorage.getItem("studentID");
 
             // grab the tutor's information from the response
             var tutor = JSON.parse(response);
@@ -43,11 +53,14 @@ function refreshReviews()
             {
                 var review = reviews[i];
                 var reviewID = review.id;
+                var reviewStudentID = review.student_id;
                 var studentName = review.Student_Name;
                 var reviewString = review.Review_String;
+                var authorizedToDelete = userType == "a" || studentID == reviewStudentID;
 
                 var reviewDiv = document.createElement("div");
-                reviewDiv.innerHTML = '<span class="close" onclick="deleteReview(this)" value='+reviewID+'>&times;</span>';
+                if(authorizedToDelete)
+                    reviewDiv.innerHTML += '<span class="close" onclick="deleteReview(this)" value='+reviewID+'>&times;</span>';
                 reviewDiv.innerHTML += "Student Name: " + studentName + "<br>" + "Review: " + reviewString+ "<br><br>";
                 tutorInfo.appendChild(reviewDiv);
             }
@@ -106,6 +119,12 @@ function submitReview()
 
     document.getElementById("review").value = "";
     closeReview();
+}
+
+function logout()
+{
+    localStorage.clear();
+    window.location.href = "../Login/Login.html";
 }
 
 window.onclick = function(event) 
