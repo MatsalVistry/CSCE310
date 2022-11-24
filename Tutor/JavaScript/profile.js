@@ -3,11 +3,14 @@ var userType;
 
 $(document).ready(function () 
 {
+
     userType = localStorage.getItem("userType");
     if(userType == null)
     {
         window.location.href = "../Login/Login.html";
     }
+
+    populateNavbar();
 
     var urlParams = new URLSearchParams(window.location.search);
     tutorID = urlParams.get('tutorID');
@@ -24,6 +27,22 @@ $(document).ready(function ()
     }
 });
 
+function populateNavbar()
+{
+    if(userType == "t")
+    {
+        $("#navbar").load("../Navbars/TutorNavbar.html");
+    }
+    else if(userType == "s")
+    {
+        $("#navbar").load("../Navbars/StudentNavbar.html");
+    }
+    else if(userType == "a")
+    {
+        $("#navbar").load("../Navbars/AdminNavbar.html");
+    }
+}
+
 function refreshReviews()
 {
     $.ajax({
@@ -36,7 +55,6 @@ function refreshReviews()
         },
         success: function(response) 
         {
-            console.log(response);
             var studentID = localStorage.getItem("studentID");
 
             // grab the tutor's information from the response

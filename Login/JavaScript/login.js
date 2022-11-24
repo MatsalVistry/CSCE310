@@ -25,9 +25,10 @@ function verify()
             var id = user.id;
             var role = user.role;
 
-            localStorage.setItem("studentID", id);
+            localStorage.setItem("id", id);
             localStorage.setItem("userType", role);
-            window.location.href = "../Tutor/TutorProfile.html?tutorID=3"
+
+            window.location.href = "../Tutor/TutorProfile.html?tutorID=3";
         }
     });
 
