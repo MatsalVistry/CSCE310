@@ -55,7 +55,7 @@ function refreshReviews()
         },
         success: function(response) 
         {
-            var studentID = localStorage.getItem("studentID");
+            var studentID = localStorage.getItem("id");
 
             // grab the tutor's information from the response
             var tutor = JSON.parse(response);
@@ -119,7 +119,7 @@ function closeReview()
 function submitReview()
 {
     var reviewString = document.getElementById("review").value;
-    var studentID = localStorage.getItem("studentID");
+    var studentID = localStorage.getItem("id");
 
     $.ajax({
         type: "POST",
