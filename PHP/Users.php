@@ -74,6 +74,30 @@
             
             echo json_encode($user);
         }
+        else if($_GET['functionName'] == "verifyLogin")
+        {
+            $statement = "SELECT * FROM users WHERE User_Email='".$_GET['email']."' AND User_Password='".$_GET['password']."';";
+            $result = mysqli_query($conn, $statement);
+
+            $user = array();
+
+            $row = mysqli_fetch_array($result);
+
+            if($row)
+            {
+                $user['id'] = $row['User_ID'];
+                $user['role'] = $row['User_Role'];
+                $user['success'] = true;
+            }
+            else
+            {
+                $user['success'] = false;
+            }
+
+            
+
+            echo json_encode($user);
+        }
     }
 
     CloseCon($conn);
