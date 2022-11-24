@@ -13,19 +13,19 @@ if ($is_get) {
         $result = mysqli_query($conn, $statement);
 
         $users = array();
+            while($row = mysqli_fetch_array($result))
+            {
+                $user = array();
+                $user['id'] = $row['User_ID'];
+                $user['first_name'] = $row['User_First_Name'];
+                $user['last_name'] = $row['User_Last_Name'];
+                $user['role'] = $row['User_Role'];
+                $user['email'] = $row['User_Email'];
 
-        while ($row = mysqli_fetch_array($result)) {
-            $user = array();
-            $user['id'] = $row['User_ID'];
-            $user['first_name'] = $row['User_First_Name'];
-            $user['last_name'] = $row['User_Last_Name'];
-            $user['role'] = $row['User_Role'];
-            $user['email'] = $row['User_Email'];
+                array_push($users, $user);
+            }
 
-            array_push($users, $user);
-        }
-
-        echo json_encode($users);
+            echo json_encode($users);
     } else if ($_GET['functionName'] == "getUserbyName") {
         // query all users using mysqli
         $statement = "SELECT * FROM Users WHERE User_ID=" . $_GET['studentID'] . ";";
@@ -43,7 +43,6 @@ if ($is_get) {
 
         // grab all the reviews left on the student
         $statement = "SELECT * FROM Reviews WHERE Student_ID=" . $_GET['studentID'] . ";";
-
         $result = mysqli_query($conn, $statement);
 
         $reviews = array();
@@ -63,11 +62,60 @@ if ($is_get) {
             $review['Student_Name'] = $student_row['User_First_Name'] . " " . $student_row['User_Last_Name'];
             array_push($reviews, $review);
         }
-
+        
         $user['Reviews'] = $reviews;
         echo json_encode("<h1>Hello User, </h1> <p>Welcome to {$name}</p>");
 
         echo json_encode($user);
+        }
+        else if($_GET['functionName'] == "verifyLogin")
+        {
+            $statement = "SELECT * FROM users WHERE User_Email='".$_GET['email']."' AND User_Password='".$_GET['password']."';";
+            $result = mysqli_query($conn, $statement);
+
+            $user = array();
+
+            $row = mysqli_fetch_array($result);
+
+            if($row)
+            {
+                $user['id'] = $row['User_ID'];
+                $user['role'] = $row['User_Role'];
+                $user['success'] = true;
+            }
+            else
+            {
+                $user['success'] = false;
+            }
+
+            
+
+            echo json_encode($user);
+        }
+        else if($_GET['functionName'] == "getTutorClasses")
+        {
+            $statement = "SELECT * FROM classes WHERE Tutor_ID=".$_GET['tutorID'].";";
+            $result = mysqli_query($conn, $statement);
+
+            $classes = array();
+
+            while($row = mysqli_fetch_array($result))
+            {
+                $class = array();
+                $class['id'] = $row['Class_ID'];
+                $class['tutor_id'] = $row['Tutor_ID'];
+                $class['max_capacity'] = $row['Class_MaxCapacity'];
+                $class['current_capacity'] = $row['Class_CurrentCapacity'];
+                $class['name'] = $row['Class_Name'];
+                $class['date'] = $row['Class_Date'];
+                $class['duration'] = $row['Class_Duration'];
+                $class['status'] = $row['Class_Status'];
+
+                array_push($classes, $class);
+            }
+
+            echo json_encode($classes);
+        
         
 
 

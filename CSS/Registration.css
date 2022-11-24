@@ -62,7 +62,7 @@ form {
 
 .submitBtn {
     display: block;
-    margin-left: auto;
+    /* margin-left: auto; */
     padding: 15px 30px;
     border: none;
     background-color: purple;
@@ -86,3 +86,9 @@ form {
     font-weight: 600;
     color: purple;
   } 
+
+  .buttons
+  {
+      display: flex;
+      justify-content: space-evenly;
+  }

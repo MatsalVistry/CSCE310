@@ -4,17 +4,10 @@ body {
     padding: 0;
     background-color: white;
     font-family: "lato", sans-serif;
-}
+  }
 
-div {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    font-family: "lato", sans-serif;
-}
-
-form {
+  
+.form {
     background-color: white;
     width: 400px;
     border-radius: 8px;
@@ -22,11 +15,12 @@ form {
     box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
 }
 
-.signup {
+.login {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+
 }
 
 .title {
@@ -50,7 +44,7 @@ form {
     font-size: 16px;
     transition: 0.5s;
     z-index: 0;
-}
+  }
 
 .input {
     position: absolute;
@@ -69,7 +63,7 @@ form {
 
 .submitBtn {
     display: block;
-    margin-left: auto;
+    /* margin-left: auto; */
     padding: 15px 30px;
     border: none;
     background-color: purple;
@@ -78,18 +72,24 @@ form {
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
-}
-
-.submitBtn:hover {
+  }
+  
+  .submitBtn:hover {
     background-color: #9867C5;
     transform: translateY(-2px);
-}
+  }
 
-.input:focus+.label {
+  .input:focus + .label{
     top: -7px;
     left: 3px;
     z-index: 10;
     font-size: 14px;
     font-weight: 600;
     color: purple;
+  } 
+
+.buttons
+{
+    display: flex;
+    justify-content: space-evenly;
 }
