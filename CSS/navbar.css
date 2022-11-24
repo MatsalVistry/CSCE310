@@ -21,9 +21,11 @@
   /* Change background on mouse-over */
   .navbar a:hover {
     opacity: 0.7;
+    cursor: pointer;
   }
   
   
   .navbar-padding {
     margin-top: 5em; /* Add a top margin to avoid content overlay */
   }
+
