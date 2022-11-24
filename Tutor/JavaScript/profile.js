@@ -26,7 +26,7 @@ $(document).ready(function() {
 
             var tutorInfo = document.getElementsByClassName("tutorInfo")[0];
             tutorInfo.innerHTML = "ID: " + tutorID + "<br>" + "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
-            for (var i = 0; i < reviews.length; i++) {
+            for (var i = 0; i < reviews.length(); i++) {
                 var review = reviews[i];
                 var studentName = review.Student_Name;
                 var reviewString = review.Review_String;

@@ -14,3 +14,16 @@ function getAllUsers() {
         }
     });
 }
+
+function getUser(id) {
+    $.ajax({
+        type: "GET",
+        url: "./PHP/Users.php",
+        data: {
+            functionName: "getUser",
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}
