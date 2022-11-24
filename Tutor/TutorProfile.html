@@ -15,7 +15,7 @@
         
     </div>
     <!-- add review button that brings a popup modal -->
-    <button id="addReview" onclick="addReview()">Add Review</button>
+    <button class="submitBtn" id="addReview" onclick="addReview()">Add Review</button>
 
     <div id="myModal" class="modal">
 
@@ -24,12 +24,12 @@
             <span class="close" onclick="closeReview()">&times;</span>
             <textarea id="review" name="review" rows="4" cols="50"></textarea>
             <br>
-            <button onclick="submitReview()">Submit</button>
+            <button class="submitBtn" onclick="submitReview()">Submit</button>
         </div>
       
     </div>
 
-    <button id="logout" onclick="logout()">Logout</button>
+    <button class="submitBtn" id="logout" onclick="logout()">Logout</button>
    
     <script src="./JavaScript/profile.js" defer></script>
 </body>

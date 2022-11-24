@@ -59,9 +59,11 @@ function refreshReviews()
                 var authorizedToDelete = userType == "a" || studentID == reviewStudentID;
 
                 var reviewDiv = document.createElement("div");
+                reviewDiv.className = "review";
+
+                reviewDiv.innerHTML += "<p>Name: " + studentName + "<br>" + "Review: " + reviewString+ "</p>";
                 if(authorizedToDelete)
-                    reviewDiv.innerHTML += '<span class="close" onclick="deleteReview(this)" value='+reviewID+'>&times;</span>';
-                reviewDiv.innerHTML += "Student Name: " + studentName + "<br>" + "Review: " + reviewString+ "<br><br>";
+                    reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value='+reviewID+'>&times;</button>';
                 tutorInfo.appendChild(reviewDiv);
             }
         }
