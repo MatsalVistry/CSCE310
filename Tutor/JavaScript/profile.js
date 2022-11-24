@@ -45,6 +45,7 @@ function populateNavbar()
 
 function refreshReviews()
 {
+    document.getElementsByClassName("tutorInfo")[0] = "";
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -139,12 +140,6 @@ function submitReview()
 
     document.getElementById("review").value = "";
     closeReview();
-}
-
-function logout()
-{
-    localStorage.clear();
-    window.location.href = "../Login/Login.html";
 }
 
 window.onclick = function(event) 

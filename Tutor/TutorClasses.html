@@ -17,7 +17,31 @@
         
     </div>
 
-    <button class="submitBtn" id="addNewClass" onclick="addNewClass()">Add New Class</button>
+    <button class="submitBtn" id="addNewClass" onclick="addClass()">Add New Class</button>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeClass()">&times;</span>
+
+            <span>Max Capacity:</span>
+            <input id="maxCapacity" placeholder="Max Capacity">
+            <br>
+            <span>Name:</span>
+            <input id="name" placeholder="Name">
+            <br>
+            <span>Date:</span>
+            <input id="date" type="date">
+            <br>
+            <span>Duration:</span>
+            <input id="duration" placeholder="Duration">
+            <br>
+            
+            <button class="submitBtn" onclick="submitClass()">Submit</button>
+        </div>
+      
+    </div>
    
     <script src="./JavaScript/class.js" defer></script>
 </body>

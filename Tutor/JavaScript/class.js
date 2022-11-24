@@ -45,6 +45,7 @@ function populateNavbar()
 
 function refreshClasses()
 {
+    document.getElementsByClassName("classDisplay")[0].innerHTML = "";
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -55,17 +56,8 @@ function refreshClasses()
         },
         success: function(response) 
         {
-            //  $class['id'] = $row['Class_ID'];
-            // $class['tutor_id'] = $row['Tutor_ID'];
-            // $class['max_capacity'] = $row['Class_MaxCapacity'];
-            // $class['current_capacity'] = $row['Class_CurrentCapacity'];
-            // $class['name'] = $row['Class_Name'];
-            // $class['date'] = $row['Class_Date'];
-            // $class['duration'] = $row['Class_Duration'];
-            // $class['status'] = $row['Class_Status'];
 
             var classes = JSON.parse(response);
-
             var display = document.getElementsByClassName("classDisplay")[0];
 
             for(var i = 0; i < classes.length; i++)
@@ -79,6 +71,7 @@ function refreshClasses()
                 classDiv.innerHTML += "Date:" + classes[i].date+"<br>";
                 classDiv.innerHTML += "Duration:" + classes[i].duration+"<br>";
                 classDiv.innerHTML += "Status:" + classes[i].status+"<br>";
+                classDiv.innerHTML += '<button class="deleteClass" onclick="deleteClass(this)" value='+classes[i].id+'>&times;</button>';
                 classDiv.innerHTML += "<br><br>";
 
                 display.appendChild(classDiv);
@@ -86,4 +79,76 @@ function refreshClasses()
             
         }
     });
+}
+
+function deleteClass(element)
+{
+    var classID = element.value;
+
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Classes.php",
+        data: 
+        {
+            functionName: "deleteClass",
+            classID: classID
+        },
+        success: function(response) 
+        {
+            refreshClasses();
+        }
+    });
+}
+
+function addClass()
+{
+    document.getElementById("myModal").style.display = "block";
+}
+
+function closeClass()
+{
+    document.getElementById("myModal").style.display = "none";
+}
+
+function submitClass()
+{
+    var maxCapacity = document.getElementById("maxCapacity").value;
+    var name = document.getElementById("name").value;
+    var date = document.getElementById("date").value;
+    var duration = document.getElementById("duration").value;
+    var tutorID = localStorage.getItem("id");
+
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Classes.php",
+        data: 
+        {
+            functionName: "submitClass",
+            tutorID: tutorID,
+            maxCapacity: maxCapacity,
+            currentCapacity: 0,
+            name: name,
+            date: date,
+            duration: duration,
+            status: "i"
+        },
+        success: function(response) 
+        {
+            refreshClasses();
+        }
+    });
+
+    document.getElementById("maxCapacity").value = "";
+    document.getElementById("name").value = "";
+    document.getElementById("date").value = "";
+    document.getElementById("duration").value = "";
+    closeClass();
+}
+
+window.onclick = function(event) 
+{
+    if (event.target == document.getElementById("myModal")) 
+    {
+        closeClass();
+    }
 }
