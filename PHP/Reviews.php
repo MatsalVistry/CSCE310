@@ -13,6 +13,11 @@
             $statement = "INSERT INTO reviews (Tutor_ID, Student_ID, Review_String) VALUES (".$_POST['tutorID'].", ".$_POST['studentID'].", '".$_POST['reviewString']."');";
             $result = mysqli_query($conn, $statement);
         }
+        else if($_POST['functionName'] == "deleteReview")
+        {
+            $statement = "DELETE FROM reviews WHERE Review_ID=".$_POST['reviewID'].";";
+            $result = mysqli_query($conn, $statement);
+        }
     }
 
     CloseCon($conn);
