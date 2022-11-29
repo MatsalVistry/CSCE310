@@ -21,7 +21,13 @@
             $statement = "DELETE FROM classes WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        else if($_POST['functionName'] == "editClass")
+        {
+            $statement = "UPDATE classes SET Class_MaxCapacity=".$_POST['maxCapacity'].", Class_Name='".$_POST['name']."', Class_Date='".$_POST['date']."', Class_Duration='".$_POST['duration']."' WHERE Class_ID=".$_POST['classID'].";";
+            $result = mysqli_query($conn, $statement);
+        }    
     }
+
 
     CloseCon($conn);
 ?>
