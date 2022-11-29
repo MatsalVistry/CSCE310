@@ -56,6 +56,7 @@ function refreshReviews()
         },
         success: function(response) 
         {
+            // console.log(response);
             var studentID = localStorage.getItem("id");
 
             // grab the tutor's information from the response
@@ -65,6 +66,7 @@ function refreshReviews()
             var lastName = tutor.last_name;
             var email = tutor.email;
             var reviews = tutor.reviews;
+
 
             var tutorInfo = document.getElementsByClassName("tutorInfo")[0];
             tutorInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";

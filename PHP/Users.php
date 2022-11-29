@@ -36,31 +36,42 @@
                 "SELECT
                 u.User_First_Name as tutor_first_name,
                 u.User_Last_Name as tutor_last_name,
-                u.User_Email as tutor_email,
-                r.Review_ID as review_id,
-                r.Student_ID as student_id,
-                r.Review_String as review_string,
-                un.User_First_Name as student_first_name,
-                un.User_Last_Name as student_last_name
-
-                FROM users as u 
-                INNER JOIN reviews as r 
-                    ON u.user_id = r.tutor_id 
-                INNER JOIN users as un 
-                    ON r.student_id = un.user_id 
+                u.User_Email as tutor_email
+                FROM users as u
                 WHERE u.User_ID=".$_GET['tutorID'].";";
+
+            // echo $statement;
 
             $result = mysqli_query($conn, $statement);
             
             $user = array();
             $reviews = array();
 
+            $row = mysqli_fetch_array($result);
+        
+            $user['first_name'] = $row['tutor_first_name'];
+            $user['last_name'] = $row['tutor_last_name'];
+            $user['email'] = $row['tutor_email'];
+
+            // echo json_encode($user);
+
+
+            $statement = "SELECT 
+                            r.Review_ID as review_id,
+                            r.Student_ID as student_id,
+                            r.Review_String as review_string,
+                            un.User_First_Name as student_first_name,
+                            un.User_Last_Name as student_last_name
+                            FROM reviews as r 
+                            INNER JOIN users as un 
+                            ON r.Student_ID = un.User_ID
+                            WHERE r.Tutor_ID=".$_GET['tutorID'].";";
+            // echo $statement;
+
+            $result = mysqli_query($conn, $statement);
+
             while($row = mysqli_fetch_array($result))
             {
-                $user['first_name'] = $row['tutor_first_name'];
-                $user['last_name'] = $row['tutor_last_name'];
-                $user['email'] = $row['tutor_email'];
-
                 $review = array();
                 $review['id'] = $row['review_id'];
                 $review['student_id'] = $row['student_id'];
