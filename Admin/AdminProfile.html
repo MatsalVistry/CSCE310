@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/tutorProfile.css" />
+    <title>Login</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <div class="adminInfo">
+
+    </div>
+    <!-- add review button that brings a popup modal -->
+    <button class="submitBtn" id="addReview" onclick="addReview()">Add Review</button>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeReview()">&times;</span>
+            <textarea id="review" name="review" rows="4" cols="50"></textarea>
+            <br>
+            <button class="submitBtn" onclick="submitReview()">Submit</button>
+        </div>
+
+    </div>
+
+    <button class="submitBtn" id="logout" onclick="logout()">Logout</button>
+
+    <script src="./JavaScript/profile.js" defer></script>
+</body>
+
+</html>

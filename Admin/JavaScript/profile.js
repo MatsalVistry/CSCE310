@@ -1,17 +1,17 @@
-var tutorID;
+var adminID;
 var userType;
 
 $(document).ready(function() {
 
     userType = localStorage.getItem("userType");
     if (userType == null) {
-        window.location.href = "../Login/login.html";
+        window.location.href = "../Login/Login.html";
     }
 
     populateNavbar();
 
     var urlParams = new URLSearchParams(window.location.search);
-    tutorID = urlParams.get('tutorID');
+    adminID = urlParams.get('adminID');
 
     refreshReviews();
 
@@ -33,29 +33,29 @@ function populateNavbar() {
 }
 
 function refreshReviews() {
-    document.getElementsByClassName("tutorInfo")[0] = "";
+    document.getElementsByClassName("adminInfo")[0] = "";
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
         data: {
             functionName: "getTutorInformation",
-            tutorID: tutorID
+            adminID: adminID
         },
         success: function(response) {
             // console.log(response);
             var studentID = localStorage.getItem("id");
 
-            // grab the tutor's information from the response
-            var tutor = JSON.parse(response);
+            // grab the admin's information from the response
+            var admin = JSON.parse(response);
 
-            var firstName = tutor.first_name;
-            var lastName = tutor.last_name;
-            var email = tutor.email;
-            var reviews = tutor.reviews;
+            var firstName = admin.first_name;
+            var lastName = admin.last_name;
+            var email = admin.email;
+            var reviews = admin.reviews;
 
 
-            var tutorInfo = document.getElementsByClassName("tutorInfo")[0];
-            tutorInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
+            var adminInfo = document.getElementsByClassName("adminInfo")[0];
+            adminInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
             for (var i = 0; i < reviews.length; i++) {
                 var review = reviews[i];
                 var reviewID = review.id;
@@ -70,7 +70,7 @@ function refreshReviews() {
                 reviewDiv.innerHTML += "<p>Name: " + studentName + "<br>" + "Review: " + reviewString + "</p>";
                 if (authorizedToDelete)
                     reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
-                tutorInfo.appendChild(reviewDiv);
+                adminInfo.appendChild(reviewDiv);
             }
         }
     });
@@ -108,7 +108,7 @@ function submitReview() {
         url: "../PHP/Reviews.php",
         data: {
             functionName: "submitReview",
-            tutorID: tutorID,
+            adminID: adminID,
             reviewString: reviewString,
             studentID: studentID
         },
