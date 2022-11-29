@@ -27,6 +27,46 @@
             $result = mysqli_query($conn, $statement);
         }    
     }
+    else
+    {
+        if($_GET['functionName'] == "getAllClasses")
+        {
+            $statement = "SELECT * FROM classes INNER JOIN users ON classes.Tutor_ID = users.User_ID;";
+            $result = mysqli_query($conn, $statement);
+
+            $classes = array();
+            while($row = mysqli_fetch_assoc($result))
+            {
+                $class = array();
+                $class['id'] = $row['Class_ID'];
+                $class['tutor_id'] = $row['Tutor_ID'];
+                $class['max_capacity'] = $row['Class_MaxCapacity'];
+                $class['current_capacity'] = $row['Class_CurrentCapacity'];
+                $class['name'] = $row['Class_Name'];
+                $class['date'] = $row['Class_Date'];
+                $class['duration'] = $row['Class_Duration'];
+                $class['status'] = $row['Class_Status'];
+                $class['tutor_name'] = $row['User_First_Name']." ".$row['User_Last_Name'];
+
+                array_push($classes, $class);
+            }
+
+            echo json_encode($classes);
+        }
+        if($_GET['functionName'] == "getCurrentStudentClasses")
+        {
+            $statement = "SELECT Class_ID FROM classes WHERE Class_ID IN (SELECT Class_ID FROM enrollments WHERE Student_ID=".$_GET['studentID'].");";
+            $result = mysqli_query($conn, $statement);
+
+            $classes = array();
+            while($row = mysqli_fetch_assoc($result))
+            {
+                array_push($classes, $row['Class_ID']);
+            }
+
+            echo json_encode($classes);
+        }    
+    }
 
 
     CloseCon($conn);

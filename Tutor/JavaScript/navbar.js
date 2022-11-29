@@ -8,9 +8,9 @@ function tutorClasses()
     window.location = "../Tutor/TutorClasses.html?tutorID=" + localStorage.getItem("id");
 }
 
-function studentProfile()
+function AllClasses()
 {
-    window.location = "StudentProfile.html?studentID=" + localStorage.getItem("id");
+    window.location = "../Student/AllClasses.html";
 }
 
 function logout()

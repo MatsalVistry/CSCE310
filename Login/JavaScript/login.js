@@ -28,7 +28,14 @@ function verify()
             localStorage.setItem("id", id);
             localStorage.setItem("userType", role);
 
-            window.location.href = "../Tutor/TutorProfile.html?tutorID=3";
+            console.log(role);
+
+            if(role=='t')
+                window.location.href = "../Tutor/TutorProfile.html?tutorID="+id;
+            else if(role=='s')
+                window.location.href = "../Student/AllClasses.html";
+            else
+                window.location.href = "../Admin/AdminProfile.html?adminID="+id;
         }
     });
 
