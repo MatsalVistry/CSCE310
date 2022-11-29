@@ -10,7 +10,7 @@ function tutorClasses()
 
 function studentProfile()
 {
-    window.location = "StudentProfile.html?studentID=" + localStorage.getItem("id");
+    window.location = "../Student/MyClasses.html?studentID=" + localStorage.getItem("id");
 }
 
 function logout()
