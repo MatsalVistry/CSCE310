@@ -5,10 +5,10 @@
     $password = $_POST['password'];
 
     if ($_POST['role'] == "Student") {
-        $role = "a";
+        $role = "s";
     }
     else {
-        $role = "b";
+        $role = "t";
     }
 
     include_once './Credentials.php';
