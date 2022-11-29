@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/tutorClasses.css" />
+    <title>Login</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+
+    <div class="classDisplay">
+        
+    </div>
+
+    <button class="submitBtn" id="addNewClass" onclick="addClass()">Add New Class</button>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeClass()">&times;</span>
+
+            <span>Max Capacity:</span>
+            <input id="maxCapacity" placeholder="Max Capacity">
+            <br>
+            <span>Name:</span>
+            <input id="name" placeholder="Name">
+            <br>
+            <span>Date:</span>
+            <input id="date" type="date">
+            <br>
+            <span>Duration:</span>
+            <input id="duration" placeholder="Duration">
+            <br>
+            
+            <button class="submitBtn" onclick="submitClass()">Submit</button>
+        </div>
+    </div>
+
+    <div id="editClassModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeClass()">&times;</span>
+
+            <span>Max Capacity:</span>
+            <input id="editMaxCapacity" placeholder="Max Capacity">
+            <br>
+            <span>Name:</span>
+            <input id="editName" placeholder="Name">
+            <br>
+            <span>Date:</span>
+            <input id="editDate" type="date">
+            <br>
+            <span>Duration:</span>
+            <input id="editDuration" placeholder="Duration">
+            <br>
+            
+            <button class="submitBtn" onclick="submitEditClass()">Submit</button>
+        </div>
+    </div>
+   
+    <script src="./JavaScript/class.js" defer></script>
+</body>
+
+</html>
