@@ -34,28 +34,31 @@ function ViewClasses(){
         url: "../PHP/Regestered.php",
         data:{
             user_id: userID,
-            functionName: "current"
+            functionName: "all"
         },
         success: function(result){
-            var studentinfo = JSON.parse(result);
-            var first_name = studentinfo.student_FName;
-            var last_name = studentinfo.student_LName;
+            var info = JSON.parse(result);
 
             var student = document.getElementsByClassName("Student_info")[0];
             student.innerHTML = "Welcome "+first_name+" "+last_name+"! Here are all the classes you have signed up for:"+"<br>" ;
-            for(var i = 0; i < studentinfo.classId.length; ++i){
-                var id = studentinfo[i].classId;
-                var name = studentinfo[i].className;
-                var date = studentinfo[i].classDate;
-                var duration = studentinfo[i].classDuration;
+            for(var i = 0; i < info.length; ++i){
+                var classId = info[i].classId;
+                var classMax = info[i].classMax;
+                var classCurrent = info[i].classCurrent;
+                var name = info[i].className;
+                var date = info[i].classDate;
+                var duration = info[i].classDuration;
+                var tutorFName = info[i].tutor_FName;
+                var tutorLName = info[i].tutor_LName;
 
                 var classDiv = document.createElement("div");
                 reviewDiv.className = "classes";
-
-                reviewDiv.innerHTML += "<p>:Class ID: " + id + " Class Name: " + name + " Date:"+ date + "Duration: " + duration + " hours" + "</p>";
-                if(authorizedToDelete)
-                    reviewDiv.innerHTML += '<button class="deleteClass" onclick="deleteClass(this)" value='+id+'>&times;</button>';
-                student.appendChild(classDiv);
+                if(classCurrent<=classMax){
+                    reviewDiv.innerHTML += "<p>:Class ID: " + classId + " Class Name: " + name + " Date:"+ date + "Duration: " + duration + " hours Tutor: "+ tutorFName + tutorLName +" Seat Avaliable: "+classCurrent+"/"+classMax+ "</p>";
+                    if(authorizedToAdd)
+                        reviewDiv.innerHTML += '<button class="addClass" onclick="addClass(this)" value='+id+'>&times;</button>';
+                    student.appendChild(classDiv);
+                }
 
             }
 
@@ -66,6 +69,6 @@ function ViewClasses(){
     })
 }
 
-function deleteClass(){
+function addClass(){
     
 }
