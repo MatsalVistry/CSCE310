@@ -55,7 +55,7 @@ function refreshReviews() {
 
 
             var adminInfo = document.getElementsByClassName("adminInfo")[0];
-            adminInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
+            adminInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews ";
             // for (var i = 0; i < reviews.length; i++) {
             //     var review = reviews[i];
             //     var reviewID = review.id;
