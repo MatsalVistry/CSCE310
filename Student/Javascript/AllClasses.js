@@ -71,10 +71,15 @@ function populateClasses()
                         classDiv.innerHTML += "<div class='cduration' value="+classes[i].duration+"> Duration:" + classes[i].duration+"</div><br>";
                         classDiv.innerHTML += "<div class='cstatus' value="+classes[i].status+"> Status:" + classes[i].status+"</div><br>";
 
-                        if(!currentClasses.includes(classes[i].id))
+
+                        if(!currentClasses.includes(classes[i].id) && classes[i].current_capacity < classes[i].max_capacity)
+                        {
                             classDiv.innerHTML += '<button class="enroll" onclick="enroll(this)" value='+classes[i].id+'>Enroll</button>';
-                        else
+                        }
+                        if(currentClasses.includes(classes[i].id))
+                        {
                             classDiv.innerHTML += '<button class="unenroll" onclick="unenroll(this)" value='+classes[i].id+'>Unenroll</button>';
+                        }
 
                         classDiv.innerHTML += "<br><br>";
 
@@ -88,18 +93,6 @@ function populateClasses()
 
 function enroll(element)
 {
-    // if the class is full, don't enroll
-
-    var currentCapacity = element.parentElement.getElementsByClassName("ccurrentcapacity")[0].getAttribute("value");
-    var maxCapacity = element.parentElement.getElementsByClassName("cmaxcapacity")[0].getAttribute("value");
-    console.log(currentCapacity);
-    console.log(maxCapacity);
-    if(currentCapacity >= maxCapacity)
-    {
-        alert("Class is full");
-        return;
-    }
-
     $.ajax({
         type: "POST",
         url: "../PHP/Classes.php",
