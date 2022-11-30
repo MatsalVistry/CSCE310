@@ -6,7 +6,7 @@ body {
     font-family: "lato", sans-serif;
 }
 
-form {
+.form {
     background-color: white;
     width: 400px;
     border-radius: 8px;

@@ -12,7 +12,7 @@
 
 <body>
     <div class="signup">
-        <form action="../PHP/Registration.php" method="post">
+        <div class='form'>
           <h1 class="title">Sign up</h1>
     
           <div class="inputContainer">
@@ -46,8 +46,11 @@
           </div>
     
           <div class="buttons">
-            <button class="submitBtn" type="submit">Sign Up</button>
-            <button class="submitBtn" onclick="window.location.href='../Login/login.html'">Login</button>
+            <button class="submitBtn" onclick="submitRegistration()">Sign Up</button>
+            <button class="submitBtn" onclick="loginPage()">Login</button>
+
         </div>
-        </form>
+      </div>
+
+    <script src="./JavaScript/Registration.js" defer></script>
 </body>
