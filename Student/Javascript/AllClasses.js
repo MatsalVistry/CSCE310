@@ -85,3 +85,41 @@ function populateClasses()
         }
     });
 }
+
+function enroll(element)
+{
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Classes.php",
+        data: 
+        {
+            functionName: "enrollInClass",
+            studentID: localStorage.getItem("id"),
+            classID: element.value
+        },
+        success: function(response) 
+        {
+            console.log(response);
+            populateClasses();
+        }
+    });
+}
+
+function unenroll(element)
+{
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Classes.php",
+        data: 
+        {
+            functionName: "unenrollFromClass",
+            studentID: localStorage.getItem("id"),
+            classID: element.value
+        },
+        success: function(response) 
+        {
+            console.log(response);
+            populateClasses();
+        }
+    });
+}

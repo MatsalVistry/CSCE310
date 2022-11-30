@@ -18,6 +18,9 @@
         }
         else if($_POST['functionName'] == "deleteClass")
         {
+            $statement = "DELETE FROM enrollments WHERE Class_ID = ".$_POST['classID'].";";
+            $result = mysqli_query($conn, $statement);
+            
             $statement = "DELETE FROM classes WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
@@ -26,6 +29,22 @@
             $statement = "UPDATE classes SET Class_MaxCapacity=".$_POST['maxCapacity'].", Class_Name='".$_POST['name']."', Class_Date='".$_POST['date']."', Class_Duration='".$_POST['duration']."' WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }    
+        else if($_POST['functionName'] == "enrollInClass")
+        {
+            $statement = "INSERT INTO enrollments (Student_ID, Class_ID) VALUES (".$_POST['studentID'].", ".$_POST['classID'].");";
+            $result = mysqli_query($conn, $statement);
+
+            $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity+1 WHERE Class_ID=".$_POST['classID'].";";
+            $result = mysqli_query($conn, $statement);
+        }
+        else if($_POST['functionName'] == "unenrollFromClass")
+        {
+            $statement = "DELETE FROM enrollments WHERE Student_ID=".$_POST['studentID']." AND Class_ID=".$_POST['classID'].";";
+            $result = mysqli_query($conn, $statement);
+
+            $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$_POST['classID'].";";
+            $result = mysqli_query($conn, $statement);
+        }
     }
     else
     {
