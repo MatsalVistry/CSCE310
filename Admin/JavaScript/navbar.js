@@ -10,7 +10,11 @@ function studentProfile() {
     window.location = "StudentProfile.html?studentID=" + localStorage.getItem("id");
 }
 
+function AllClasses() {
+    window.location = "../Student/AllClasses.html";
+}
+
 function logout() {
     localStorage.clear();
-    window.location.href = "../Login/Login.html";
+    window.location.href = "../Login/login.html";
 }

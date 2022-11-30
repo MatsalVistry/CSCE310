@@ -1,9 +1,17 @@
+:root {
+    --fontFam: "Georgia-bold";
+    --backgroundScreen: lightgrey;
+    --backgroundButtons: #a3c585;
+    --backgroundButtonsShadow: #87ab69;
+    --backgroundLinear: linear-gradient(.25turn, #a6cb83, 70%, #718f58);
+}
+
 body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: white;
-    font-family: "lato", sans-serif;
+    background-color: var(--backgroundScreen);
+    font-family: var(--fontFam);
     margin-top: 50px;
 }
 
@@ -25,9 +33,9 @@ body {
     /* Full height */
     overflow: auto;
     /* Enable scroll if needed */
-    background-color: rgb(0, 0, 0);
+    /* background-color: rgb(0, 0, 0); */
     /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4);
+    background: var(--backgroundLinear);
     /* Black w/ opacity */
 }
 
@@ -35,7 +43,7 @@ body {
 /* Modal Content/Box */
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: var(--backgroundScreen);
     margin: 15% auto;
     /* 15% from the top and centered */
     padding: 20px;
@@ -62,10 +70,12 @@ body {
 }
 
 .submitBtn {
+    font-family: var(--fontFam);
     display: block;
     padding: 15px 30px;
     border: none;
-    background-color: purple;
+    background-color: var(--backgroundButtons);
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -74,7 +84,7 @@ body {
 }
 
 .submitBtn:hover {
-    background-color: #9867C5;
+    background-color: var(--backgroundButtons);
     transform: translateY(-2px);
 }
 
@@ -92,10 +102,12 @@ body {
 }
 
 .deleteClass {
+    font-family: var(--fontFam);
     display: block;
     padding: 5px 15px;
     border: none;
     background-color: red;
+    box-shadow: 2px 2px #7a1227;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -109,10 +121,12 @@ body {
 }
 
 .editClass {
+    font-family: var(--fontFam);
     display: block;
     padding: 5px 15px;
     border: none;
-    background-color: purple;
+    background-color: var(--backgroundButtons);
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: white;
     border-radius: 6px;
     cursor: pointer;

@@ -1,12 +1,10 @@
 studentID = null;
 
-$(document).ready(function () 
-{
+$(document).ready(function() {
 
     userType = localStorage.getItem("userType");
-    if(userType == null)
-    {
-        window.location.href = "../Login/Login.html";
+    if (userType == null) {
+        window.location.href = "../Login/login.html";
     }
 
     populateNavbar();
@@ -17,35 +15,26 @@ $(document).ready(function ()
 
 });
 
-function populateNavbar()
-{
-    if(userType == "t")
-    {
+function populateNavbar() {
+    if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
-    }
-    else if(userType == "s")
-    {
+    } else if (userType == "s") {
         $("#navbar").load("../Navbars/StudentNavbar.html");
-    }
-    else if(userType == "a")
-    {
+    } else if (userType == "a") {
         $("#navbar").load("../Navbars/AdminNavbar.html");
     }
 }
 
-function loadClasses()
-{
+function loadClasses() {
     document.getElementsByClassName("studentClasses")[0] = "";
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
-        data: 
-        {
+        data: {
             functionName: "getStudentClasses",
             studentID: studentID
         },
-        success: function(response) 
-        {
+        success: function(response) {
             studentClasses = JSON.parse(response);
             var myClasses = document.getElementsByClassName("myClasses")[0];
             for (var i = 0; i < studentClasses.length; i++) {
@@ -59,13 +48,13 @@ function loadClasses()
 
                 var classesDiv = document.createElement("div");
                 classesDiv.className = "class";
-                classesDiv.innerHTML += "<p>Class Name: " + name + "<br>" + 
-                                        "Date: " + date+ "</br>" + 
-                                        "Duration: " + duration+ "</br>" +
-                                        "Current Capacity: " + cc+ "</br>" +
-                                        "Status: " + status+ "</br>" +
-                                        "Tutor First Name: " + tutor_fname+ "</br>" +
-                                        "Tutor Last Name: " + tutor_lname+ "</br>";
+                classesDiv.innerHTML += "<p>Class Name: " + name + "<br>" +
+                    "Date: " + date + "</br>" +
+                    "Duration: " + duration + "</br>" +
+                    "Current Capacity: " + cc + "</br>" +
+                    "Status: " + status + "</br>" +
+                    "Tutor First Name: " + tutor_fname + "</br>" +
+                    "Tutor Last Name: " + tutor_lname + "</br>";
                 myClasses.appendChild(classesDiv);
             }
         }

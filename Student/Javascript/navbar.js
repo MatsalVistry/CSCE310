@@ -1,15 +1,12 @@
-function AllClasses()
-{
+function AllClasses() {
     window.location = "../Student/AllClasses.html";
 }
 
-function MyClasses()
-{
+function MyClasses() {
     window.location = "../Student/MyClasses.html";
 }
 
-function logout()
-{
+function logout() {
     localStorage.clear();
-    window.location.href = "../Login/Login.html";
+    window.location.href = "../Login/login.html";
 }

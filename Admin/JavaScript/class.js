@@ -11,7 +11,7 @@ $(document).ready(function() {
     populateNavbar();
 
     var urlParams = new URLSearchParams(window.location.search);
-    tutorID = urlParams.get('tutorID');
+    tutorID = urlParams.get('adminID');
 
     refreshClasses();
 
@@ -23,20 +23,21 @@ $(document).ready(function() {
 });
 
 function populateNavbar() {
-    if (userType == "t") {
-        $("#navbar").load("../Navbars/TutorNavbar.html");
-    } else if (userType == "s") {
-        $("#navbar").load("../Navbars/StudentNavbar.html");
-    } else if (userType == "a") {
-        $("#navbar").load("../Navbars/AdminNavbar.html");
-    }
+    // if (userType == "t") {
+    //     $("#navbar").load("../Navbars/TutorNavbar.html");
+    // } else if (userType == "s") {
+    //     $("#navbar").load("../Navbars/StudentNavbar.html");
+    // } else if
+    //  (userType == "a") {
+    $("#navbar").load("../Navbars/AdminNavbar.html");
+    // }
 }
 
 function refreshClasses() {
     document.getElementsByClassName("classDisplay")[0].innerHTML = "";
     $.ajax({
         type: "GET",
-        url: "../PHP/Users.php",
+        url: "../../PHP/Users.php",
         data: {
             functionName: "getTutorClasses",
             tutorID: tutorID

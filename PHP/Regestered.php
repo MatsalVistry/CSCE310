@@ -30,7 +30,7 @@
             $output = mysqli_fetch_all($result, MYSQLI_ASSOC)
             //free the result from memory
             mysqli_free_result($result)
-            close the connections
+            // close the connections
             mysqli_close($conn)
             //output the data
             print_r($output)

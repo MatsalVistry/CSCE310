@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     userType = localStorage.getItem("userType");
     if (userType == null) {
-        window.location.href = "../Login/Login.html";
+        window.location.href = "../Login/login.html";
     }
 
     populateNavbar();
@@ -15,28 +15,28 @@ $(document).ready(function() {
 
     refreshReviews();
 
-    if (userType == "t") {
-        document.getElementById("addReview").style.display = "none";
-    } else {
-        document.getElementById("addReview").style.display = "block";
-    }
+    // if (userType == "t") {
+    //     document.getElementById("addReview").style.display = "none";
+    // } else {
+    //     document.getElementById("addReview").style.display = "block";
+    // }
 });
 
 function populateNavbar() {
-    if (userType == "t") {
-        $("#navbar").load("../Navbars/TutorNavbar.html");
-    } else if (userType == "s") {
-        $("#navbar").load("../Navbars/StudentNavbar.html");
-    } else if (userType == "a") {
-        $("#navbar").load("../Navbars/AdminNavbar.html");
-    }
+    // if (userType == "t") {
+    //     $("#navbar").load("../Navbars/TutorNavbar.html");
+    // } else if (userType == "s") {
+    //     $("#navbar").load("../Navbars/StudentNavbar.html");
+    // } else if (userType == "a") {
+    $("#navbar").load("../Navbars/AdminNavbar.html");
+    // }
 }
 
 function refreshReviews() {
     document.getElementsByClassName("adminInfo")[0] = "";
     $.ajax({
         type: "GET",
-        url: "../PHP/Users.php",
+        url: "../../PHP/Users.php",
         data: {
             functionName: "getTutorInformation",
             adminID: adminID
@@ -56,22 +56,22 @@ function refreshReviews() {
 
             var adminInfo = document.getElementsByClassName("adminInfo")[0];
             adminInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
-            for (var i = 0; i < reviews.length; i++) {
-                var review = reviews[i];
-                var reviewID = review.id;
-                var reviewStudentID = review.student_id;
-                var studentName = review.Student_Name;
-                var reviewString = review.Review_String;
-                var authorizedToDelete = userType == "a" || studentID == reviewStudentID;
+            // for (var i = 0; i < reviews.length; i++) {
+            //     var review = reviews[i];
+            //     var reviewID = review.id;
+            //     var reviewStudentID = review.student_id;
+            //     var studentName = review.Student_Name;
+            //     var reviewString = review.Review_String;
+            //     var authorizedToDelete = userType == "a" || studentID == reviewStudentID;
 
-                var reviewDiv = document.createElement("div");
-                reviewDiv.className = "review";
+            var reviewDiv = document.createElement("div");
+            //     reviewDiv.className = "review";
 
-                reviewDiv.innerHTML += "<p>Name: " + studentName + "<br>" + "Review: " + reviewString + "</p>";
-                if (authorizedToDelete)
-                    reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
-                adminInfo.appendChild(reviewDiv);
-            }
+            //     reviewDiv.innerHTML += "<p>Name: " + studentName + "<br>" + "Review: " + reviewString + "</p>";
+            //     if (authorizedToDelete)
+            //         reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
+            adminInfo.appendChild(reviewDiv);
+            // }
         }
     });
 }
