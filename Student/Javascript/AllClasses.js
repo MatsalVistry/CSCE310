@@ -88,6 +88,18 @@ function populateClasses()
 
 function enroll(element)
 {
+    // if the class is full, don't enroll
+
+    var currentCapacity = element.parentElement.getElementsByClassName("ccurrentcapacity")[0].getAttribute("value");
+    var maxCapacity = element.parentElement.getElementsByClassName("cmaxcapacity")[0].getAttribute("value");
+    console.log(currentCapacity);
+    console.log(maxCapacity);
+    if(currentCapacity >= maxCapacity)
+    {
+        alert("Class is full");
+        return;
+    }
+
     $.ajax({
         type: "POST",
         url: "../PHP/Classes.php",
