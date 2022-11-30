@@ -1,3 +1,11 @@
+:root {
+    --fontFam: "Georgia-bold";
+    --backgroundScreen: lightgrey;
+    --backgroundButtons: #a3c585;
+    --backgroundButtonsShadow: #87ab69;
+    --backgroundLinear: linear-gradient(.25turn, #a6cb83, 70%, #718f58);
+}
+
 .tab {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -15,6 +23,7 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    background-color: var(--backgroundButtons);
 }
 
 
