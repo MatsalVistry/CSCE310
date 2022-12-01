@@ -46,6 +46,9 @@ function populateClasses() {
                     console.log(currentClasses);
 
                     for (var i = 0; i < classes.length; i++) {
+                        if(classes[i].status=='C')
+                            continue;
+                            
                         var classDiv = document.createElement("div");
                         classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID:" + classes[i].id + "</div><br>";
                         classDiv.innerHTML += "<div class='ctutorid' value=" + classes[i].tutor_id + "> Tutor ID:" + classes[i].tutor_id + "</div><br>";

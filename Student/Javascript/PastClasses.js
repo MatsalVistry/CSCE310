@@ -46,7 +46,7 @@ function loadClasses() {
                 var tutor_fname = studentClasses[i]["tutor_fname"];
                 var tutor_lname = studentClasses[i]["tutor_lname"];
 
-                if(status=='C')
+                if(status!='C')
                     continue;
 
                 var classesDiv = document.createElement("div");
