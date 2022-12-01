@@ -45,6 +45,11 @@
             $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        else if($_POST['functionName'] == "finishClass")
+        {
+            $statement = "UPDATE classes SET Class_Status='C' WHERE Class_ID=".$_POST['classID'].";";
+            $result = mysqli_query($conn, $statement);
+        }
     }
     else
     {

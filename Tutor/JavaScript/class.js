@@ -47,6 +47,8 @@ function refreshClasses() {
             var display = document.getElementsByClassName("classDisplay")[0];
 
             for (var i = 0; i < classes.length; i++) {
+                if(classes[i].status=='C')
+                    continue;
                 var classDiv = document.createElement("div");
                 classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID:" + classes[i].id + "</div><br>";
                 classDiv.innerHTML += "<div class='ctutorid' value=" + classes[i].tutor_id + "> Tutor ID:" + classes[i].tutor_id + "</div><br>";
@@ -58,6 +60,8 @@ function refreshClasses() {
                 classDiv.innerHTML += "<div class='cstatus' value=" + classes[i].status + "> Status:" + classes[i].status + "</div><br>";
                 classDiv.innerHTML += '<button class="deleteClass" onclick="deleteClass(this)" value=' + classes[i].id + '>&times;</button>';
                 classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>Edit</button>';
+                classDiv.innerHTML += '<button class="finishClass" onclick="finishClass(this)" value=' + classes[i].id + '>Finish Session</button>';
+
                 classDiv.innerHTML += "<br><br>";
 
                 display.appendChild(classDiv);
@@ -66,6 +70,8 @@ function refreshClasses() {
         }
     });
 }
+
+
 
 function deleteClass(element) {
     var classID = element.value;
@@ -178,8 +184,27 @@ function submitClass() {
     closeClass();
 }
 
+function finishClass(element)
+{
+    var classID = element.value;
+
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Classes.php",
+        data: {
+            functionName: "finishClass",
+            classID: classID
+        },
+        success: function(response) {
+            refreshClasses();
+        }
+    });
+}
+
 window.onclick = function(event) {
     if (event.target == document.getElementById("myModal")) {
         closeClass();
     }
 }
+
+

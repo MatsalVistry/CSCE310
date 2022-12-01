@@ -6,6 +6,10 @@ function tutorClasses() {
     window.location = "../Tutor/TutorClasses.html?tutorID=" + localStorage.getItem("id");
 }
 
+function tutorPastClasses() {
+    window.location = "../Tutor/TutorPastClasses.html?tutorID=" + localStorage.getItem("id");
+}
+
 function AllClasses()
 {
     window.location = "../Student/AllClasses.html";
