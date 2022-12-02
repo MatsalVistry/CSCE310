@@ -18,3 +18,8 @@ function logout() {
     localStorage.clear();
     window.location.href = "../Login/login.html";
 }
+
+function AdminUsers()
+{
+    window.location = "../Admin/AdminUsers.html";
+}

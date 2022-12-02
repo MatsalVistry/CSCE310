@@ -31,7 +31,7 @@ function verify() {
             else if (role == 's')
                 window.location.href = "../Student/AllClasses.html";
             else
-                window.location.href = "../Admin/AdminProfile.html?adminID=" + id;
+                window.location.href = "../Admin/AdminUsers.html";
         }
     });
 

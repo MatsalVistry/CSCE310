@@ -167,6 +167,55 @@
 
             echo json_encode($classes);
         }
+        else if($_GET['functionName'] == "getAllUsers") 
+        {
+            $statement = "SELECT * FROM users;";
+            $result = mysqli_query($conn, $statement);
+
+            $users = array();
+
+            while($row = mysqli_fetch_array($result))
+            {
+                $user = array();
+                $user['id'] = $row['User_ID'];
+                $user['first_name'] = $row['User_First_Name'];
+                $user['last_name'] = $row['User_Last_Name'];
+                $user['role'] = $row['User_Role'];
+                $user['email'] = $row['User_Email'];
+
+                array_push($users, $user);
+            }
+
+            echo json_encode($users);
+        }
+    }
+    else
+    {
+        if($_POST['functionName'] == "deleteUser")
+        {
+            $statement = "DELETE FROM reviews WHERE Student_ID=".$_POST['id'].";";
+            $result = mysqli_query($conn, $statement);
+
+            $statement = "SELECT * FROM enrollments WHERE Student_ID=".$_POST['id'].";";
+            $result = mysqli_query($conn, $statement);
+
+            while($row = mysqli_fetch_array($result))
+            {
+                $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$row['Class_ID'].";";
+                $result = mysqli_query($conn, $statement);
+            }
+
+            $statement = "DELETE FROM enrollments WHERE Student_ID=".$_POST['id'].";";
+            $result = mysqli_query($conn, $statement);
+
+            $statement = "DELETE FROM users WHERE User_ID=".$_POST['id'].";";
+            $result = mysqli_query($conn, $statement);
+        }
+        else if($_POST['functionName'] == "addUser")
+        {
+            $statement = "INSERT INTO users (User_First_Name, User_Last_Name, User_Role, User_Email, User_Password) VALUES ('".$_POST['first_name']."', '".$_POST['last_name']."', '".$_POST['role']."', '".$_POST['email']."', '".$_POST['password']."');";
+            $result = mysqli_query($conn, $statement);
+        }
     }
 
     CloseCon($conn);

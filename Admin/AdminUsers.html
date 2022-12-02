@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/adminUsers.css" />
+    <title>Login</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+
+<body>
+    <div id="navbar"></div>
+    <br><br>
+
+    <div id="users">
+
+    </div>
+
+    <button class="submitBtn" id="addNewUser" onclick="openModal()">Add New User</button>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+
+            <span>First Name:</span>
+            <input id="fname" placeholder="First Name">
+            <br>
+            <span>Last Name:</span>
+            <input id="lname" placeholder="Last Name">
+            <br>
+            <span>Email:</span>
+            <input id="email" placeholder="Email">
+            <br>
+            <span>Password:</span>
+            <input id="password" placeholder="Password">
+            <br>
+            <span>Role:</span>
+            <select id="role">
+                <option value="student">Student</option>
+                <option value="tutor">Tutor</option>
+                <option value="admin">Admin</option>
+            </select>
+            <br>
+
+            <button class="submitBtn" onclick="submitUser()">Submit</button>
+        </div>
+    </div>
+    
+
+    <script src="./JavaScript/adminUsers.js" defer></script>
+</body>
+
+</html>

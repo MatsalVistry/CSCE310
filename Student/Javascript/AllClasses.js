@@ -32,6 +32,7 @@ function populateClasses() {
         success: function(response) {
             // console.log(response);
             var classes = JSON.parse(response);
+            console.log(classes);
             var display = document.getElementsByClassName("allClasses")[0];
 
             $.ajax({
@@ -61,9 +62,10 @@ function populateClasses() {
                         classDiv.innerHTML += "<div class='cstatus' value=" + classes[i].status + "> Status:" + classes[i].status + "</div><br>";
 
 
-                        if (!currentClasses.includes(classes[i].id) && classes[i].current_capacity < classes[i].max_capacity) {
+                        if (!currentClasses.includes(classes[i].id) && parseInt(classes[i].current_capacity) < parseInt(classes[i].max_capacity)) {
                             classDiv.innerHTML += '<button class="enroll" onclick="enroll(this)" value=' + classes[i].id + '>Enroll</button>';
                         }
+
                         if (currentClasses.includes(classes[i].id)) {
                             classDiv.innerHTML += '<button class="unenroll" onclick="unenroll(this)" value=' + classes[i].id + '>Unenroll</button>';
                         }
