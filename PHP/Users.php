@@ -135,38 +135,50 @@
             echo json_encode($classes);
         }
         else if($_GET['functionName'] == "getStudentClasses") {
-            $statement = "SELECT * FROM enrollments WHERE Student_ID=".$_GET['studentID'].";";
-            $result = mysqli_query($conn, $statement);
+            $cleanview = "DROP VIEW IF EXISTS StudentClasses;";
+            mysqli_query($conn, $cleanview);
+
+            $statement = "CREATE VIEW StudentClasses AS SELECT 
+            c.*,
+            u2.User_First_Name,
+            u2.User_Last_Name
             
+            
+            FROM 
+            enrollments as e
+            INNER JOIN users as u
+            ON e.Student_ID = u.User_ID
+            INNER JOIN classes as c
+            ON e.Class_ID = c.Class_ID
+            INNER JOIN users as u2
+            ON c.Tutor_ID = u2.User_ID
+            WHERE u.User_ID=" . $_GET['studentID'] . ";";
+            mysqli_query($conn, $statement);
+
+            $statement = "SELECT * FROM StudentClasses;";
+            $result = mysqli_query($conn, $statement);
+
             $classes = array();
 
             while($row = mysqli_fetch_array($result))
             {   
                 $class = array();
-                $fetch = "SELECT * FROM classes WHERE Class_ID=" . $row['Class_ID'] . ";";
-                $s = mysqli_query($conn, $fetch);
-
                 
-                $enrollment = mysqli_fetch_array($s);
-                $class['id'] = $enrollment['Class_ID'];
-                
-                $statement = "SELECT * FROM users WHERE User_ID=".$enrollment['Tutor_ID'].";";
-                $t = mysqli_query($conn, $statement);
-                $tutor = mysqli_fetch_array($t);
-                $class['tutor_fname'] = $tutor['User_First_Name'];
-                $class['tutor_lname'] = $tutor['User_Last_Name'];
-
-                $class['max_capacity'] = $enrollment['Class_MaxCapacity'];
-                $class['current_capacity'] = $enrollment['Class_CurrentCapacity'];
-                $class['name'] = $enrollment['Class_Name'];
-                $class['date'] = $enrollment['Class_Date'];
-                $class['duration'] = $enrollment['Class_Duration'];
-                $class['status'] = $enrollment['Class_Status'];
+                $class['current_capacity'] = $row['Class_CurrentCapacity'];
+                $class['name'] =$row['Class_Name'];
+                $class['date'] = $row['Class_Date'];
+                $class['duration'] = $row['Class_Duration'];
+                $class['status'] = $row['Class_Status'];
+                $class['tutor_fname'] = $row['User_First_Name'];
+                $class['tutor_lname'] = $row['User_Last_Name'];
 
                 array_push($classes, $class);
             }
 
             echo json_encode($classes);
+
+            
+            
         }
         else if($_GET['functionName'] == "getAllUsers") 
         {
