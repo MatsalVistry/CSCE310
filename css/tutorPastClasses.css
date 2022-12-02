@@ -52,6 +52,20 @@ body {
     /* Could be more or less, depending on screen size */
 }
 
+.inputTxt {
+    font-family: Arial Bold;
+    padding: 5px 4px;
+    font-size: 12px;
+    border: none;
+    background-color: white;
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    color: black;
+    border-radius: 6px;
+    background-position: 10px 10px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
 
 /* The Close Button */
 

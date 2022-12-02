@@ -46,9 +46,8 @@ function refreshClasses() {
             var classes = JSON.parse(response);
             var display = document.getElementsByClassName("classDisplay")[0];
 
-            for (var i = 0; i < classes.length; i++) 
-            {
-                if(classes[i].status!='C')
+            for (var i = 0; i < classes.length; i++) {
+                if (classes[i].status != 'C')
                     continue;
 
                 var classDiv = document.createElement("div");

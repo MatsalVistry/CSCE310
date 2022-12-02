@@ -4,6 +4,7 @@
     --backgroundButtons: #a3c585;
     --backgroundButtonsShadow: #87ab69;
     --backgroundLinear: linear-gradient(.25turn, #a6cb83, 70%, #718f58);
+    --backgroundInput: #bde39d;
 }
 
 body {
@@ -15,7 +16,7 @@ body {
 }
 
 .form {
-    background-color: white;
+    background: var(--backgroundLinear);
     width: 400px;
     border-radius: 8px;
     padding: 20px 40px;
@@ -36,20 +37,36 @@ body {
 .inputContainer {
     position: relative;
     height: 45px;
-    width: 85%;
+    width: 100%;
     margin-bottom: 10px;
 }
 
 .label {
+    font-family: var(--fontFam);
     position: absolute;
-    top: 15px;
-    left: 15px;
-    padding: 0 4px;
-    background-color: white;
-    color: #DADCE0;
+    top: 13px;
+    bottom: 10px;
+    left: 2px;
+    padding: -18px 3px;
+    background-color: clear;
+    color: black;
     font-size: 16px;
     transition: 0.5s;
     z-index: 0;
+}
+
+.inputTxt {
+    font-family: Arial Bold;
+    padding: 5px 4px;
+    font-size: 12px;
+    border: none;
+    background-color: white;
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    color: black;
+    border-radius: 6px;
+    background-position: 10px 10px;
+    cursor: pointer;
+    margin-top: 30px;
 }
 
 .input {
@@ -72,7 +89,8 @@ body {
     /* margin-left: auto; */
     padding: 15px 30px;
     border: none;
-    background-color: var(--backgroundButtons);
+    background-color: var(--backgroundInput);
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: white;
     border-radius: 6px;
     cursor: pointer;

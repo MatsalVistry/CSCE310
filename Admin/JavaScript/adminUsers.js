@@ -1,8 +1,7 @@
 var adminID;
 var userType;
 
-$(document).ready(function() 
-{
+$(document).ready(function() {
 
     userType = localStorage.getItem("userType");
     if (userType == null) {
@@ -13,19 +12,17 @@ $(document).ready(function()
     populateUsers();
 });
 
-function populateNavbar() 
-{
+function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
     } else if (userType == "s") {
         $("#navbar").load("../Navbars/StudentNavbar.html");
     } else if (userType == "a") {
-    $("#navbar").load("../Navbars/AdminNavbar.html");
+        $("#navbar").load("../Navbars/AdminNavbar.html");
     }
 }
 
-function populateUsers() 
-{
+function populateUsers() {
     $("#users").html("");
     $.ajax({
         type: "GET",
@@ -33,12 +30,10 @@ function populateUsers()
         data: {
             functionName: "getAllUsers",
         },
-        success: function(response) 
-        {
+        success: function(response) {
             var users = JSON.parse(response);
 
-            for (var i = 0; i < users.length; i++) 
-            {
+            for (var i = 0; i < users.length; i++) {
                 var id = users[i]["id"];
                 var first_name = users[i]["first_name"];
                 var last_name = users[i]["last_name"];
@@ -46,7 +41,7 @@ function populateUsers()
                 var email = users[i]["email"];
                 var password = users[i]["password"];
 
-                if(id==localStorage.getItem("id"))
+                if (id == localStorage.getItem("id"))
                     continue;
 
                 var usersDiv = document.createElement("div");
@@ -57,7 +52,7 @@ function populateUsers()
                     "Email: " + email + "<br>" +
                     "Password: " + password + "<br>" +
                     '<button class="deleteUser" onclick="deleteUser(this)" value=' + users[i].id + '>&times;</button>' +
-                    '<button class="editUser" onclick="openModal2(this)" value=' + users[i].id + '>Edit</button>' +
+                    '<button class="editUser" onclick="openModal2(this)" value=' + users[i].id + '>EDIT</button>' +
 
                     "</p>";
 
@@ -97,13 +92,11 @@ function closeModal() {
     document.getElementById("edit_password").value = "";
 }
 
-function openModal()
-{
+function openModal() {
     document.getElementById("myModal").style.display = "block";
 }
 
-function submitUser()
-{
+function submitUser() {
     var fname = document.getElementById("fname").value;
     var lname = document.getElementById("lname").value;
     var email = document.getElementById("email").value;
@@ -130,8 +123,7 @@ function submitUser()
 }
 
 
-function openModal2(element) 
-{
+function openModal2(element) {
     var userID = element.value;
     document.getElementById("myModal2").style.display = "block";
     document.getElementById("myModal2").value = userID;
@@ -154,8 +146,7 @@ function openModal2(element)
     });
 }
 
-function submitUserEdit()
-{
+function submitUserEdit() {
     var fname = document.getElementById("edit_fname").value;
     var lname = document.getElementById("edit_lname").value;
     var email = document.getElementById("edit_email").value;
