@@ -57,7 +57,7 @@ function loadClasses() {
                     "Current Capacity: " + cc + "</br>" +
                     "Status: " + status + "</br>" +
                     "Tutor First Name: " + tutor_fname + "</br>" +
-                    "Tutor Last Name: " + tutor_lname + "</br>";
+                    "Tutor Last Name: " + tutor_lname;
                 myClasses.appendChild(classesDiv);
             }
         }
