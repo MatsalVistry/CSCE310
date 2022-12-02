@@ -22,5 +22,5 @@ function submitRegistration() {
 
 
 function loginPage() {
-    window.location.href = '../../Login/login.html';
+    window.location.href = '../Login/login.html';
 }
