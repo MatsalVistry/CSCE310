@@ -32,6 +32,3 @@ function PastClasses() {
     window.location = "../Student/PastClasses.html";
 }
 
-function AdminUsers() {
-    window.location = "../Admin/AdminUsers.html";
-}
