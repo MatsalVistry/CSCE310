@@ -65,7 +65,7 @@ function refreshClasses() {
                 classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>EDIT</button>';
                 classDiv.innerHTML += '<button class="finishClass" onclick="finishClass(this)" value=' + classes[i].id + '>END SESSION</button>';
 
-                classDiv.innerHTML += "<br><br>";
+                classDiv.innerHTML += "<HR style='border: 1px solid #73AD21;'<br><br>";
                 // classDiv.outerHTML += "</div>";
 
                 display.appendChild(classDiv);
