@@ -2,8 +2,7 @@ $(document).ready(function() {
 
 });
 
-function submitRegistration() 
-{
+function submitRegistration() {
     var isTutor = document.getElementById('role').checked;
 
     var r = isTutor ? "t" : "s";
