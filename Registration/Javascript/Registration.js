@@ -2,7 +2,13 @@ $(document).ready(function() {
 
 });
 
-function submitRegistration() {
+function submitRegistration() 
+{
+    var isTutor = document.getElementById('role').checked;
+
+    var r = isTutor ? "t" : "s";
+
+
     $.ajax({
         type: "POST",
         url: "../PHP/Registration.php",
@@ -12,12 +18,13 @@ function submitRegistration() {
             lname: $("#lname").val(),
             email: $("#email").val(),
             password: $("#password").val(),
-            role: $("#role").val()
+            role: r
         },
         success: function(response) {
             loginPage();
         }
     });
+
 }
 
 
