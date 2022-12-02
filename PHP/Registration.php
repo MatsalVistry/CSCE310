@@ -15,12 +15,7 @@
             $email = $_POST['email'];
             $password = $_POST['password'];
         
-            if ($_POST['role'] == "Student") {
-                $role = "s";
-            }
-            else {
-                $role = "t";
-            }
+            $role = $_POST['role'];
         
             include_once './Credentials.php';
         
