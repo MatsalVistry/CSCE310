@@ -22,6 +22,7 @@ $(document).ready(function() {
     }
 });
 
+
 function populateNavbar() {
     // if (userType == "t") {
     //     $("#navbar").load("../Navbars/TutorNavbar.html");

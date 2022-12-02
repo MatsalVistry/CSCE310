@@ -1,4 +1,4 @@
-CREATE TABLE Classes
+CREATE TABLE classes
 (
     Class_ID INT NOT NULL AUTO_INCREMENT,
     Tutor_ID INT NOT NULL,
@@ -10,5 +10,5 @@ CREATE TABLE Classes
     Class_Status VARCHAR(1) NOT NULL,
 
     PRIMARY KEY(Class_ID),
-    FOREIGN KEY(Tutor_ID) REFERENCES Users(User_ID)
+    FOREIGN KEY(Tutor_ID) REFERENCES users(User_ID)
 );

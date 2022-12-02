@@ -83,8 +83,27 @@ body {
     margin-top: 30px;
 }
 
+.submitBtn:disabled {
+    font-family: var(--fontFam);
+    display: block;
+    padding: 15px 30px;
+    border: none;
+    background-color: grey;
+    box-shadow: 3px 3px darkgrey;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.submitBtn[disabled]hover {
+    background-color: black;
+    transform: translateY(-2px);
+}
+
 .submitBtn:hover {
-    background-color: var(--backgroundButtons);
+    /* background-color: var(--backgroundButtons); */
     transform: translateY(-2px);
 }
 

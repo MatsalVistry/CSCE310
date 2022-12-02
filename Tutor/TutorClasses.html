@@ -16,6 +16,56 @@
     <div class="classDisplay">
 
     </div>
+    <script>
+        var isEnabled = false;
+        $(document).ready(function() {
+            $('#maxCapacity').on('input change', function() {
+                if ($(this).val() != '') {
+                    // $('#submit').prop('disabled', false);
+                    isEnabled = true;
+                } else {
+                    $('#submit').prop('disabled', true);
+                    isEnabled = false;
+                }
+                // });
+
+                $('#name').on('input change', function() {
+                    if ($(this).val() != '') {
+                        // $('#submit').prop('disabled', false);
+                        isEnabled = true;
+                    } else {
+                        $('#submit').prop('disabled', true);
+                        isEnabled = false;
+                    }
+                    // });
+
+                    $('#date').on('input change', function() {
+                        if ($(this).val() != '') {
+                            // $('#submit').prop('disabled', false);
+                            isEnabled = true;
+                        } else {
+                            $('#submit').prop('disabled', true);
+                            isEnabled = false;
+                        }
+                        // });
+
+                        $('#duration').on('input change', function() {
+                            if ($(this).val() != '') {
+                                $('#submit').prop('disabled', !isEnabled);
+                                isEnabled = true;
+
+                            } else {
+                                $('#submit').prop('disabled', true);
+                                isEnabled = false;
+                            }
+                        });
+                    });
+                });
+            });
+            // $('#submit').prop('disabled', isEnabled);
+
+        });
+    </script>
 
     <button class="submitBtn" id="addNewClass" onclick="addClass()">Add New Class</button>
 
@@ -37,9 +87,53 @@
             <input id="duration" placeholder="Duration">
             <br>
 
-            <button class="submitBtn" onclick="submitClass()">Submit</button>
+            <button class="submitBtn" id="submit" onclick="submitClass()" disabled={{$submit}}>Submit</button>
         </div>
     </div>
+
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    </head>
+
+    <script>
+        $(document).ready(function() {
+            $('#editMaxCapacity').on('input change', function() {
+                if ($(this).val() != '') {
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $('#submit').prop('disabled', true);
+                }
+            });
+        });
+        $(document).ready(function() {
+            $('#editName').on('input change', function() {
+                if ($(this).val() != '') {
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $('#submit').prop('disabled', true);
+                }
+            });
+        });
+        $(document).ready(function() {
+            $('#editDate').on('input change', function() {
+                if ($(this).val() != '') {
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $('#submit').prop('disabled', true);
+                }
+            });
+        });
+        $(document).ready(function() {
+            $('#editDuration').on('input change', function() {
+                if ($(this).val() != '') {
+                    $('#submit').prop('disabled', false);
+                } else {
+                    $('#submit').prop('disabled', true);
+                }
+            });
+        });
+    </script>
 
     <div id="editClassModal" class="modal">
         <!-- Modal content -->
@@ -47,23 +141,31 @@
             <span class="close" onclick="closeClass()">&times;</span>
 
             <span>Max Capacity:</span>
-            <input id="editMaxCapacity" placeholder="Max Capacity">
+            <input id="editMaxCapacity" placeholder="Max Capacity" disabled="disabled">
             <br>
             <span>Name:</span>
-            <input id="editName" placeholder="Name">
+            <input id="editName" placeholder="Name" disabled="disabled">
             <br>
             <span>Date:</span>
-            <input id="editDate" type="date">
+            <input id="editDate" type="date " disabled="disabled">
             <br>
             <span>Duration:</span>
-            <input id="editDuration" placeholder="Duration">
+            <input id="editDuration" placeholder="Duration " disabled="disabled">
             <br>
+            <script>
+                var dis = true;
+                if (document.getElementById("editName") != "") {
+                    dis = false;
+                }
+            </script>
 
-            <button class="submitBtn" onclick="submitEditClass()">Submit</button>
+
+
+            <button class="submitBtn" onclick="submitEditClass() " id="submit" disabled={{$submit}}>Submit</button>
         </div>
     </div>
 
-    <script src="./JavaScript/class.js" defer></script>
+    <script src="./JavaScript/class.js " defer></script>
 </body>
 
 </html>

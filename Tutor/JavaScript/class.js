@@ -47,7 +47,7 @@ function refreshClasses() {
             var display = document.getElementsByClassName("classDisplay")[0];
 
             for (var i = 0; i < classes.length; i++) {
-                if(classes[i].status=='C')
+                if (classes[i].status == 'C')
                     continue;
                 var classDiv = document.createElement("div");
                 classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID:" + classes[i].id + "</div><br>";
@@ -153,12 +153,70 @@ function closeClass() {
 }
 
 function submitClass() {
+    // var a = false;
+    // var b = false;
+    // var c = false;
+    // var d = false;
+    // $(document).ready(function() {
+    //     $('#maxCapacity').on('input change', function() {
+    //         if ($(this).val() != '') {
+    //             $('#submit').prop('disabled', false);
+    //         } else {
+    //             $('#submit').prop('disabled', true);
+    //         }
+    //     });
+    // });
+    // $(document).ready(function() {
+    //     $('#name').on('input change', function() {
+    //         if ($(this).val() != '') {
+    //             $('#submit').prop('disabled', false);
+    //         } else {
+    //             $('#submit').prop('disabled', true);
+    //         }
+    //     });
+    // });
+    // $(document).ready(function() {
+    //     $('#date').on('input change', function() {
+    //         if ($(this).val() != '') {
+    //             $('#submit').prop('disabled', false);
+    //         } else {
+    //             $('#submit').prop('disabled', true);
+    //         }
+    //     });
+    // });
+    // $(document).ready(function() {
+    //     $('#duration').on('input change', function() {
+    //         if ($(this).val() != '') {
+    //             $('#submit').prop('disabled', false);
+    //         } else {
+    //             $('#submit').prop('disabled', true);
+    //         }
+    //     });
+    // });
+
     var maxCapacity = document.getElementById("maxCapacity").value;
     var name = document.getElementById("name").value;
     var date = document.getElementById("date").value;
     var duration = document.getElementById("duration").value;
     var tutorID = localStorage.getItem("id");
-
+    var errorMsgs = "";
+    if ((maxCapacity) == "") {
+        errorMsgs += "Input required for max capacity\n";
+    } else if (typeof(maxCapacity) != "number") {
+        errorMsgs += "ERROR: enter a numeric max capacity\n";
+    }
+    if ((duration) == "") {
+        errorMsgs += "Input required for duration\n";
+    } else if (typeof(duration) != "number") {
+        errorMsgs += "ERROR: enter a numeric duration";
+    }
+    if ((date) == "") {
+        errorMsgs += "Input required for date\n";
+    }
+    if (errorMsgs != "") {
+        alert(errorMsgs);
+        return;
+    }
     $.ajax({
         type: "POST",
         url: "../PHP/Classes.php",
@@ -184,8 +242,7 @@ function submitClass() {
     closeClass();
 }
 
-function finishClass(element)
-{
+function finishClass(element) {
     var classID = element.value;
 
     $.ajax({
@@ -206,5 +263,3 @@ window.onclick = function(event) {
         closeClass();
     }
 }
-
-
