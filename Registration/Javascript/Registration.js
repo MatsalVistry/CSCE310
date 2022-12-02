@@ -5,9 +5,9 @@ $(document).ready(function() {
 function submitRegistration() {
     $.ajax({
         type: "POST",
-        url: "../PHP/Classes.php",
+        url: "../PHP/Registration.php",
         data: {
-            functionName: "enrollInClass",
+            functionName: "register",
             fname: $("#fname").val(),
             lname: $("#lname").val(),
             email: $("#email").val(),
@@ -22,5 +22,5 @@ function submitRegistration() {
 
 
 function loginPage() {
-    window.location.href = '../../Login/login.html';
+    window.location.href = '../Login/login.html';
 }
