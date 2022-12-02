@@ -35,6 +35,25 @@ body {
     transform: translateY(-2px);
 }
 
+.editUser {
+    font-family: var(--fontFam);
+    display: block;
+    padding: 5px 15px;
+    border: none;
+    background-color: var(--backgroundButtons);
+    box-shadow: 2px 2px var(--backgroundButtonsShadow);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.editUser:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
 .modal {
     display: none;
     /* Hidden by default */

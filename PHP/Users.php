@@ -24,6 +24,7 @@
                 $user['last_name'] = $row['User_Last_Name'];
                 $user['role'] = $row['User_Role'];
                 $user['email'] = $row['User_Email'];
+                $user['password'] = $row['User_Password'];
 
                 array_push($users, $user);
             }
@@ -188,6 +189,23 @@
 
             echo json_encode($users);
         }
+        else if($_GET['functionName'] == "getUser")
+        {
+            $statement = "SELECT * FROM users WHERE User_ID=".$_GET['id'].";";
+            $result = mysqli_query($conn, $statement);
+
+            $user = array();
+
+            $row = mysqli_fetch_array($result);
+
+            $user['id'] = $row['User_ID'];
+            $user['first_name'] = $row['User_First_Name'];
+            $user['last_name'] = $row['User_Last_Name'];
+            $user['password'] = $row['User_Password'];
+            $user['email'] = $row['User_Email'];
+
+            echo json_encode($user);
+        }
     }
     else
     {
@@ -214,6 +232,11 @@
         else if($_POST['functionName'] == "addUser")
         {
             $statement = "INSERT INTO users (User_First_Name, User_Last_Name, User_Role, User_Email, User_Password) VALUES ('".$_POST['first_name']."', '".$_POST['last_name']."', '".$_POST['role']."', '".$_POST['email']."', '".$_POST['password']."');";
+            $result = mysqli_query($conn, $statement);
+        }
+        else if($_POST['functionName'] == "editUser")
+        {
+            $statement = "UPDATE users SET User_First_Name='".$_POST['first_name']."', User_Last_Name='".$_POST['last_name']."', User_Email='".$_POST['email']."', User_Password='".$_POST['password']."' WHERE User_ID=".$_POST['id'].";";
             $result = mysqli_query($conn, $statement);
         }
     }

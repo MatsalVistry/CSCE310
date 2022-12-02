@@ -44,6 +44,7 @@ function populateUsers()
                 var last_name = users[i]["last_name"];
                 var role = users[i]["role"];
                 var email = users[i]["email"];
+                var password = users[i]["password"];
 
                 if(id==localStorage.getItem("id"))
                     continue;
@@ -54,7 +55,10 @@ function populateUsers()
                     "Last Name: " + last_name + "<br>" +
                     "Role: " + role + "<br>" +
                     "Email: " + email + "<br>" +
+                    "Password: " + password + "<br>" +
                     '<button class="deleteUser" onclick="deleteUser(this)" value=' + users[i].id + '>&times;</button>' +
+                    '<button class="editUser" onclick="openModal2(this)" value=' + users[i].id + '>Edit</button>' +
+
                     "</p>";
 
                 $("#users").append(usersDiv);
@@ -85,6 +89,12 @@ function closeModal() {
     document.getElementById("lname").value = "";
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
+
+    document.getElementById("myModal2").style.display = "none";
+    document.getElementById("edit_fname").value = "";
+    document.getElementById("edit_lname").value = "";
+    document.getElementById("edit_email").value = "";
+    document.getElementById("edit_password").value = "";
 }
 
 function openModal()
@@ -120,8 +130,59 @@ function submitUser()
 }
 
 
+function openModal2(element) 
+{
+    var userID = element.value;
+    document.getElementById("myModal2").style.display = "block";
+    document.getElementById("myModal2").value = userID;
+
+
+    $.ajax({
+        type: "GET",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "getUser",
+            id: userID
+        },
+        success: function(response) {
+            var user = JSON.parse(response);
+            document.getElementById("edit_fname").value = user.first_name;
+            document.getElementById("edit_lname").value = user.last_name;
+            document.getElementById("edit_email").value = user.email;
+            document.getElementById("edit_password").value = user.password;
+        }
+    });
+}
+
+function submitUserEdit()
+{
+    var fname = document.getElementById("edit_fname").value;
+    var lname = document.getElementById("edit_lname").value;
+    var email = document.getElementById("edit_email").value;
+    var password = document.getElementById("edit_password").value;
+
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "editUser",
+            id: document.getElementById("myModal2").value,
+            first_name: fname,
+            last_name: lname,
+            email: email,
+            password: password,
+        },
+        success: function(response) {
+            console.log(response);
+            populateUsers();
+            closeModal();
+        }
+    });
+}
+
+
 window.onclick = function(event) {
-    if (event.target == document.getElementById("myModal")) {
+    if (event.target == document.getElementById("myModal") || event.target == document.getElementById("myModal2")) {
         closeModal();
     }
 }
