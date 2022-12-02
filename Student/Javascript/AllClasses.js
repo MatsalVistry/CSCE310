@@ -52,7 +52,7 @@ function populateClasses() {
                             
                         var classDiv = document.createElement("div");
                         classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID:" + classes[i].id + "</div><br>";
-                        classDiv.innerHTML += "<div class='ctutorid' value=" + classes[i].tutor_id + "> Tutor ID:" + classes[i].tutor_id + "</div><br>";
+                        classDiv.innerHTML += "<div class='ctutorid' onclick=goToTutor("+classes[i].tutor_id+") value=" + classes[i].tutor_id + "> Tutor ID:" + classes[i].tutor_id + "</div><br>";
                         classDiv.innerHTML += "<div class='ctutorname' value=" + classes[i].tutor_name + "> Tutor Name:" + classes[i].tutor_name + "</div><br>";
                         classDiv.innerHTML += "<div class='cmaxcapacity' value=" + classes[i].max_capacity + "> Max Capacity:" + classes[i].max_capacity + "</div><br>";
                         classDiv.innerHTML += "<div class='ccurrentcapacity' value=" + classes[i].current_capacity + "> Current Capacity:" + classes[i].current_capacity + "</div><br>";
@@ -78,6 +78,10 @@ function populateClasses() {
             });
         }
     });
+}
+
+function goToTutor(id){
+    window.location.href = "../Tutor/TutorProfile.html?tutorID=" + id;
 }
 
 function enroll(element) {
