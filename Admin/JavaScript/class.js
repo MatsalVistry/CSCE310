@@ -59,7 +59,7 @@ function refreshClasses() {
                 classDiv.innerHTML += "<div class='cduration' value=" + classes[i].duration + "> Duration:" + classes[i].duration + "</div><br>";
                 classDiv.innerHTML += "<div class='cstatus' value=" + classes[i].status + "> Status:" + classes[i].status + "</div><br>";
                 classDiv.innerHTML += '<button class="deleteClass" onclick="deleteClass(this)" value=' + classes[i].id + '>&times;</button>';
-                classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>Edit</button>';
+                classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>EDIT</button>';
                 classDiv.innerHTML += "<br><br>";
 
                 display.appendChild(classDiv);

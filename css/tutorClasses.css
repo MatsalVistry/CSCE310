@@ -4,6 +4,8 @@
     --backgroundButtons: #a3c585;
     --backgroundButtonsShadow: #87ab69;
     --backgroundLinear: linear-gradient(.25turn, #a6cb83, 70%, #718f58);
+    --backgroundInput: #bde39d;
+    --TextInput: black;
 }
 
 body {
@@ -47,7 +49,7 @@ body {
     margin: 15% auto;
     /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid ##aaa;
     width: 40%;
     /* Could be more or less, depending on screen size */
 }
@@ -69,6 +71,20 @@ body {
     cursor: pointer;
 }
 
+.inputTxt {
+    font-family: Arial Bold;
+    padding: 5px 4px;
+    font-size: 12px;
+    border: none;
+    background-color: white;
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    color: black;
+    border-radius: 6px;
+    background-position: 10px 10px;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
 .submitBtn {
     font-family: var(--fontFam);
     display: block;
@@ -81,6 +97,10 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
+    /* centered */
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 
 .submitBtn:disabled {

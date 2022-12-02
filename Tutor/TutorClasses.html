@@ -6,151 +6,91 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/tutorClasses.css" />
-    <title>Login</title>
+    <title>LOGIN</title>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 
 <body>
     <div id="navbar"></div>
 
-    <div class="classDisplay">
+    <div class="classDisplay" style=" position: absolute;
+    left: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;">
+        <!-- ix to be after each box -->
+        </br>
 
     </div>
-    <script>
-        var isEnabled = false;
-        $(document).ready(function() {
-            $('#maxCapacity').on('input change', function() {
-                if ($(this).val() != '') {
-                    // $('#submit').prop('disabled', false);
-                    isEnabled = true;
-                } else {
-                    $('#submit').prop('disabled', true);
-                    isEnabled = false;
-                }
-                // });
 
-                $('#name').on('input change', function() {
-                    if ($(this).val() != '') {
-                        // $('#submit').prop('disabled', false);
-                        isEnabled = true;
-                    } else {
-                        $('#submit').prop('disabled', true);
-                        isEnabled = false;
-                    }
-                    // });
-
-                    $('#date').on('input change', function() {
-                        if ($(this).val() != '') {
-                            // $('#submit').prop('disabled', false);
-                            isEnabled = true;
-                        } else {
-                            $('#submit').prop('disabled', true);
-                            isEnabled = false;
-                        }
-                        // });
-
-                        $('#duration').on('input change', function() {
-                            if ($(this).val() != '') {
-                                $('#submit').prop('disabled', !isEnabled);
-                                isEnabled = true;
-
-                            } else {
-                                $('#submit').prop('disabled', true);
-                                isEnabled = false;
-                            }
-                        });
-                    });
-                });
-            });
-            // $('#submit').prop('disabled', isEnabled);
-
-        });
-    </script>
-
-    <button class="submitBtn" id="addNewClass" onclick="addClass()">Add New Class</button>
-
+    <button class="submitBtn" id="addNewClass" onclick="addClass()">ADD NEW CLASS</button>
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="closeClass()">&times;</span>
 
-            <span>Max Capacity:</span>
-            <input id="maxCapacity" placeholder="Max Capacity">
+            <span>Max Capacity<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="maxCapacity" placeholder="Max Capacity" onkeydown="return FilterInputNums(event)">
             <br>
-            <span>Name:</span>
-            <input id="name" placeholder="Name">
+            <span>Name<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="name" placeholder="Name" onkeydown="return FilterInputName(event)">
             <br>
-            <span>Date:</span>
-            <input id="date" type="date">
+            <span>Date<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="date" type="date">
             <br>
-            <span>Duration:</span>
-            <input id="duration" placeholder="Duration">
-            <br>
+            <span>Duration<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="duration" placeholder="Duration" onkeydown="return FilterInputTime(event)"> </br> <br>
 
-            <button class="submitBtn" id="submit" onclick="submitClass()" disabled={{$submit}}>Submit</button>
+            <button class="submitBtn" onclick="submitClass()">Submit</button>
         </div>
     </div>
+    <!-- <script type="text/javascript">
+        function FilterInputName(event) {
+            // allows inputs of all characters and the use of the backspace and regular space and numbers
+            var keyCode = ('which' in event) ? event.which : event.keyCode;
+            isAlphabeticOrChars = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
+            modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
+            return !isAlphabeticOrChars || modifiers;
+        }
 
+        function FilterInputNums(event) {
+            // allows inputs of all numbers and the use of the backspace 
+            var keyCode = ('which' in event) ? event.which : event.keyCode;
+            isNumeric = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
+            modifiers = (keyCode == 8);
+            return !isNumeric || modifiers;
+        }
+
+        function FilterInputTime(event) {
+            // allows inputs of all numbers, the . character, and the use of the backspace 
+            var keyCode = ('which' in event) ? event.which : event.keyCode;
+            isTime = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
+            modifiers = (keyCode == 8 || keyCode == 190);
+            return !isTime || modifiers;
+        }
+    </script> -->
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     </head>
 
-    <script>
-        $(document).ready(function() {
-            $('#editMaxCapacity').on('input change', function() {
-                if ($(this).val() != '') {
-                    $('#submit').prop('disabled', false);
-                } else {
-                    $('#submit').prop('disabled', true);
-                }
-            });
-        });
-        $(document).ready(function() {
-            $('#editName').on('input change', function() {
-                if ($(this).val() != '') {
-                    $('#submit').prop('disabled', false);
-                } else {
-                    $('#submit').prop('disabled', true);
-                }
-            });
-        });
-        $(document).ready(function() {
-            $('#editDate').on('input change', function() {
-                if ($(this).val() != '') {
-                    $('#submit').prop('disabled', false);
-                } else {
-                    $('#submit').prop('disabled', true);
-                }
-            });
-        });
-        $(document).ready(function() {
-            $('#editDuration').on('input change', function() {
-                if ($(this).val() != '') {
-                    $('#submit').prop('disabled', false);
-                } else {
-                    $('#submit').prop('disabled', true);
-                }
-            });
-        });
-    </script>
 
     <div id="editClassModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="closeClass()">&times;</span>
 
-            <span>Max Capacity:</span>
-            <input id="editMaxCapacity" placeholder="Max Capacity" disabled="disabled">
+            <span>Max Capacity: </span>
+            <input class="inputTxt" id="editMaxCapacity" placeholder="Max Capacity" onkeydown="return FilterInputNums(event)">
             <br>
-            <span>Name:</span>
-            <input id="editName" placeholder="Name" disabled="disabled">
+            <span>Name: </span>
+            <input class="inputTxt" id="editName" placeholder="Name" onkeydown="return FilterInputName(event)">
             <br>
-            <span>Date:</span>
-            <input id="editDate" type="date " disabled="disabled">
+            <span>Date: </span>
+            <input class="inputTxt" id="editDate" type="date ">
             <br>
-            <span>Duration:</span>
-            <input id="editDuration" placeholder="Duration " disabled="disabled">
+            <span>Duration: </span>
+            <input class="inputTxt" id="editDuration" placeholder="Duration " onkeydown="return FilterInputTime(event)">
             <br>
             <script>
                 var dis = true;
@@ -161,7 +101,7 @@
 
 
 
-            <button class="submitBtn" onclick="submitEditClass() " id="submit" disabled={{$submit}}>Submit</button>
+            <button class="submitBtn" onclick="submitEditClass() " id="submit">Submit</button>
         </div>
     </div>
 

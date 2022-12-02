@@ -50,19 +50,23 @@ function refreshClasses() {
                 if (classes[i].status == 'C')
                     continue;
                 var classDiv = document.createElement("div");
-                classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID:" + classes[i].id + "</div><br>";
-                classDiv.innerHTML += "<div class='ctutorid' value=" + classes[i].tutor_id + "> Tutor ID:" + classes[i].tutor_id + "</div><br>";
-                classDiv.innerHTML += "<div class='cmaxcapacity' value=" + classes[i].max_capacity + "> Max Capacity:" + classes[i].max_capacity + "</div><br>";
-                classDiv.innerHTML += "<div class='ccurrentcapacity' value=" + classes[i].current_capacity + "> Current Capacity:" + classes[i].current_capacity + "</div><br>";
-                classDiv.innerHTML += "<div class='cname' value=" + classes[i].name + "> Name:" + classes[i].name + "</div><br>";
-                classDiv.innerHTML += "<div class='cdate' value=" + classes[i].date + "> Date:" + classes[i].date + "</div><br>";
-                classDiv.innerHTML += "<div class='cduration' value=" + classes[i].duration + "> Duration:" + classes[i].duration + "</div><br>";
-                classDiv.innerHTML += "<div class='cstatus' value=" + classes[i].status + "> Status:" + classes[i].status + "</div><br>";
+                // classDiv.outerHTML += "<div style='position: absolute; left: 0px; width: 300px; border: 3px solid #73AD21; padding: 10px;'>";
+                classDiv.innerHTML += "<div class='cname' style='font-size: 24px; text-shadow: 2px 2px darkgrey;' value=" + classes[i].name + "> " + classes[i].name + "</div><br>";
+
+                classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID: " + classes[i].id + "</div><br>";
+                classDiv.innerHTML += "<div class='ctutorid' value=" + classes[i].tutor_id + "> Tutor ID: " + classes[i].tutor_id + "</div><br>";
+                classDiv.innerHTML += "<div class='cmaxcapacity' value=" + classes[i].max_capacity + "> Max Capacity: " + classes[i].max_capacity + "</div><br>";
+                classDiv.innerHTML += "<div class='ccurrentcapacity' value=" + classes[i].current_capacity + "> Current Capacity: " + classes[i].current_capacity + "</div><br>";
+                classDiv.innerHTML += "<div class='cname' value=" + classes[i].name + "> Name: " + classes[i].name + "</div><br>";
+                classDiv.innerHTML += "<div class='cdate' value=" + classes[i].date + "> Date: " + classes[i].date + "</div><br>";
+                classDiv.innerHTML += "<div class='cduration' value=" + classes[i].duration + "> Duration: " + classes[i].duration + "</div><br>";
+                classDiv.innerHTML += "<div class='cstatus' value=" + classes[i].status + "> Status: " + classes[i].status + "</div>";
                 classDiv.innerHTML += '<button class="deleteClass" onclick="deleteClass(this)" value=' + classes[i].id + '>&times;</button>';
-                classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>Edit</button>';
-                classDiv.innerHTML += '<button class="finishClass" onclick="finishClass(this)" value=' + classes[i].id + '>Finish Session</button>';
+                classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>EDIT</button>';
+                classDiv.innerHTML += '<button class="finishClass" onclick="finishClass(this)" value=' + classes[i].id + '>END SESSION</button>';
 
                 classDiv.innerHTML += "<br><br>";
+                // classDiv.outerHTML += "</div>";
 
                 display.appendChild(classDiv);
             }
@@ -71,6 +75,29 @@ function refreshClasses() {
     });
 }
 
+function FilterInputName(event) {
+    // allows inputs of all characters and the use of the backspace and regular space and numbers
+    var keyCode = ('which' in event) ? event.which : event.keyCode;
+    isAlphabeticOrChars = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
+    modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
+    return !isAlphabeticOrChars || modifiers;
+}
+
+function FilterInputNums(event) {
+    // allows inputs of all numbers and the use of the backspace 
+    var keyCode = ('which' in event) ? event.which : event.keyCode;
+    isNumeric = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
+    modifiers = (keyCode == 8);
+    return !isNumeric || modifiers;
+}
+
+function FilterInputTime(event) {
+    // allows inputs of all numbers, the . character, and the use of the backspace 
+    var keyCode = ('which' in event) ? event.which : event.keyCode;
+    isTime = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
+    modifiers = (keyCode == 8 || keyCode == 190);
+    return !isTime || modifiers;
+}
 
 
 function deleteClass(element) {
@@ -97,7 +124,25 @@ function editClass(element) {
     var name = classDiv.getElementsByClassName("cname")[0].getAttribute("value");
     var date = classDiv.getElementsByClassName("cdate")[0].getAttribute("value");
     var duration = classDiv.getElementsByClassName("cduration")[0].getAttribute("value");
+    var errorMsgs = "";
+    if ((name) == "" || name == "Name") {
+        errorMsgs += "Input required for name\n";
+    }
+    if ((maxCapacity) == "" || maxCapacity == "Max Capacity") {
+        errorMsgs += "Input required for max capacity\n";
+    }
 
+    if ((duration) == "" || duration == "Duration") {
+        errorMsgs += "Input required for duration\n";
+    }
+    if ((date) == "") {
+        errorMsgs += "Input required for date\n";
+    }
+    if (errorMsgs != "") {
+        alert(errorMsgs);
+        errorMsgs = "";
+        return;
+    }
     document.getElementById("editClassModal").style.display = "block";
     document.getElementById("editMaxCapacity").value = maxCapacity;
     document.getElementById("editName").value = name;
@@ -153,70 +198,32 @@ function closeClass() {
 }
 
 function submitClass() {
-    // var a = false;
-    // var b = false;
-    // var c = false;
-    // var d = false;
-    // $(document).ready(function() {
-    //     $('#maxCapacity').on('input change', function() {
-    //         if ($(this).val() != '') {
-    //             $('#submit').prop('disabled', false);
-    //         } else {
-    //             $('#submit').prop('disabled', true);
-    //         }
-    //     });
-    // });
-    // $(document).ready(function() {
-    //     $('#name').on('input change', function() {
-    //         if ($(this).val() != '') {
-    //             $('#submit').prop('disabled', false);
-    //         } else {
-    //             $('#submit').prop('disabled', true);
-    //         }
-    //     });
-    // });
-    // $(document).ready(function() {
-    //     $('#date').on('input change', function() {
-    //         if ($(this).val() != '') {
-    //             $('#submit').prop('disabled', false);
-    //         } else {
-    //             $('#submit').prop('disabled', true);
-    //         }
-    //     });
-    // });
-    // $(document).ready(function() {
-    //     $('#duration').on('input change', function() {
-    //         if ($(this).val() != '') {
-    //             $('#submit').prop('disabled', false);
-    //         } else {
-    //             $('#submit').prop('disabled', true);
-    //         }
-    //     });
-    // });
-
     var maxCapacity = document.getElementById("maxCapacity").value;
     var name = document.getElementById("name").value;
     var date = document.getElementById("date").value;
     var duration = document.getElementById("duration").value;
     var tutorID = localStorage.getItem("id");
     var errorMsgs = "";
-    if ((maxCapacity) == "") {
-        errorMsgs += "Input required for max capacity\n";
-    } else if (typeof(maxCapacity) != "number") {
-        errorMsgs += "ERROR: enter a numeric max capacity\n";
+
+    if ((name) == "" || name == "Name") {
+        errorMsgs += "Input required for name\n";
     }
-    if ((duration) == "") {
+    if ((maxCapacity) == "" || maxCapacity == "Max Capacity") {
+        errorMsgs += "Input required for max capacity\n";
+    }
+
+    if ((duration) == "" || duration == "Duration") {
         errorMsgs += "Input required for duration\n";
-    } else if (typeof(duration) != "number") {
-        errorMsgs += "ERROR: enter a numeric duration";
     }
     if ((date) == "") {
         errorMsgs += "Input required for date\n";
     }
     if (errorMsgs != "") {
         alert(errorMsgs);
+        errorMsgs = "";
         return;
     }
+
     $.ajax({
         type: "POST",
         url: "../PHP/Classes.php",
