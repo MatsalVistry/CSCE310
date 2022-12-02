@@ -1,15 +1,12 @@
-$(document).ready(function () 
-{
+$(document).ready(function() {
 
 });
 
-function submitRegistration()
-{
+function submitRegistration() {
     $.ajax({
         type: "POST",
         url: "../PHP/Classes.php",
-        data: 
-        {
+        data: {
             functionName: "enrollInClass",
             fname: $("#fname").val(),
             lname: $("#lname").val(),
@@ -17,15 +14,13 @@ function submitRegistration()
             password: $("#password").val(),
             role: $("#role").val()
         },
-        success: function(response) 
-        {
+        success: function(response) {
             loginPage();
         }
     });
 }
 
 
-function loginPage()
-{
-    window.location.href='../Login/login.html';
+function loginPage() {
+    window.location.href = '../../Login/login.html';
 }
