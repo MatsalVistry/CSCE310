@@ -2,22 +2,29 @@ $(document).ready(function() {
 
 });
 
-function submitRegistration() {
+function submitRegistration() 
+{
+    var isTutor = document.getElementById('role').checked;
+
+    var r = isTutor ? "t" : "s";
+
+
     $.ajax({
         type: "POST",
-        url: "../PHP/Classes.php",
+        url: "../PHP/Registration.php",
         data: {
-            functionName: "enrollInClass",
+            functionName: "register",
             fname: $("#fname").val(),
             lname: $("#lname").val(),
             email: $("#email").val(),
             password: $("#password").val(),
-            role: $("#role").val()
+            role: r
         },
         success: function(response) {
             loginPage();
         }
     });
+
 }
 
 
