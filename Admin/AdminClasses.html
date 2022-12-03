@@ -5,66 +5,127 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/tutorClasses.css" />
+    <link rel="stylesheet" href="../css/AdminClasses.css" />
     <title>LOGIN</title>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 
 <body>
     <div id="navbar"></div>
+    <br><br>
 
-    <div class="classDisplay">
+    <div class="classDisplay" style=" position: absolute;
+    left: 0px;
+    width: 300px;
+    border: 3px solid #73AD21;
+    padding: 10px;">
+        <!-- ix to be after each box -->
+        </br>
 
     </div>
 
     <button class="submitBtn" id="addNewClass" onclick="addClass()">ADD NEW CLASS</button>
+    <br><br><br><br>
+
+
+    <input class="inputExp" id="cid" type="text" placeholder="Enter Class ID">
+    <input class="inputExp" id="sid" type="text" placeholder="Enter Student ID">
+    <select class="inputExp" id="expType">
+        <option value="Enroll">Enroll</option>
+        <option value="Unenroll">Unenroll</option>
+    </select>
+
+    <button class="expButton" onclick="modifyExp()">Change Enrollment</button>
 
     <div id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="closeClass()">&times;</span>
-
-            <span>Max Capacity:</span>
-            <input class="inputTxt" id="maxCapacity" placeholder="Max Capacity">
-
+            <span>Tutor ID<span style="color: red;">*</span></span>
+            <select name="tutorID" id="tutorID">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
             <br>
-            <span>Name:</span>
-            <input class="inputTxt" id="name" placeholder="Name">
+            <span>Max Capacity<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="maxCapacity" placeholder="Max Capacity" onkeydown="return FilterInputNums(event)">
             <br>
-            <span>Date:</span>
+            <span>Name<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="name" placeholder="Name" onkeydown="return FilterInputName(event)">
+            <br>
+            <span>Date<span style="color: red;">*</span></span>
             <input class="inputTxt" id="date" type="date">
             <br>
-            <span>Duration:</span>
-            <input class="inputTxt" id="duration" placeholder="Duration">
-            <br>
+            <span>Duration<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="duration" placeholder="Duration" onkeydown="return FilterInputTime(event)"> </br> <br>
 
             <button class="submitBtn" onclick="submitClass()">Submit</button>
         </div>
     </div>
+    <!-- <script type="text/javascript">
+        function FilterInputName(event) {
+            // allows inputs of all characters and the use of the backspace and regular space and numbers
+            var keyCode = ('which' in event) ? event.which : event.keyCode;
+            isAlphabeticOrChars = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
+            modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
+            return !isAlphabeticOrChars || modifiers;
+        }
+
+        function FilterInputNums(event) {
+            // allows inputs of all numbers and the use of the backspace 
+            var keyCode = ('which' in event) ? event.which : event.keyCode;
+            isNumeric = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
+            modifiers = (keyCode == 8);
+            return !isNumeric || modifiers;
+        }
+
+        function FilterInputTime(event) {
+            // allows inputs of all numbers, the . character, and the use of the backspace 
+            var keyCode = ('which' in event) ? event.which : event.keyCode;
+            isTime = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
+            modifiers = (keyCode == 8 || keyCode == 190);
+            return !isTime || modifiers;
+        }
+    </script> -->
+
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    </head>
+
 
     <div id="editClassModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="closeClass()">&times;</span>
 
-            <span>Max Capacity:</span>
-            <input class="inputTxt" id="editMaxCapacity" placeholder="Max Capacity">
+            <span>Max Capacity: </span>
+            <input class="inputTxt" id="editMaxCapacity" placeholder="Max Capacity" onkeydown="return FilterInputNums(event)">
             <br>
-            <span>Name:</span>
-            <input class="inputTxt" id="editName" placeholder="Name">
+            <span>Name: </span>
+            <input class="inputTxt" id="editName" placeholder="Name" onkeydown="return FilterInputName(event)">
             <br>
-            <span>Date:</span>
-            <input class="inputTxt" id="editDate" type="date">
+            <span>Date: </span>
+            <input class="inputTxt" id="editDate" type="date ">
             <br>
-            <span>Duration:</span>
-            <input class="inputTxt" id="editDuration" placeholder="Duration">
+            <span>Duration: </span>
+            <input class="inputTxt" id="editDuration" placeholder="Duration " onkeydown="return FilterInputTime(event)">
             <br>
+            <script>
+                var dis = true;
+                if (document.getElementById("editName") != "") {
+                    dis = false;
+                }
+            </script>
 
-            <button class="submitBtn" onclick="submitEditClass()">Submit</button>
+
+
+            <button class="submitBtn" onclick="submitEditClass() " id="submit">Submit</button>
         </div>
     </div>
 
-    <script src="./Javascript/class.js" defer></script>
+    <script src="./Javascript/AdminClasses.js " defer></script>
 </body>
 
 </html>

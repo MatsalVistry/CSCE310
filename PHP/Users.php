@@ -218,6 +218,44 @@
 
             echo json_encode($user);
         }
+        else if($_GET['functionName'] == "getAllClasses")
+        {
+            $statement = "SELECT * FROM classes;";
+            $result = mysqli_query($conn, $statement);
+
+            $classes = array();
+
+            while($row = mysqli_fetch_array($result))
+            {
+                $class = array();
+                $class['id'] = $row['Class_ID'];
+                $class['tutor_id'] = $row['Tutor_ID'];
+                $class['max_capacity'] = $row['Class_MaxCapacity'];
+                $class['current_capacity'] = $row['Class_CurrentCapacity'];
+                $class['name'] = $row['Class_Name'];
+                $class['date'] = $row['Class_Date'];
+                $class['duration'] = $row['Class_Duration'];
+                $class['status'] = $row['Class_Status'];
+
+                array_push($classes, $class);
+            }
+
+            echo json_encode($classes);
+        }
+        else if($_GET['functionName'] == "getTutorIDs")
+        {
+            $statement = "SELECT User_ID FROM users WHERE User_Role='t';";
+            $result = mysqli_query($conn, $statement);
+
+            $tutors = array();
+
+            while($row = mysqli_fetch_array($result))
+            {
+                array_push($tutors, $row['User_ID']);
+            }
+
+            echo json_encode($tutors);
+        }
     }
     else
     {

@@ -49,7 +49,7 @@ body {
     margin: 15% auto;
     /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid ##aaa;
+    border: 1px solid #aaa;
     width: 40%;
     /* Could be more or less, depending on screen size */
 }

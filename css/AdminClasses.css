@@ -85,6 +85,54 @@ body {
     margin-top: 30px;
 }
 
+.inputExp {
+    font-family: var(--fontFam);
+    display: block;
+    /* padding: 15px 30px; */
+    /* border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    /* centered */
+    margin: auto; 
+    width: 10%;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.expButton {
+    font-family: var(--fontFam);
+    display: block;
+    /* padding: 15px 30px; */
+    /* border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    /* centered */
+    margin: auto; 
+    width: 10%;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.expPara {
+    font-family: var(--fontFam);
+    display: block;
+    /* padding: 15px 30px; */
+    /* border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    /* centered */
+    margin: auto; 
+    width: 10%;
+    padding: 10px;
+    margin-top: 30px;
+}
+
 .submitBtn {
     font-family: var(--fontFam);
     display: block;

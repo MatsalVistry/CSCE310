@@ -50,6 +50,36 @@
             $statement = "UPDATE classes SET Class_Status='C' WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        else if($_POST['functionName'] == "enrollStudent")
+        {
+            // check if it is already enrolled
+            $statement = "SELECT * FROM enrollments WHERE Student_ID=".$_POST['sid']." AND Class_ID=".$_POST['cid'].";";
+            $result = mysqli_query($conn, $statement);
+            $row = mysqli_fetch_assoc($result);
+
+            if($row == null)
+            {
+                $statement = "INSERT INTO enrollments (Student_ID, Class_ID) VALUES (".$_POST['sid'].", ".$_POST['cid'].");";
+                $result = mysqli_query($conn, $statement);
+
+                $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity+1 WHERE Class_ID=".$_POST['cid'].";";
+                $result = mysqli_query($conn, $statement);
+            }
+        }
+        else if($_POST['functionName'] == "unenrollStudent")
+        {
+            // Delete the enrollment and grab how many rows were affected
+            $statement = "DELETE FROM enrollments WHERE Student_ID=".$_POST['sid']." AND Class_ID=".$_POST['cid'].";";
+            $result = mysqli_query($conn, $statement);
+            $rowsAffected = mysqli_affected_rows($conn);
+
+            // If the enrollment was deleted, decrement the class's current capacity
+            if($rowsAffected > 0)
+            {
+                $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$_POST['cid'].";";
+                $result = mysqli_query($conn, $statement);
+            }
+        }
     }
     else
     {
