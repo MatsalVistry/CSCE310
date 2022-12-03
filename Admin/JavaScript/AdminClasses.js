@@ -116,6 +116,8 @@ function editClass(element) {
     var name = classDiv.getElementsByClassName("cname")[0].getAttribute("value");
     var date = classDiv.getElementsByClassName("cdate")[0].getAttribute("value");
     var duration = classDiv.getElementsByClassName("cduration")[0].getAttribute("value");
+    var tutorID = classDiv.getElementsByClassName("ctutorid")[0].getAttribute("value");
+
     var errorMsgs = "";
     if ((name) == "" || name == "Name") {
         errorMsgs += "Input required for name\n";
@@ -141,6 +143,7 @@ function editClass(element) {
     document.getElementById("editDate").value = date;
     document.getElementById("editDuration").value = duration;
     document.getElementById("editClassModal").value = classID;
+    document.getElementById("tutorIDEdit").value = tutorID;
 }
 
 function addClass() {
@@ -153,19 +156,22 @@ function submitEditClass() {
     var name = document.getElementById("editName").value;
     var date = document.getElementById("editDate").value;
     var duration = document.getElementById("editDuration").value;
+    var tutorID = document.getElementById("tutorIDEdit").value;
 
     $.ajax({
         type: "POST",
         url: "../PHP/Classes.php",
         data: {
-            functionName: "editClass",
+            functionName: "editClassAdmin",
             classID: classID,
             maxCapacity: maxCapacity,
             name: name,
             date: date,
-            duration: duration
+            duration: duration,
+            tutorID: tutorID
         },
         success: function(response) {
+            console.log(response);
             refreshClasses();
             closeClass();
         }
@@ -260,6 +266,8 @@ function finishClass(element) {
 function populateTutorIDs()
 {
     document.getElementById("tutorID").innerHTML = "";
+    document.getElementById("tutorIDEdit").innerHTML = "";
+
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -270,11 +278,17 @@ function populateTutorIDs()
             console.log(response);
             var tutorIDs = JSON.parse(response);
             var select = document.getElementById("tutorID");
+            var select2 = document.getElementById("tutorIDEdit");
             for (var i = 0; i < tutorIDs.length; i++) {
                 var option = document.createElement("option");
                 option.text = tutorIDs[i];
                 option.value = tutorIDs[i];
                 select.add(option);
+
+                var option2 = document.createElement("option");
+                option2.text = tutorIDs[i];
+                option2.value = tutorIDs[i];
+                select2.add(option2);
             }
         }
     });

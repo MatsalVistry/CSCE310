@@ -29,6 +29,11 @@
             $statement = "UPDATE classes SET Class_MaxCapacity=".$_POST['maxCapacity'].", Class_Name='".$_POST['name']."', Class_Date='".$_POST['date']."', Class_Duration='".$_POST['duration']."' WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }    
+        else if($_POST['functionName'] == "editClassAdmin")
+        {
+            $statement = "UPDATE classes SET Tutor_ID=".$_POST['tutorID'].", Class_MaxCapacity=".$_POST['maxCapacity'].", Class_Name='".$_POST['name']."', Class_Date='".$_POST['date']."', Class_Duration='".$_POST['duration']."' WHERE Class_ID=".$_POST['classID'].";";
+            $result = mysqli_query($conn, $statement);
+        }    
         else if($_POST['functionName'] == "enrollInClass")
         {
             $statement = "INSERT INTO enrollments (Student_ID, Class_ID) VALUES (".$_POST['studentID'].", ".$_POST['classID'].");";

@@ -43,10 +43,6 @@
             <span class="close" onclick="closeClass()">&times;</span>
             <span>Tutor ID<span style="color: red;">*</span></span>
             <select name="tutorID" id="tutorID">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
             </select>
             <br>
             <span>Max Capacity<span style="color: red;">*</span></span>
@@ -99,7 +95,10 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span class="close" onclick="closeClass()">&times;</span>
-
+            <span>Tutor ID</span>
+            <select name="tutorID" id="tutorIDEdit">
+            </select>
+            <br>
             <span>Max Capacity: </span>
             <input class="inputTxt" id="editMaxCapacity" placeholder="Max Capacity" onkeydown="return FilterInputNums(event)">
             <br>
