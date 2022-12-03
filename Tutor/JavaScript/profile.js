@@ -126,3 +126,67 @@ window.onclick = function(event) {
         closeReview();
     }
 }
+
+function changeFirstName() {
+    var firstname = document.getElementById("firstname").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changeFirstName",
+            studentID: localStorage.getItem("id"),
+            first_name: firstname,
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}
+
+function changeLastName() {
+    var lastname = document.getElementById("lastname").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changeLastName",
+            studentID: localStorage.getItem("id"),
+            last_name: lastname,
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}
+
+function changeEmail() {
+    var email = document.getElementById("email").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changeEmail",
+            studentID: localStorage.getItem("id"),
+            email: email,
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}
+
+function changePassword() {
+    var password = document.getElementById("password").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changePassword",
+            studentID: localStorage.getItem("id"),
+            password: password
+        },
+        success: function(response) {
+            console.log(response);
+        }
+    });
+}

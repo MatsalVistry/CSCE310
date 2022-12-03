@@ -251,6 +251,26 @@
             $statement = "UPDATE users SET User_First_Name='".$_POST['first_name']."', User_Last_Name='".$_POST['last_name']."', User_Email='".$_POST['email']."', User_Password='".$_POST['password']."' WHERE User_ID=".$_POST['id'].";";
             $result = mysqli_query($conn, $statement);
         }
+        else if($_POST['functionName'] == "changeFirstName")
+        {
+            $statement = "UPDATE users SET User_First_Name='".$_POST['first_name']."' WHERE User_ID=".$_POST['studentID'].";"; 
+            $result = mysqli_query($conn, $statement);
+        }
+        else if($_POST['functionName'] == "changeLastName")
+        {
+            $statement = "UPDATE users SET User_Last_Name='".$_POST['last_name']."' WHERE User_ID=".$_POST['studentID'].";"; 
+            $result = mysqli_query($conn, $statement);
+        }
+        else if($_POST['functionName'] == "changeEmail")
+        {
+            $statement = "UPDATE users SET User_Email='".$_POST['email']."' WHERE User_ID=".$_POST['studentID'].";"; 
+            $result = mysqli_query($conn, $statement);
+        }
+        else if($_POST['functionName'] == "changePassword")
+        {
+            $statement = "UPDATE users SET User_Password='".$_POST['password']."' WHERE User_ID=".$_POST['studentID'].";"; 
+            $result = mysqli_query($conn, $statement);
+        }
     }
 
     CloseCon($conn);
