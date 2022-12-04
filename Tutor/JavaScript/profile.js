@@ -17,8 +17,11 @@ $(document).ready(function() {
 
     if (userType == "t") {
         document.getElementById("addReview").style.display = "none";
+        document.getElementById("viewClasses").style.display = "none";
+
     } else {
         document.getElementById("addReview").style.display = "block";
+        document.getElementById("viewClasses").style.display = "block";
     }
 });
 
@@ -189,4 +192,8 @@ function changePassword() {
             console.log(response);
         }
     });
+}
+
+function viewClasses() {
+    window.location.href = "../Student/AllClasses.html?tutorID="+tutorID;
 }

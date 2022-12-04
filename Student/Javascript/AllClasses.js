@@ -1,10 +1,23 @@
 var userType;
+var tutorID = null;
 
 $(document).ready(function() {
 
     userType = localStorage.getItem("userType");
     if (userType == null) {
         window.location.href = "../Login/login.html";
+    }
+
+    var urlParams = new URLSearchParams(window.location.search);
+    tutorID = urlParams.get('tutorID');
+
+    if(tutorID!=null)
+    {
+        $("#heading").text("Tutor Classes");
+    }
+    else
+    {
+        $("#heading").text("All Classes");
     }
 
     populateNavbar();
@@ -48,6 +61,9 @@ function populateClasses() {
 
                     for (var i = 0; i < classes.length; i++) {
                         if(classes[i].status=='C')
+                            continue;
+
+                        if(tutorID!=null && classes[i].tutor_id!=tutorID)
                             continue;
                             
                         var classDiv = document.createElement("div");
