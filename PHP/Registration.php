@@ -3,6 +3,7 @@
 
     $conn = OpenCon();
 
+    // Determine whether the request was a get or post
     $is_get = $_SERVER['REQUEST_METHOD'] == 'GET';
     $is_post = $_SERVER['REQUEST_METHOD'] == 'POST';
 
@@ -16,10 +17,7 @@
             $password = $_POST['password'];
         
             $role = $_POST['role'];
-        
-            include_once './Credentials.php';
-        
-            $conn = OpenCon();
+                
             $statement = "INSERT INTO users
                 (`User_First_Name`, 
                 `User_Last_Name`, 

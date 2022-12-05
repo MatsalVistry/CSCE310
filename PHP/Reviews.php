@@ -3,6 +3,7 @@
 
     $conn = OpenCon();
 
+    // Determine whether the request was a get or post
     $is_get = $_SERVER['REQUEST_METHOD'] == 'GET';
     $is_post = $_SERVER['REQUEST_METHOD'] == 'POST';
 
@@ -28,6 +29,7 @@
             $result = mysqli_query($conn, $statement);
             $reviews = array();
 
+            // Add each review as an associative array to the reviews array
             while($row = mysqli_fetch_array($result))
             {
                 $review = array();
@@ -48,6 +50,7 @@
             $result = mysqli_query($conn, $statement);
             $reviews = array();
 
+            // Add each review as an associative array to the reviews array
             while($row = mysqli_fetch_array($result))
             {
                 $review = array();
