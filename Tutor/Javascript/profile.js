@@ -17,8 +17,13 @@ $(document).ready(function() {
 
     if (userType == "t") {
         document.getElementById("addReview").style.display = "none";
+        document.getElementById("viewClasses").style.display = "none";
+        document.getElementById("changeInfo").style.display = "block";
+
     } else {
         document.getElementById("addReview").style.display = "block";
+        document.getElementById("viewClasses").style.display = "block";
+        document.getElementById("changeInfo").style.display = "none";
     }
 });
 
@@ -125,4 +130,76 @@ window.onclick = function(event) {
     if (event.target == document.getElementById("myModal")) {
         closeReview();
     }
+}
+
+function changeFirstName() {
+    var firstname = document.getElementById("firstname").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changeFirstName",
+            studentID: localStorage.getItem("id"),
+            first_name: firstname,
+        },
+        success: function(response) {
+            console.log(response);
+            refreshReviews();
+        }
+    });
+}
+
+function changeLastName() {
+    var lastname = document.getElementById("lastname").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changeLastName",
+            studentID: localStorage.getItem("id"),
+            last_name: lastname,
+        },
+        success: function(response) {
+            console.log(response);
+            refreshReviews();
+        }
+    });
+}
+
+function changeEmail() {
+    var email = document.getElementById("email").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changeEmail",
+            studentID: localStorage.getItem("id"),
+            email: email,
+        },
+        success: function(response) {
+            console.log(response);
+            refreshReviews();
+        }
+    });
+}
+
+function changePassword() {
+    var password = document.getElementById("password").value;
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "changePassword",
+            studentID: localStorage.getItem("id"),
+            password: password
+        },
+        success: function(response) {
+            console.log(response);
+            refreshReviews();
+        }
+    });
+}
+
+function viewClasses() {
+    window.location.href = "../Student/AllClasses.html?tutorID="+tutorID;
 }
