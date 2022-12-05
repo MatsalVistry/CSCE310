@@ -14,7 +14,6 @@ $(document).ready(function() {
     tutorID = urlParams.get('tutorID');
 
     refreshReviews();
-    document.getElementById("isClicked").style.display = "none";
 
     if (userType == "t") {
         document.getElementById("addReview").style.display = "none";
@@ -27,10 +26,6 @@ $(document).ready(function() {
         document.getElementById("showChange").style.display = "none";
     }
 });
-
-function clickUpdateButton() {
-    document.getElementById("isClicked").style.display = 'block';
-}
 
 function populateNavbar() {
     if (userType == "t") {
