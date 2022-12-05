@@ -27,64 +27,49 @@
     <button class="submitBtn" id="addNewClass" onclick="addClass()">ADD NEW CLASS</button>
     <br><br><br><br>
 
-    <div class="inputExp">
-        <div class="inputContent "> Class ID</br>
 
-            <select id="cid"></select>
-        </div>
+    <select class="inputExp" id="cid">
 
-        <!-- </br> -->
+    </select>
 
+    <select class="inputExp" id="sid">
 
-
-        <div class="inputContent "> Student ID</br>
-            <select id="sid"> t
-
-        </select></div>
-        <!-- </br> -->
+    </select>
 
 
-        <!-- <input class="inputExp " id="cid " type="text " placeholder="Enter Class ID ">
-            <input class="inputExp " id="sid " type="text " placeholder="Enter Student ID "> -->
-        <div class="inputContent "> Enrollment Status </br>
-
-            <select id="expType ">
-        <option value="Enroll ">Enroll</option>
-        <option value="Unenroll ">Unenroll</option>
-        </select> </div>
-        <!-- </br> -->
-
-
-
-    </div>
-
+    <!-- <input class="inputExp" id="cid" type="text" placeholder="Enter Class ID">
+    <input class="inputExp" id="sid" type="text" placeholder="Enter Student ID"> -->
+    <select class="inputExp" id="expType">
+        <option value="Enroll">Enroll</option>
+        <option value="Unenroll">Unenroll</option>
+    </select>
     </br>
-    <button class="submitBtn " onclick="modifyExp() ">Change Enrollment</button>
+    <button class="submitBtn" onclick="modifyExp()">Change Enrollment</button>
 
-    <div id="myModal " class="modal ">
+    <div id="myModal" class="modal">
         <!-- Modal content -->
-        <div class="modal-content ">
-            <span class="close " onclick="closeClass() ">&times;</span>
-            <span>Tutor ID<span style="color: red; ">*</span></span>
-            <select name="tutorID " id="tutorID ">
+        <div class="modal-content">
+            <span class="close" onclick="closeClass()">&times;</span>
+            <span>Tutor ID<span style="color: red;">*</span></span>
+            <select name="tutorID" id="tutorID">
             </select>
             <br>
-            <span>Max Capacity<span style="color: red; ">*</span></span>
-            <input class="inputTxt " id="maxCapacity " placeholder="Ex: 10 " onkeydown="return FilterInputNums(event) ">
+            <span>Max Capacity<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="maxCapacity" placeholder="Ex: 10" onkeydown="return FilterInputNums(event)">
             <br>
-            <span>Name<span style="color: red; ">*</span></span>
-            <input class="inputTxt " id="name " placeholder="Ex: Database Systems " onkeydown="return FilterInputName(event) ">
+            <span>Name<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="name" placeholder="Ex: Database Systems" onkeydown="return FilterInputName(event)">
             <br>
-            <span>Date<span style="color: red; ">*</span></span>
-            <input class="inputTxt " id="date " type="date ">
+            <span>Date<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="date" type="date">
             <br>
-            <span>Duration<span style="color: red; ">*</span></span>
-            <input class="inputTxt " id="duration " placeholder="Ex: 1.0 " onkeydown="return FilterInputTime(event) "> </br> <br>
+            <span>Duration<span style="color: red;">*</span></span>
+            <input class="inputTxt" id="duration" placeholder="Ex: 1.0" onkeydown="return FilterInputTime(event)"> </br> <br>
 
-            <button class="submitBtn " onclick="submitClass() ">Submit</button>
+            <button class="submitBtn" onclick="submitClass()">Submit</button>
         </div>
     </div>
-    <!-- <script type="text/javascript ">
+    <!-- <script type="text/javascript">
         function FilterInputName(event) {
             // allows inputs of all characters and the use of the backspace and regular space and numbers
             var keyCode = ('which' in event) ? event.which : event.keyCode;
@@ -92,7 +77,6 @@
             modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
             return !isAlphabeticOrChars || modifiers;
         }
-
         function FilterInputNums(event) {
             // allows inputs of all numbers and the use of the backspace 
             var keyCode = ('which' in event) ? event.which : event.keyCode;
@@ -100,7 +84,6 @@
             modifiers = (keyCode == 8);
             return !isNumeric || modifiers;
         }
-
         function FilterInputTime(event) {
             // allows inputs of all numbers, the . character, and the use of the backspace 
             var keyCode = ('which' in event) ? event.which : event.keyCode;
@@ -111,40 +94,40 @@
     </script> -->
 
     <head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js "></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     </head>
 
 
-    <div id="editClassModal " class="modal ">
+    <div id="editClassModal" class="modal">
         <!-- Modal content -->
-        <div class="modal-content ">
-            <span class="close " onclick="closeClass() ">&times;</span>
+        <div class="modal-content">
+            <span class="close" onclick="closeClass()">&times;</span>
             <span>Tutor ID</span>
-            <select name="tutorID " id="tutorIDEdit ">
+            <select name="tutorID" id="tutorIDEdit">
             </select>
             <br>
             <span>Max Capacity: </span>
-            <input class="inputTxt " id="editMaxCapacity " placeholder="Ex: 10 " onkeydown="return FilterInputNums(event) ">
+            <input class="inputTxt" id="editMaxCapacity" placeholder="Ex: 10" onkeydown="return FilterInputNums(event)">
             <br>
             <span>Name: </span>
-            <input class="inputTxt " id="editName " placeholder="Ex: Database Systems " onkeydown="return FilterInputName(event) ">
+            <input class="inputTxt" id="editName" placeholder="Ex: Database Systems" onkeydown="return FilterInputName(event)">
             <br>
             <span>Date: </span>
-            <input class="inputTxt " id="editDate " type="date ">
+            <input class="inputTxt" id="editDate" type="date ">
             <br>
             <span>Duration: </span>
-            <input class="inputTxt " id="editDuration " placeholder="Duration " onkeydown="return FilterInputTime(event) ">
+            <input class="inputTxt" id="editDuration" placeholder="Duration " onkeydown="return FilterInputTime(event)">
             <br>
             <script>
                 var dis = true;
-                if (document.getElementById("editName ") != " ") {
+                if (document.getElementById("editName") != "") {
                     dis = false;
                 }
             </script>
 
 
 
-            <button class="submitBtn " onclick="submitEditClass() " id="submit ">Submit</button>
+            <button class="submitBtn" onclick="submitEditClass() " id="submit">Submit</button>
         </div>
     </div>
 
