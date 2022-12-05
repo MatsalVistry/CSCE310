@@ -57,6 +57,16 @@
         }
         else if($_POST['functionName'] == "enrollStudent")
         {
+            // Check if class is full
+            $statement = "SELECT Class_CurrentCapacity, Class_MaxCapacity FROM classes WHERE Class_ID=".$_POST['cid'].";";
+            $result = mysqli_query($conn, $statement);
+            $row = mysqli_fetch_assoc($result);
+            if($row['Class_CurrentCapacity'] >= $row['Class_MaxCapacity'])
+            {
+                echo "Class is full";
+                return;
+            }
+
             // check if it is already enrolled
             $statement = "SELECT * FROM enrollments WHERE Student_ID=".$_POST['sid']." AND Class_ID=".$_POST['cid'].";";
             $result = mysqli_query($conn, $statement);
@@ -69,6 +79,11 @@
 
                 $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity+1 WHERE Class_ID=".$_POST['cid'].";";
                 $result = mysqli_query($conn, $statement);
+            }
+            else
+            {
+                echo "Student is already enrolled in this class.";
+                return;
             }
         }
         else if($_POST['functionName'] == "unenrollStudent")
@@ -83,6 +98,11 @@
             {
                 $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$_POST['cid'].";";
                 $result = mysqli_query($conn, $statement);
+            }
+            else
+            {
+                echo "Student is not enrolled in this class.";
+                return;
             }
         }
     }
@@ -115,6 +135,19 @@
         if($_GET['functionName'] == "getCurrentStudentClasses")
         {
             $statement = "SELECT Class_ID FROM classes WHERE Class_ID IN (SELECT Class_ID FROM enrollments WHERE Student_ID=".$_GET['studentID'].");";
+            $result = mysqli_query($conn, $statement);
+
+            $classes = array();
+            while($row = mysqli_fetch_assoc($result))
+            {
+                array_push($classes, $row['Class_ID']);
+            }
+
+            echo json_encode($classes);
+        }    
+        if($_GET['functionName'] == "getClassIDs")
+        {
+            $statement = "SELECT Class_ID FROM classes;";
             $result = mysqli_query($conn, $statement);
 
             $classes = array();

@@ -11,6 +11,8 @@ $(document).ready(function() {
     populateNavbar();
     refreshClasses();
     populateTutorIDs();
+    populateClassIDs();
+    populateStudentIDs();
 });
 
 function populateNavbar() {
@@ -24,7 +26,7 @@ function populateNavbar() {
 }
 
 function refreshClasses() {
-    document.getElementsByClassName("classDisplay")[0].innerHTML = "";
+    $("#classDisplay").html("");
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -312,10 +314,64 @@ function modifyExp()
         },
         success: function(response) {
             console.log(response);
+
+            if(response!="")
+            {
+                alert(response);
+            }
+
             refreshClasses();
         }
     });
 
+}
+
+function populateClassIDs()
+{
+    document.getElementById("cid").innerHTML = "";
+
+    $.ajax({
+        type: "GET",
+        url: "../PHP/Classes.php",
+        data: {
+            functionName: "getClassIDs"
+        },
+        success: function(response) {
+            console.log(response);
+            var classIDs = JSON.parse(response);
+            var select = document.getElementById("cid");
+            for (var i = 0; i < classIDs.length; i++) {
+                var option = document.createElement("option");
+                option.text = "Class ID - "+classIDs[i];
+                option.value = classIDs[i];
+                select.add(option);
+            }
+        }
+    });
+}
+
+function populateStudentIDs()
+{
+    document.getElementById("sid").innerHTML = "";
+
+    $.ajax({
+        type: "GET",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "getStudentIDs"
+        },
+        success: function(response) {
+            console.log(response);
+            var studentIDs = JSON.parse(response);
+            var select = document.getElementById("sid");
+            for (var i = 0; i < studentIDs.length; i++) {
+                var option = document.createElement("option");
+                option.text = "Student ID - "+studentIDs[i];
+                option.value = studentIDs[i];
+                select.add(option);
+            }
+        }
+    });
 }
 
 window.onclick = function(event) {

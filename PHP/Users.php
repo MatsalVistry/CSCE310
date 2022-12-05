@@ -139,7 +139,22 @@
         }
         else if($_GET['functionName'] == "getStudentClasses") 
         {
-            $statement = "SELECT * FROM ExpandedClasses WHERE Student_ID=" . $_GET['studentID'] . ";";
+            $statement = "SELECT 
+            c.*,
+            u2.User_First_Name,
+            u2.User_Last_Name
+            
+            
+            FROM 
+            enrollments as e
+            INNER JOIN users as u
+            ON e.Student_ID = u.User_ID
+            INNER JOIN classes as c
+            ON e.Class_ID = c.Class_ID
+            INNER JOIN users as u2
+            ON c.Tutor_ID = u2.User_ID
+            WHERE u.User_ID=" . $_GET['studentID'] . ";";
+            
             $result = mysqli_query($conn, $statement);
 
             $classes = array();
@@ -240,6 +255,20 @@
             }
 
             echo json_encode($tutors);
+        }
+        else if($_GET['functionName'] == "getStudentIDs")
+        {
+            $statement = "SELECT User_ID FROM users WHERE User_Role='s';";
+            $result = mysqli_query($conn, $statement);
+
+            $students = array();
+
+            while($row = mysqli_fetch_array($result))
+            {
+                array_push($students, $row['User_ID']);
+            }
+
+            echo json_encode($students);
         }
     }
     else
