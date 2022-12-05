@@ -15,6 +15,9 @@ $(document).ready(function() {
     populateStudentIDs();
 });
 
+/*
+    Chooses the navbar to display based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -25,6 +28,9 @@ function populateNavbar() {
     }
 }
 
+/*
+    Displays all of the classes that currently exist
+*/
 function refreshClasses() {
     $("#classDisplay").html("");
     $.ajax({
@@ -71,31 +77,39 @@ function refreshClasses() {
     });
 }
 
+/*
+    allows inputs of all characters and the use of the backspace and regular space and numbers
+*/
 function FilterInputName(event) {
-    // allows inputs of all characters and the use of the backspace and regular space and numbers
     var keyCode = ('which' in event) ? event.which : event.keyCode;
     isAlphabeticOrChars = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
     modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
     return !isAlphabeticOrChars || modifiers;
 }
 
+/*
+    allows inputs of all numbers and the use of the backspace 
+*/
 function FilterInputNums(event) {
-    // allows inputs of all numbers and the use of the backspace 
     var keyCode = ('which' in event) ? event.which : event.keyCode;
     isNumeric = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
     modifiers = (keyCode == 8);
     return !isNumeric || modifiers;
 }
 
+/*
+    allows inputs of all numbers, the . character, and the use of the backspace  
+*/
 function FilterInputTime(event) {
-    // allows inputs of all numbers, the . character, and the use of the backspace 
     var keyCode = ('which' in event) ? event.which : event.keyCode;
     isTime = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
     modifiers = (keyCode == 8 || keyCode == 190);
     return !isTime || modifiers;
 }
 
-
+/*
+    Deletes a class from the database
+*/
 function deleteClass(element) {
     var classID = element.value;
 
@@ -112,6 +126,9 @@ function deleteClass(element) {
     });
 }
 
+/*
+    Edits a class information and prepopulates the input fields
+*/
 function editClass(element) {
     // make id editClassModal visible and populate class editMaxCapacity, editName, editDate, editDuration with the values from the class
     var classID = element.value;
@@ -150,10 +167,16 @@ function editClass(element) {
     document.getElementById("tutorIDEdit").value = tutorID;
 }
 
+/*
+    Displays the modal for adding a class
+*/
 function addClass() {
     document.getElementById("myModal").style.display = "block";
 }
 
+/*
+    Edits class information in the database
+*/
 function submitEditClass() {
     var classID = document.getElementById("editClassModal").value;
     var maxCapacity = document.getElementById("editMaxCapacity").value;
@@ -185,6 +208,9 @@ function submitEditClass() {
     refreshClasses();
 }
 
+/*
+    Closes all the modals and resets their fields
+*/
 function closeClass() {
     document.getElementById("myModal").style.display = "none";
     document.getElementById("maxCapacity").value = "";
@@ -199,6 +225,9 @@ function closeClass() {
     document.getElementById("editDuration").value = "";
 }
 
+/*
+    Adds a class based on inputted fields
+*/
 function submitClass() {
     var maxCapacity = document.getElementById("maxCapacity").value;
     var name = document.getElementById("name").value;
@@ -251,6 +280,9 @@ function submitClass() {
     closeClass();
 }
 
+/*
+    Ends the class session for the specified element
+*/
 function finishClass(element) {
     var classID = element.value;
 
@@ -267,6 +299,9 @@ function finishClass(element) {
     });
 }
 
+/*
+    Populates all the dropdowns for tutorIDs on the screen
+*/
 function populateTutorIDs()
 {
     document.getElementById("tutorID").innerHTML = "";
@@ -298,6 +333,9 @@ function populateTutorIDs()
     });
 }
 
+/*
+    Enrolls or Unenrolls a student from a specified class
+*/
 function modifyExp()
 {
     var cid = document.getElementById("cid").value;
@@ -326,6 +364,9 @@ function modifyExp()
 
 }
 
+/*
+    Populates all the class ID dropdowns on the page
+*/
 function populateClassIDs()
 {
     document.getElementById("cid").innerHTML = "";
@@ -350,6 +391,9 @@ function populateClassIDs()
     });
 }
 
+/*
+    Populates all the student ID dropdowns on the page
+*/
 function populateStudentIDs()
 {
     document.getElementById("sid").innerHTML = "";

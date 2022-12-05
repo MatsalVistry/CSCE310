@@ -12,6 +12,9 @@ $(document).ready(function() {
     populateUsers();
 });
 
+/*
+    Chooses the navbar to display based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -22,6 +25,9 @@ function populateNavbar() {
     }
 }
 
+/*
+    Displays all of the users registered in the application
+*/
 function populateUsers() {
     $("#users").html("");
     $.ajax({
@@ -62,6 +68,9 @@ function populateUsers() {
     });
 }
 
+/*
+    Deletes a user from the database
+*/
 function deleteUser(element) {
     var id = element.value;
     var role = element.getAttribute("input");
@@ -81,6 +90,9 @@ function deleteUser(element) {
     });
 }
 
+/*
+    Closes all modals and resets their fields
+*/
 function closeModal() {
     document.getElementById("myModal").style.display = "none";
     document.getElementById("fname").value = "";
@@ -95,10 +107,16 @@ function closeModal() {
     document.getElementById("edit_password").value = "";
 }
 
+/*
+    Displays the modal to add a user
+*/
 function openModal() {
     document.getElementById("myModal").style.display = "block";
 }
 
+/*
+    Adds a new user into the database
+*/
 function submitUser() {
     var fname = document.getElementById("fname").value;
     var lname = document.getElementById("lname").value;
@@ -125,7 +143,9 @@ function submitUser() {
     });
 }
 
-
+/*
+    Opens the modal to edit a user and prepopulates the values
+*/
 function openModal2(element) {
     var userID = element.value;
     document.getElementById("myModal2").style.display = "block";
@@ -149,6 +169,9 @@ function openModal2(element) {
     });
 }
 
+/*
+    Edits a user based on the inputted fields
+*/
 function submitUserEdit() {
     var fname = document.getElementById("edit_fname").value;
     var lname = document.getElementById("edit_lname").value;

@@ -1,3 +1,6 @@
+/*
+    Verifies the inputted credentials and redirects the user to their respective landing page
+*/
 function verify() {
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;

@@ -11,6 +11,9 @@ $(document).ready(function() {
     populateNavbar();
 });
 
+/*
+    Chooses the navbar to display based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -21,6 +24,9 @@ function populateNavbar() {
     }
 }
 
+/*
+    Displays all of the reviews for a specified tutor
+*/
 function tutorClick() 
 {
     $("#allInfo").html("");
@@ -57,6 +63,9 @@ function tutorClick()
     });
 }
 
+/*
+    Deletes a review for a specific tutor
+*/
 function deleteReview(element) {
     var reviewID = element.getAttribute("value");
     $.ajax({
@@ -72,6 +81,9 @@ function deleteReview(element) {
     });
 }
 
+/*
+    Displays all of the reviews that a specified student wrote
+*/
 function studentClick()
 {
     $("#allInfo").html("");

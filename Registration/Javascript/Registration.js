@@ -1,7 +1,6 @@
-$(document).ready(function() {
-
-});
-
+/*
+    Registers the user and sends them to the login page
+*/
 function submitRegistration() {
     var isTutor = document.getElementById('role').checked;
 
@@ -26,7 +25,9 @@ function submitRegistration() {
 
 }
 
-
+/*
+    Performs the page switch to the login page
+*/
 function loginPage() {
     window.location.href = '../Login/login.html';
 }
