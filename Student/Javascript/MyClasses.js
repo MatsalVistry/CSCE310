@@ -15,6 +15,9 @@ $(document).ready(function() {
 
 });
 
+/*
+    Chooses the navbar to display based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -25,6 +28,9 @@ function populateNavbar() {
     }
 }
 
+/*
+    Displays the users currently enrolled classes
+*/
 function loadClasses() {
     document.getElementsByClassName("studentClasses")[0] = "";
     $.ajax({

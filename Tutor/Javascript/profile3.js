@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 
 /*
-    Populates the navbar based on user type
+    Chooses the navbar to display based on user type
 */
 function populateNavbar() {
     if (userType == "t") {

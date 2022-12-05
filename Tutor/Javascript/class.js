@@ -25,7 +25,7 @@ $(document).ready(function()
 });
 
 /*
-    This function will load the appropriate navbar based on user type
+    Chooses the navbar to display based on user type
 */
 function populateNavbar() 
 {

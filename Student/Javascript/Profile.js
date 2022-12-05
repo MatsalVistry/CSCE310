@@ -14,11 +14,14 @@ $(document).ready(function() {
     populateStudentInfo();
 });
 
+
 function clickUpdateButton() {
     document.getElementById("isClicked").style.display = 'block';
 }
 
-
+/*
+    Displays the student's current profile information
+*/
 function populateStudentInfo() {
     $.ajax({
         type: "GET",
@@ -43,6 +46,9 @@ function populateStudentInfo() {
     });
 }
 
+/*
+    Chooses the navbar to display based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -53,6 +59,9 @@ function populateNavbar() {
     }
 }
 
+/*
+    Changes the student's first name
+*/
 function changeFirstName() {
 
 
@@ -74,6 +83,9 @@ function changeFirstName() {
 
 }
 
+/*
+    Changes the student's last name
+*/
 function changeLastName() {
     var lastname = document.getElementById("lastname").value;
     $.ajax({
@@ -91,6 +103,9 @@ function changeLastName() {
     });
 }
 
+/*
+    Changes the student's email
+*/
 function changeEmail() {
     var email = document.getElementById("email").value;
     $.ajax({
@@ -108,6 +123,9 @@ function changeEmail() {
     });
 }
 
+/*
+    Changes the student's password
+*/
 function changePassword() {
     var password = document.getElementById("password").value;
     $.ajax({

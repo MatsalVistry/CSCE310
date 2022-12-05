@@ -24,6 +24,9 @@ $(document).ready(function() {
     populateClasses();
 });
 
+/*
+    Chooses the navbar to display based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -34,6 +37,9 @@ function populateNavbar() {
     }
 }
 
+/*
+    Displays all open classes to enroll into
+*/
 function populateClasses() {
     document.getElementsByClassName("allClasses")[0].innerHTML = "";
     $.ajax({
@@ -97,10 +103,16 @@ function populateClasses() {
     });
 }
 
+/*
+    Visits the tutors profile
+*/
 function goToTutor(id){
     window.location.href = "../Tutor/TutorProfile.html?tutorID=" + id;
 }
 
+/*
+    Enrolls the student in the specified class
+*/
 function enroll(element) {
     $.ajax({
         type: "POST",
@@ -111,12 +123,14 @@ function enroll(element) {
             classID: element.value
         },
         success: function(response) {
-            console.log(response);
             populateClasses();
         }
     });
 }
 
+/*
+    Unenrolls the student from the specified class
+*/
 function unenroll(element) {
     $.ajax({
         type: "POST",
