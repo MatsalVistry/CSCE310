@@ -14,8 +14,12 @@ $(document).ready(function() {
     populateStudentInfo();
 });
 
-function populateStudentInfo()
-{
+function clickUpdateButton() {
+    document.getElementById("isClicked").style.display = 'block';
+}
+
+
+function populateStudentInfo() {
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -23,8 +27,7 @@ function populateStudentInfo()
             functionName: "getStudentInformation",
             studentID: studentID
         },
-        success: function(response) 
-        {
+        success: function(response) {
             var student = JSON.parse(response);
 
             var first_name = student.first_name;
@@ -51,6 +54,8 @@ function populateNavbar() {
 }
 
 function changeFirstName() {
+
+
     var firstname = document.getElementById("firstname").value;
     $.ajax({
         type: "POST",

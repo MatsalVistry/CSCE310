@@ -16,9 +16,9 @@ $(document).ready(function() {
     refreshReviews();
 
     if (userType == "t") {
-        document.getElementById("addReview").style.display = "none";
+        document.getElementById("addReview").style.display = "block";
         document.getElementById("viewClasses").style.display = "none";
-        document.getElementById("changeInfo").style.display = "block";
+        document.getElementById("changeInfo").style.display = "none";
 
     } else {
         document.getElementById("addReview").style.display = "block";
@@ -26,6 +26,10 @@ $(document).ready(function() {
         document.getElementById("changeInfo").style.display = "none";
     }
 });
+
+function clickUpdateButton() {
+    document.getElementById("isClicked").style.display = 'block';
+}
 
 function populateNavbar() {
     if (userType == "t") {
@@ -202,5 +206,5 @@ function changePassword() {
 }
 
 function viewClasses() {
-    window.location.href = "../Student/AllClasses.html?tutorID="+tutorID;
+    window.location.href = "../Student/AllClasses.html?tutorID=" + tutorID;
 }
