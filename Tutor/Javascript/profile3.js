@@ -67,6 +67,8 @@ function refreshReviews() {
 
             var tutorInfo = document.getElementsByClassName("tutorInfo")[0];
             tutorInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
+
+            var allReviews = document.getElementsByClassName("reviews")[0];
             for (var i = 0; i < reviews.length; i++) {
                 var review = reviews[i];
                 var reviewID = review.id;
@@ -81,7 +83,7 @@ function refreshReviews() {
                 reviewDiv.innerHTML += "<p>Name: " + studentName + "<br>" + "Review: " + reviewString + "</p>";
                 if (authorizedToDelete)
                     reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
-                tutorInfo.appendChild(reviewDiv);
+                allReviews.appendChild(reviewDiv);
             }
         }
     });

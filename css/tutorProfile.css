@@ -13,12 +13,25 @@ body {
     background-color: var(--backgroundScreen);
     font-family: var(--fontFam);
     margin-top: 50px;
+    font-size: 18px;
 }
 
-.tutorInfo {
-    margin: auto;
-    width: 640px;
-    padding: 50px;
+.reviews {
+    margin-left:20px;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow: scroll;
+    width: 300px;
+    border: 1px solid black;
+    background-color: white;
+  }
+
+.review {
+    padding: 5px;
+    flex: 1;
+    border: 1px solid black;
+    height: 250px;
 }
 
 
@@ -93,6 +106,15 @@ body {
     display: none;
 }
 
+.tutorInfo {
+    margin-left: 20px;
+}
+
+#addReview .submitBtn {
+    margin-left: -10px;
+}
+
+
 .submitBtn {
     margin: auto;
     padding: 50px;
@@ -100,7 +122,6 @@ body {
     padding: 15px 30px;
     border: none;
     font-family: var(--fontFam);
-    background-color: var(--backgroundButtons);
     box-shadow: 3px 3px var(--backgroundButtonsShadow);
     /* color: var(--backgroundScreen); */
     border-radius: 6px;
@@ -115,17 +136,19 @@ body {
 }
 
 .review {
-    display: flex;
-    /* justify-content: center;
-    align-items: center; */
-    height: fit-content;
-    background-color: var(--backgroundBoxReview);
-    width: fit-content;
-    border-radius: 8px;
-    padding: 0px 1px 1px;
-    box-shadow: 0 10px 25px rgba(92, 99, 105, .2);
-    margin-bottom: 20px;
+    flex: 1;
 }
+.update {
+    padding: 20px;
+    margin: 20px;
+    width: fit-content;
+    height: 200px;
+    background-color: white;
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    border-radius: 5px;
+
+}
+
 
 .deleteReview {
     display: block;

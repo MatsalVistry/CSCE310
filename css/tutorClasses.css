@@ -9,14 +9,29 @@
 }
 
 body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     background-color: var(--backgroundScreen);
     font-family: var(--fontFam);
     margin-top: 50px;
 }
 
+.classDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 10px
+}
+
+.box {
+    font-size: 18px; 
+    padding: 10px;
+    width: 800px;
+    padding: 20px;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
+}
 
 /* The Modal (background) */
 
@@ -71,6 +86,7 @@ body {
     cursor: pointer;
 }
 
+
 .inputTxt {
     font-family: Arial Bold;
     padding: 5px 4px;
@@ -83,6 +99,29 @@ body {
     background-position: 10px 10px;
     cursor: pointer;
     margin-top: 30px;
+}
+
+
+
+.add {
+    font-family: var(--fontFam);
+    display: block;
+    padding: 15px 30px;
+    border: none;
+    background-color: rgb(2, 78, 2);
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 50px;
+    /* centered */
+    border-radius: 50%;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    position: absolute;
+    right: 10px
 }
 
 .submitBtn {
@@ -164,7 +203,7 @@ body {
     display: block;
     padding: 5px 15px;
     border: none;
-    background-color: var(--backgroundButtons);
+    background-color: black;
     box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: white;
     border-radius: 6px;
@@ -178,13 +217,18 @@ body {
     display: block;
     padding: 5px 15px;
     border: none;
-    background-color: var(--backgroundButtons);
+    background-color: black;
     box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: white;
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
+}
+
+.finishClass:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
 }
 
 .editClass:hover {

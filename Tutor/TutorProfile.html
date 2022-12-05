@@ -22,6 +22,7 @@
     <div class="tutorInfo">
 
     </div>
+    <div class="reviews"></div>
     <!-- add review button that brings a popup modal -->
     <button class="submitBtn" id="addReview" onclick="addReview()">Add Review</button>
 
@@ -39,26 +40,27 @@
         </div>
 
     </div>
-    <button type="submit" class="submitBtn" id="showChange" onclick="clickUpdateButton()">Update Profile Info</button><br/>
-    <div class="isClicked" id="isClicked">
-        <div id="changeInfo">
-            <h2>Update user information:</h2>
-            <label>First Name: </label>
-            <input type="text" id="firstname" name="firstname">
-            <button type="submit" onclick="changeFirstName()">Update</button><br/>
+    <div class="update">
+        <h2>Update user information:</h2>
+        <label>First Name: </label>
+        <input type="text" id="firstname" name="firstname">
+        <button type="submit" onclick="changeFirstName()">Update</button><br/>
+    
+        <label>Last Name: </label>
+        <input type="text" id="lastname" name="lastname">
+        <button type="submit" onclick="changeLastName()">Update</button><br/>
+    
+        <label>Email: </label>
+        <input type="text" id="email" name="email">
+        <button type="submit" onclick="changeEmail()">Update</button><br/>
+    
+        <label>Password: </label>
+        <input type="text" id="password" name="password">
+        <button type="submit" onclick="changePassword()">Update</button><br/>  
 
-            <label>Last Name: </label>
-            <input type="text" id="lastname" name="lastname">
-            <button type="submit" onclick="changeLastName()">Update</button><br/>
+    </div>
 
-            <label>Email: </label>
-            <input type="text" id="email" name="email">
-            <button type="submit" onclick="changeEmail()">Update</button><br/>
 
-            <label>Password: </label>
-            <input type="text" id="password" name="password">
-            <button type="submit" onclick="changePassword()">Update</button><br/>
-        </div>
     </div>
     <script src="./Javascript/profile3.js" defer></script>
 </body>

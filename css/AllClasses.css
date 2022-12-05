@@ -9,14 +9,68 @@
 }
 
 body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
     background-color: var(--backgroundScreen);
     font-family: var(--fontFam);
-    margin-top: 50px;
 }
 
+.allClasses {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 10px
+}
+
+.box {
+    font-size: 18px; 
+    padding: 10px;
+    width: 800px;
+    padding: 20px;
+    margin: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.2);
+}
+
+.enroll {
+    background-color: black; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: color 0.5s ease-in-out;
+  }
+
+  .enroll:hover{
+    background-color: grey;
+  }
+
+
+  .unenroll {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: color 0.5s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .unenroll:hover{
+    background-color: grey;
+  }
+  
 
 /* The Modal (background) */
 
@@ -160,11 +214,10 @@ body {
 }
 
 .editClass {
-    font-family: var(--fontFam);
     display: block;
     padding: 5px 15px;
     border: none;
-    background-color: var(--backgroundButtons);
+    background-color: black;
     box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: white;
     border-radius: 6px;
@@ -178,7 +231,7 @@ body {
     display: block;
     padding: 5px 15px;
     border: none;
-    background-color: var(--backgroundButtons);
+    background-color: white;
     box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: white;
     border-radius: 6px;
