@@ -47,6 +47,7 @@ function refreshReviews() {
             tutorID: tutorID
         },
         success: function(response) {
+            console.log(response);
             // console.log(response);
             var studentID = localStorage.getItem("id");
 

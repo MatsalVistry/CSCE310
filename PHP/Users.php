@@ -33,43 +33,13 @@
         }
         else if($_GET['functionName'] == "getTutorInformation")
         {
-            $statement = 
-                "SELECT
-                u.User_First_Name as tutor_first_name,
-                u.User_Last_Name as tutor_last_name,
-                u.User_Email as tutor_email
-                FROM users as u
-                WHERE u.User_ID=".$_GET['tutorID'].";";
-
-            // echo $statement;
-
-            $result = mysqli_query($conn, $statement);
-            
             $user = array();
             $reviews = array();
 
-            $row = mysqli_fetch_array($result);
-        
-            $user['first_name'] = $row['tutor_first_name'];
-            $user['last_name'] = $row['tutor_last_name'];
-            $user['email'] = $row['tutor_email'];
-
-            // echo json_encode($user);
-
-
-            $statement = "SELECT 
-                            r.Review_ID as review_id,
-                            r.Student_ID as student_id,
-                            r.Review_String as review_string,
-                            un.User_First_Name as student_first_name,
-                            un.User_Last_Name as student_last_name
-                            FROM reviews as r 
-                            INNER JOIN users as un 
-                            ON r.Student_ID = un.User_ID
-                            WHERE r.Tutor_ID=".$_GET['tutorID'].";";
-            // echo $statement;
-
+            $statement = "SELECT * FROM ExpandedReviews WHERE tid =".$_GET['tutorID'].";";
             $result = mysqli_query($conn, $statement);
+
+            $first = true;
 
             while($row = mysqli_fetch_array($result))
             {
@@ -78,6 +48,14 @@
                 $review['student_id'] = $row['student_id'];
                 $review['Review_String'] = $row['review_string'];
                 $review['Student_Name'] = $row['student_first_name']." ".$row['student_last_name'];
+
+                if($first)
+                {
+                    $user['first_name'] = $row['tutor_first_name'];
+                    $user['last_name'] = $row['tutor_last_name'];
+                    $user['email'] = $row['tutor_email'];
+                    $first = false;
+                }
 
                 array_push($reviews, $review);
             }

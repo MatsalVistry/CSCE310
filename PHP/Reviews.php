@@ -19,6 +19,49 @@
             $result = mysqli_query($conn, $statement);
         }
     }
+    else
+    {
+        if($_GET['functionName'] == "getTutorReviews")
+        {
+            $statement = "SELECT * FROM ExpandedReviews WHERE tid=".$_GET['tutorID'].";";
+
+            $result = mysqli_query($conn, $statement);
+            $reviews = array();
+
+            while($row = mysqli_fetch_array($result))
+            {
+                $review = array();
+                $review['id'] = $row['review_id'];
+                $review['student_id'] = $row['student_id'];
+                $review['Review_String'] = $row['review_string'];
+                $review['Student_Name'] = $row['student_first_name']." ".$row['student_last_name'];
+
+                array_push($reviews, $review);
+            }
+
+            echo json_encode($reviews);
+        }
+        else if($_GET['functionName'] == "getStudentReviews")
+        {
+            $statement = "SELECT * FROM ExpandedReviews WHERE student_id=".$_GET['studentID'].";";
+
+            $result = mysqli_query($conn, $statement);
+            $reviews = array();
+
+            while($row = mysqli_fetch_array($result))
+            {
+                $review = array();
+                $review['id'] = $row['review_id'];
+                $review['tutor_id'] = $row['tid'];
+                $review['Review_String'] = $row['review_string'];
+                $review['Tutor_Name'] = $row['tutor_first_name']." ".$row['tutor_last_name'];
+
+                array_push($reviews, $review);
+            }
+
+            echo json_encode($reviews);
+        }
+    }
 
     CloseCon($conn);
 ?>

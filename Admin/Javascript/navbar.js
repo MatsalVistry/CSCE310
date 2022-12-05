@@ -23,3 +23,8 @@ function AdminUsers()
 {
     window.location = "../Admin/AdminUsers.html";
 }
+
+function AdminReviews()
+{
+    window.location = "../Admin/AdminReviews.html";
+}
