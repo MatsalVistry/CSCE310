@@ -36,6 +36,7 @@ function refreshClasses() {
 
             var classes = JSON.parse(response);
             var display = document.getElementsByClassName("classDisplay")[0];
+            console.log(classes);
 
             for (var i = 0; i < classes.length; i++) {
 
@@ -45,6 +46,7 @@ function refreshClasses() {
 
                 classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID: " + classes[i].id + "</div><br>";
                 classDiv.innerHTML += "<div class='ctutorid' value=" + classes[i].tutor_id + "> Tutor ID: " + classes[i].tutor_id + "</div><br>";
+                classDiv.innerHTML += "<div class='ctname' value=" + classes[i].tname + "> Tutor Name:" + classes[i].tname + "</div><br>";
                 classDiv.innerHTML += "<div class='cmaxcapacity' value=" + classes[i].max_capacity + "> Max Capacity: " + classes[i].max_capacity + "</div><br>";
                 classDiv.innerHTML += "<div class='ccurrentcapacity' value=" + classes[i].current_capacity + "> Current Capacity: " + classes[i].current_capacity + "</div><br>";
                 classDiv.innerHTML += "<div class='cname' value=" + classes[i].name + "> Name: " + classes[i].name + "</div><br>";

@@ -136,7 +136,7 @@
         }
         else if($_GET['functionName'] == "getTutorClasses")
         {
-            $statement = "SELECT * FROM classes WHERE Tutor_ID=".$_GET['tutorID'].";";
+            $statement = "SELECT * FROM ExpandedClasses WHERE Tutor_ID=".$_GET['tutorID'].";";
             $result = mysqli_query($conn, $statement);
 
             $classes = array();
@@ -152,34 +152,16 @@
                 $class['date'] = $row['Class_Date'];
                 $class['duration'] = $row['Class_Duration'];
                 $class['status'] = $row['Class_Status'];
+                $class['tname'] = $row['User_First_Name']." ".$row['User_Last_Name'];
 
                 array_push($classes, $class);
             }
 
             echo json_encode($classes);
         }
-        else if($_GET['functionName'] == "getStudentClasses") {
-            $cleanview = "DROP VIEW IF EXISTS StudentClasses;";
-            mysqli_query($conn, $cleanview);
-
-            $statement = "CREATE VIEW StudentClasses AS SELECT 
-            c.*,
-            u2.User_First_Name,
-            u2.User_Last_Name
-            
-            
-            FROM 
-            enrollments as e
-            INNER JOIN users as u
-            ON e.Student_ID = u.User_ID
-            INNER JOIN classes as c
-            ON e.Class_ID = c.Class_ID
-            INNER JOIN users as u2
-            ON c.Tutor_ID = u2.User_ID
-            WHERE u.User_ID=" . $_GET['studentID'] . ";";
-            mysqli_query($conn, $statement);
-
-            $statement = "SELECT * FROM StudentClasses;";
+        else if($_GET['functionName'] == "getStudentClasses") 
+        {
+            $statement = "SELECT * FROM ExpandedClasses WHERE Student_ID=" . $_GET['studentID'] . ";";
             $result = mysqli_query($conn, $statement);
 
             $classes = array();
@@ -244,7 +226,7 @@
         }
         else if($_GET['functionName'] == "getAllClasses")
         {
-            $statement = "SELECT * FROM classes;";
+            $statement = "SELECT * FROM ExpandedClasses;";
             $result = mysqli_query($conn, $statement);
 
             $classes = array();
@@ -260,6 +242,7 @@
                 $class['date'] = $row['Class_Date'];
                 $class['duration'] = $row['Class_Duration'];
                 $class['status'] = $row['Class_Status'];
+                $class['tname'] = $row['User_First_Name']." ".$row['User_Last_Name'];
 
                 array_push($classes, $class);
             }
