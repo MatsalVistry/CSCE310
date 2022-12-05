@@ -29,7 +29,7 @@ function populateNavbar() {
 */
 function tutorClick() 
 {
-    $("#allInfo").html("");
+    $("#reviews").html("");
     $.ajax({
         type: "GET",
         url: "../PHP/Reviews.php",
@@ -42,22 +42,19 @@ function tutorClick()
             var reviews = JSON.parse(response);
             console.log(reviews);
 
-            var allInfo = document.getElementsByClassName("allInfo")[0];
+            var allInfo = document.getElementsByClassName("reviews")[0];
             for (var i = 0; i < reviews.length; i++) {
                 var review = reviews[i];
                 var reviewID = review.id;
-                var reviewStudentID = review.student_id;
                 var studentName = review.Student_Name;
                 var reviewString = review.Review_String;
-                var authorizedToDelete = userType == "a" || studentID == reviewStudentID;
 
                 var reviewDiv = document.createElement("div");
                 reviewDiv.className = "review";
 
                 reviewDiv.innerHTML += "<p>Student Name: " + studentName + "<br>" + "Review: " + reviewString + "</p>";
-                if (authorizedToDelete)
-                    reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
-                    allInfo.appendChild(reviewDiv);
+                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
+                allInfo.appendChild(reviewDiv);
             }
         }
     });
@@ -86,7 +83,7 @@ function deleteReview(element) {
 */
 function studentClick()
 {
-    $("#allInfo").html("");
+    $("#reviews").html("");
     $.ajax({
         type: "GET",
         url: "../PHP/Reviews.php",
@@ -99,22 +96,20 @@ function studentClick()
             var reviews = JSON.parse(response);
             console.log(reviews);
 
-            var allInfo = document.getElementsByClassName("allInfo")[0];
+            var allInfo = document.getElementsByClassName("reviews")[0];
             for (var i = 0; i < reviews.length; i++) {
                 var review = reviews[i];
                 var reviewID = review.id;
                 var reviewTutorID = review.tid;
                 var tutorName = review.Tutor_Name;
                 var reviewString = review.Review_String;
-                var authorizedToDelete = userType == "a" || studentID == reviewStudentID;
 
                 var reviewDiv = document.createElement("div");
                 reviewDiv.className = "review";
 
                 reviewDiv.innerHTML += "<p>Tutor Name: " + tutorName + "<br>" + "Review: " + reviewString + "</p>";
-                if (authorizedToDelete)
-                    reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
-                    allInfo.appendChild(reviewDiv);
+                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
+                allInfo.appendChild(reviewDiv);
             }
         }
     });
