@@ -14,16 +14,17 @@ $(document).ready(function() {
     tutorID = urlParams.get('tutorID');
 
     refreshReviews();
+    document.getElementById("isClicked").style.display = "none";
 
     if (userType == "t") {
-        document.getElementById("addReview").style.display = "block";
+        document.getElementById("addReview").style.display = "none";
         document.getElementById("viewClasses").style.display = "none";
-        document.getElementById("changeInfo").style.display = "none";
+        document.getElementById("showChange").style.display = "block";
 
     } else {
         document.getElementById("addReview").style.display = "block";
         document.getElementById("viewClasses").style.display = "block";
-        document.getElementById("changeInfo").style.display = "none";
+        document.getElementById("showChange").style.display = "none";
     }
 });
 
