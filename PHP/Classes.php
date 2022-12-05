@@ -90,7 +90,7 @@
     {
         if($_GET['functionName'] == "getAllClasses")
         {
-            $statement = "SELECT * FROM classes INNER JOIN users ON classes.Tutor_ID = users.User_ID;";
+            $statement = "SELECT * FROM ExpandedClasses;";
             $result = mysqli_query($conn, $statement);
 
             $classes = array();
