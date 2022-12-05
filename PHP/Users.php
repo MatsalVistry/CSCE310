@@ -36,7 +36,7 @@
             $user = array();
             $reviews = array();
 
-            $statement = "SELECT * FROM ExpandedReviews WHERE tid =".$_GET['tutorID'].";";
+            $statement = "SELECT * FROM ExpandedReviews WHERE tutor_id =".$_GET['tutorID'].";";
             $result = mysqli_query($conn, $statement);
 
             $first = true;

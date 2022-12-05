@@ -14,12 +14,6 @@ $(document).ready(function() {
     tutorID = urlParams.get('tutorID');
 
     refreshClasses();
-
-    if (userType == "t") {
-        document.getElementById("addNewClass").style.display = "block";
-    } else {
-        document.getElementById("addNewClass").style.display = "none";
-    }
 });
 
 function populateNavbar() {

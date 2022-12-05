@@ -23,7 +23,7 @@
     {
         if($_GET['functionName'] == "getTutorReviews")
         {
-            $statement = "SELECT * FROM ExpandedReviews WHERE tid=".$_GET['tutorID'].";";
+            $statement = "SELECT * FROM ExpandedReviews WHERE tutor_id=".$_GET['tutorID'].";";
 
             $result = mysqli_query($conn, $statement);
             $reviews = array();
@@ -52,7 +52,7 @@
             {
                 $review = array();
                 $review['id'] = $row['review_id'];
-                $review['tutor_id'] = $row['tid'];
+                $review['tutor_id'] = $row['tutor_id'];
                 $review['Review_String'] = $row['review_string'];
                 $review['Tutor_Name'] = $row['tutor_first_name']." ".$row['tutor_last_name'];
 
