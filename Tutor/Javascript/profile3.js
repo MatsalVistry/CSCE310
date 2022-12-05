@@ -27,6 +27,10 @@ $(document).ready(function() {
     }
 });
 
+
+/*
+    Populates the navbar based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -37,6 +41,10 @@ function populateNavbar() {
     }
 }
 
+
+/*
+    Displays all of the reviews for a given tutor
+*/
 function refreshReviews() {
     document.getElementsByClassName("tutorInfo")[0] = "";
     $.ajax({
@@ -84,6 +92,10 @@ function refreshReviews() {
     });
 }
 
+
+/*
+    Deletes a review for a tutor
+*/
 function deleteReview(element) {
     var reviewID = element.getAttribute("value");
     $.ajax({
@@ -99,14 +111,24 @@ function deleteReview(element) {
     });
 }
 
+
+/*
+    Displays the popup modal for adding a review
+*/
 function addReview() {
     document.getElementById("myModal").style.display = "block";
 }
 
+/*
+    Closes the popup modal for adding a review
+*/
 function closeReview() {
     document.getElementById("myModal").style.display = "none";
 }
 
+/*
+    Submits a review for a tutor based on inputted fields
+*/
 function submitReview() {
     var reviewString = document.getElementById("review").value;
     var studentID = localStorage.getItem("id");
@@ -129,12 +151,18 @@ function submitReview() {
     closeReview();
 }
 
+/*
+    Closes the modal if clicked outside of the area
+*/
 window.onclick = function(event) {
     if (event.target == document.getElementById("myModal")) {
         closeReview();
     }
 }
 
+/*
+    Changes the first name of the tutor
+*/
 function changeFirstName() {
     var firstname = document.getElementById("firstname").value;
     $.ajax({
@@ -152,6 +180,9 @@ function changeFirstName() {
     });
 }
 
+/*
+    Changes the last name of the tutor
+*/
 function changeLastName() {
     var lastname = document.getElementById("lastname").value;
     $.ajax({
@@ -169,6 +200,9 @@ function changeLastName() {
     });
 }
 
+/*
+    Changes the email of the tutor
+*/
 function changeEmail() {
     var email = document.getElementById("email").value;
     $.ajax({
@@ -186,6 +220,9 @@ function changeEmail() {
     });
 }
 
+/*
+    Changes the password of the tutor
+*/
 function changePassword() {
     var password = document.getElementById("password").value;
     $.ajax({
@@ -203,6 +240,9 @@ function changePassword() {
     });
 }
 
+/*
+    Sends a user to a page with the classes taught by a tutor
+*/
 function viewClasses() {
     window.location.href = "../Student/AllClasses.html?tutorID=" + tutorID;
 }

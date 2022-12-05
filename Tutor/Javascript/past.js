@@ -16,6 +16,9 @@ $(document).ready(function() {
     refreshClasses();
 });
 
+/*
+    Populates the navbar based on user type
+*/
 function populateNavbar() {
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
@@ -26,6 +29,9 @@ function populateNavbar() {
     }
 }
 
+/*
+    Displays all of the past classes for a tutor
+*/
 function refreshClasses() {
     document.getElementsByClassName("classDisplay")[0].innerHTML = "";
     $.ajax({

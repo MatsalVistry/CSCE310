@@ -1,8 +1,9 @@
 var tutorID;
 var userType;
 
-$(document).ready(function() {
-
+$(document).ready(function() 
+{
+    // Send user to home page if not logged in
     userType = localStorage.getItem("userType");
     if (userType == null) {
         window.location.href = "../Login/login.html";
@@ -15,6 +16,7 @@ $(document).ready(function() {
 
     refreshClasses();
 
+    // show add new class feature if user is a tutor
     if (userType == "t") {
         document.getElementById("addNewClass").style.display = "block";
     } else {
@@ -22,7 +24,11 @@ $(document).ready(function() {
     }
 });
 
-function populateNavbar() {
+/*
+    This function will load the appropriate navbar based on user type
+*/
+function populateNavbar() 
+{
     if (userType == "t") {
         $("#navbar").load("../Navbars/TutorNavbar.html");
     } else if (userType == "s") {
@@ -32,7 +38,11 @@ function populateNavbar() {
     }
 }
 
-function refreshClasses() {
+/*
+    This function displays all the classes that the user owns
+*/
+function refreshClasses() 
+{
     document.getElementsByClassName("classDisplay")[0].innerHTML = "";
     $.ajax({
         type: "GET",
@@ -41,17 +51,18 @@ function refreshClasses() {
             functionName: "getTutorClasses",
             tutorID: tutorID
         },
-        success: function(response) {
-
+        success: function(response) 
+        {
             var classes = JSON.parse(response);
             var display = document.getElementsByClassName("classDisplay")[0];
 
-            for (var i = 0; i < classes.length; i++) {
+            for (var i = 0; i < classes.length; i++) 
+            {
                 if (classes[i].status == 'C')
                     continue;
                 var classDiv = document.createElement("div");
+
                 classDiv.classList.add("box")
-                // classDiv.outerHTML += "<div style='position: absolute; left: 0px; width: 300px; border: 3px solid #73AD21; padding: 10px;'>";
                 classDiv.innerHTML += "<div class='cname' style='font-size: 24px; text-shadow: 2px 2px darkgrey;' value=" + classes[i].name + "> " + classes[i].name + "</div><br>";
 
                 classDiv.innerHTML += "<div class='cid' value=" + classes[i].id + "> ID: " + classes[i].id + "</div><br>";
@@ -67,7 +78,6 @@ function refreshClasses() {
                 classDiv.innerHTML += '<button class="finishClass" onclick="finishClass(this)" value=' + classes[i].id + '>END SESSION</button>';
 
                 classDiv.innerHTML += "<HR style='border: 1px solid #73AD21;'<br><br>";
-                // classDiv.outerHTML += "</div>";
 
                 display.appendChild(classDiv);
             }
@@ -76,31 +86,40 @@ function refreshClasses() {
     });
 }
 
+
+/*
+    Allows inputs of all characters and the use of the backspace and regular space and numbers
+*/
 function FilterInputName(event) {
-    // allows inputs of all characters and the use of the backspace and regular space and numbers
     var keyCode = ('which' in event) ? event.which : event.keyCode;
     isAlphabeticOrChars = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
     modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
     return !isAlphabeticOrChars || modifiers;
 }
 
+/*
+    allows inputs of all numbers and the use of the backspace 
+*/
 function FilterInputNums(event) {
-    // allows inputs of all numbers and the use of the backspace 
     var keyCode = ('which' in event) ? event.which : event.keyCode;
     isNumeric = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
     modifiers = (keyCode == 8);
     return !isNumeric || modifiers;
 }
 
+/*
+    allows inputs of all numbers, the . character, and the use of the backspace 
+*/
 function FilterInputTime(event) {
-    // allows inputs of all numbers, the . character, and the use of the backspace 
     var keyCode = ('which' in event) ? event.which : event.keyCode;
     isTime = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
     modifiers = (keyCode == 8 || keyCode == 190);
     return !isTime || modifiers;
 }
 
-
+/*
+    Deletes a class based on the ID
+*/
 function deleteClass(element) {
     var classID = element.value;
 
@@ -117,8 +136,11 @@ function deleteClass(element) {
     });
 }
 
-function editClass(element) {
-    // make id editClassModal visible and populate class editMaxCapacity, editName, editDate, editDuration with the values from the class
+/*
+    Edits the class based on inputted fields
+*/
+function editClass(element) 
+{
     var classID = element.value;
     var classDiv = element.parentElement;
     var maxCapacity = classDiv.getElementsByClassName("cmaxcapacity")[0].getAttribute("value");
@@ -152,10 +174,17 @@ function editClass(element) {
     document.getElementById("editClassModal").value = classID;
 }
 
-function addClass() {
+/*
+    Displays the add class modal
+*/
+function addClass() 
+{
     document.getElementById("myModal").style.display = "block";
 }
 
+/*
+    Edits the class in the database
+*/
 function submitEditClass() {
     var classID = document.getElementById("editClassModal").value;
     var maxCapacity = document.getElementById("editMaxCapacity").value;
@@ -184,6 +213,9 @@ function submitEditClass() {
     refreshClasses();
 }
 
+/*
+    Closes all of the modals
+*/
 function closeClass() {
     document.getElementById("myModal").style.display = "none";
     document.getElementById("maxCapacity").value = "";
@@ -198,7 +230,11 @@ function closeClass() {
     document.getElementById("editDuration").value = "";
 }
 
-function submitClass() {
+/*
+    Creates a new class based on inputted fields
+*/
+function submitClass() 
+{
     var maxCapacity = document.getElementById("maxCapacity").value;
     var name = document.getElementById("name").value;
     var date = document.getElementById("date").value;
@@ -250,6 +286,9 @@ function submitClass() {
     closeClass();
 }
 
+/*
+    Ends a class session in the database
+*/
 function finishClass(element) {
     var classID = element.value;
 
@@ -266,6 +305,9 @@ function finishClass(element) {
     });
 }
 
+/*
+    Closes modal if clicking out of it
+*/
 window.onclick = function(event) {
     if (event.target == document.getElementById("myModal")) {
         closeClass();
