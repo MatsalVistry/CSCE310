@@ -49,6 +49,7 @@ function refreshClasses() {
             for (var i = 0; i < classes.length; i++) {
 
                 var classDiv = document.createElement("div");
+                classDiv.classList.add('box')
                 // classDiv.outerHTML += "<div style='position: absolute; left: 0px; width: 300px; border: 3px solid #73AD21; padding: 10px;'>";
                 classDiv.innerHTML += "<div class='cname' style='font-size: 24px; text-shadow: 2px 2px darkgrey;' value=" + classes[i].name + "> " + classes[i].name + "</div><br>";
 
