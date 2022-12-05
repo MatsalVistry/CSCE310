@@ -89,6 +89,10 @@ body {
     cursor: pointer;
 }
 
+.isClickedTutor {
+    display: none;
+}
+
 .submitBtn {
     margin: auto;
     padding: 50px;
