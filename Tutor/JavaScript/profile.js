@@ -18,10 +18,12 @@ $(document).ready(function() {
     if (userType == "t") {
         document.getElementById("addReview").style.display = "none";
         document.getElementById("viewClasses").style.display = "none";
+        document.getElementById("changeInfo").style.display = "block";
 
     } else {
         document.getElementById("addReview").style.display = "block";
         document.getElementById("viewClasses").style.display = "block";
+        document.getElementById("changeInfo").style.display = "none";
     }
 });
 
@@ -142,6 +144,7 @@ function changeFirstName() {
         },
         success: function(response) {
             console.log(response);
+            refreshReviews();
         }
     });
 }
@@ -158,6 +161,7 @@ function changeLastName() {
         },
         success: function(response) {
             console.log(response);
+            refreshReviews();
         }
     });
 }
@@ -174,6 +178,7 @@ function changeEmail() {
         },
         success: function(response) {
             console.log(response);
+            refreshReviews();
         }
     });
 }
@@ -190,6 +195,7 @@ function changePassword() {
         },
         success: function(response) {
             console.log(response);
+            refreshReviews();
         }
     });
 }

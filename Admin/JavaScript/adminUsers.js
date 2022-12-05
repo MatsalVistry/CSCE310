@@ -51,7 +51,7 @@ function populateUsers() {
                     "Role: " + role + "<br>" +
                     "Email: " + email + "<br>" +
                     "Password: " + password + "<br>" +
-                    '<button class="deleteUser" onclick="deleteUser(this)" value=' + users[i].id + '>&times;</button>' +
+                    '<button class="deleteUser" onclick="deleteUser(this)" input='+role+' value=' + users[i].id + '>&times;</button>' +
                     '<button class="editUser" onclick="openModal2(this)" value=' + users[i].id + '>EDIT</button>' +
 
                     "</p>";
@@ -64,11 +64,14 @@ function populateUsers() {
 
 function deleteUser(element) {
     var id = element.value;
+    var role = element.getAttribute("input");
+
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
         data: {
             functionName: "deleteUser",
+            role: role,
             id: id
         },
         success: function(response) {

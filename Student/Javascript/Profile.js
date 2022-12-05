@@ -11,7 +11,34 @@ $(document).ready(function() {
 
     studentID = localStorage.getItem("id");
 
+    populateStudentInfo();
 });
+
+function populateStudentInfo()
+{
+    $.ajax({
+        type: "GET",
+        url: "../PHP/Users.php",
+        data: {
+            functionName: "getStudentInformation",
+            studentID: studentID
+        },
+        success: function(response) 
+        {
+            var student = JSON.parse(response);
+
+            var first_name = student.first_name;
+            var last_name = student.last_name;
+            var email = student.email;
+
+            var str = "<p>First Name: " + first_name + "</p>";
+            str += "<p>Last Name: " + last_name + "</p>";
+            str += "<p>Email: " + email + "</p>";
+
+            document.getElementById("studentInfo").innerHTML = str;
+        }
+    });
+}
 
 function populateNavbar() {
     if (userType == "t") {
@@ -34,9 +61,12 @@ function changeFirstName() {
             first_name: firstname,
         },
         success: function(response) {
+            populateStudentInfo();
             console.log(response);
         }
     });
+
+
 }
 
 function changeLastName() {
@@ -50,6 +80,7 @@ function changeLastName() {
             last_name: lastname,
         },
         success: function(response) {
+            populateStudentInfo();
             console.log(response);
         }
     });
@@ -66,6 +97,7 @@ function changeEmail() {
             email: email,
         },
         success: function(response) {
+            populateStudentInfo();
             console.log(response);
         }
     });
@@ -82,6 +114,7 @@ function changePassword() {
             password: password
         },
         success: function(response) {
+            populateStudentInfo();
             console.log(response);
         }
     });

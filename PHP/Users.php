@@ -86,6 +86,30 @@
             
             echo json_encode($user);
         }
+        else if($_GET['functionName'] == "getStudentInformation")
+        {
+            $statement = 
+                "SELECT
+                u.User_First_Name as student_first_name,
+                u.User_Last_Name as student_last_name,
+                u.User_Email as student_email
+                FROM users as u
+                WHERE u.User_ID=".$_GET['studentID'].";";
+
+            // echo $statement;
+
+            $result = mysqli_query($conn, $statement);
+            
+            $user = array();
+
+            $row = mysqli_fetch_array($result);
+        
+            $user['first_name'] = $row['student_first_name'];
+            $user['last_name'] = $row['student_last_name'];
+            $user['email'] = $row['student_email'];
+
+            echo json_encode($user);
+        }
         else if($_GET['functionName'] == "verifyLogin")
         {
             $statement = "SELECT * FROM users WHERE User_Email='".$_GET['email']."' AND User_Password='".$_GET['password']."';";
@@ -261,23 +285,53 @@
     {
         if($_POST['functionName'] == "deleteUser")
         {
-            $statement = "DELETE FROM reviews WHERE Student_ID=".$_POST['id'].";";
-            $result = mysqli_query($conn, $statement);
+            $isStudent = $_POST['role'] == "s";
 
-            $statement = "SELECT * FROM enrollments WHERE Student_ID=".$_POST['id'].";";
-            $result = mysqli_query($conn, $statement);
-
-            while($row = mysqli_fetch_array($result))
+            if($isStudent)
             {
-                $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$row['Class_ID'].";";
+                $statement = "DELETE FROM reviews WHERE Student_ID=".$_POST['id'].";";
+                $result = mysqli_query($conn, $statement);
+    
+                $statement = "SELECT * FROM enrollments WHERE Student_ID=".$_POST['id'].";";
+                $result = mysqli_query($conn, $statement);
+    
+                while($row = mysqli_fetch_array($result))
+                {
+                    $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$row['Class_ID'].";";
+                    $result = mysqli_query($conn, $statement);
+                }
+    
+                $statement = "DELETE FROM enrollments WHERE Student_ID=".$_POST['id'].";";
+                $result = mysqli_query($conn, $statement);
+    
+                $statement = "DELETE FROM users WHERE User_ID=".$_POST['id'].";";
+                $result = mysqli_query($conn, $statement);
+            }
+            else
+            {
+                // Delete all classes that the tutor is teaching, and all enrollments for those classes
+                $statement = "SELECT * FROM classes WHERE Tutor_ID=".$_POST['id'].";";
+                $result = mysqli_query($conn, $statement);
+
+                while($row = mysqli_fetch_array($result))
+                {
+                    $statement = "DELETE FROM enrollments WHERE Class_ID=".$row['Class_ID'].";";
+                    $result = mysqli_query($conn, $statement);
+                }
+
+                $statement = "DELETE FROM classes WHERE Tutor_ID=".$_POST['id'].";";
+                $result = mysqli_query($conn, $statement);
+
+                // Delete all reviews that the tutor has received
+                $statement = "DELETE FROM reviews WHERE Tutor_ID=".$_POST['id'].";";
+                $result = mysqli_query($conn, $statement);
+
+                // Delete the tutor
+                $statement = "DELETE FROM users WHERE User_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
             }
 
-            $statement = "DELETE FROM enrollments WHERE Student_ID=".$_POST['id'].";";
-            $result = mysqli_query($conn, $statement);
-
-            $statement = "DELETE FROM users WHERE User_ID=".$_POST['id'].";";
-            $result = mysqli_query($conn, $statement);
+            
         }
         else if($_POST['functionName'] == "addUser")
         {
