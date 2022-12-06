@@ -25,7 +25,7 @@ body {
 }
 
 .box {
-    text-align: center;
+    /* text-align: center; */
     font-size: 18px; 
     padding: 10px;
     width: 800px;
@@ -242,8 +242,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
+
 }
 
 .allclass{
@@ -267,8 +266,7 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
-    margin-left:auto;
-    margin-right:auto;
+
 }
 
 .finishClass {
@@ -282,9 +280,8 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 30px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-top: 15px;
+
 }
 
 .finishClass:hover {
