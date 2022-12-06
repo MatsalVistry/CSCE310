@@ -52,7 +52,7 @@ body {
     /* Enable scroll if needed */
     /* background-color: rgb(0, 0, 0); */
     /* Fallback color */
-    background: var(--backgroundLinear);
+    background: lightgray;
     /* Black w/ opacity */
 }
 
@@ -60,11 +60,11 @@ body {
 /* Modal Content/Box */
 
 .modal-content {
-    background-color: var(--backgroundScreen);
+    background-color: white;
     margin: 15% auto;
     /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #aaa;
+    border: 1px solid black;
     width: 40%;
     /* Could be more or less, depending on screen size */
 }
@@ -93,12 +93,12 @@ body {
     font-size: 12px;
     border: none;
     background-color: white;
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: black;
     border-radius: 6px;
     background-position: 10px 10px;
     cursor: pointer;
     margin-top: 30px;
+    border: 1px solid black;
 }
 
 
@@ -133,7 +133,7 @@ body {
     display: block;
     padding: 15px 30px;
     border: none;
-    background-color: var(--backgroundButtons);
+    background-color: black;
     box-shadow: 3px 3px grey;
     color: white;
     border-radius: 6px;

@@ -303,7 +303,7 @@ function finishClass(element) {
     Closes modal if clicking out of it
 */
 window.onclick = function(event) {
-    if (event.target == document.getElementById("myModal")) {
+    if (event.target == document.getElementById("myModal") || event.target == document.getElementById("editClassModal")) {
         closeClass();
     }
 }
