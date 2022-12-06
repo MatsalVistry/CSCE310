@@ -108,7 +108,7 @@ body {
     display: block;
     border: none;
     background-color: rgb(2, 78, 2);
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    box-shadow: 3px 3px grey;
     color: white;
     cursor: pointer;
     border-radius: 5px;

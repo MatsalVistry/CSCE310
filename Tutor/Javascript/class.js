@@ -43,7 +43,7 @@ function populateNavbar()
 */
 function refreshClasses() 
 {
-    document.getElementsByClassName("classDisplay")[0].innerHTML = "";
+    document.getElementById("classDisplay").innerHTML = "";
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -205,9 +205,6 @@ function submitEditClass() {
             closeClass();
         }
     });
-
-    closeClass();
-    refreshClasses();
 }
 
 /*
