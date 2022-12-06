@@ -52,7 +52,7 @@ function tutorClick()
                 var reviewDiv = document.createElement("div");
                 reviewDiv.className = "review";
 
-                reviewDiv.innerHTML += "<p>Student Name: " + studentName + "<br>" + "Review: " + reviewString + "</p>";
+                reviewDiv.innerHTML += "<p>Student Name: " + studentName + "<br><br>" + "Review: " + reviewString + "</p>";
                 reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
                 allInfo.appendChild(reviewDiv);
             }

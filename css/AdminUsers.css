@@ -50,6 +50,10 @@
     justify-content: space-between;
     row-gap: 10px
 }
+.userslist{
+    text-align: center;
+    line-height:1.2;
+}
 
 .box {
     font-size: 18px; 
@@ -84,7 +88,9 @@ body {
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .inputTxt {
@@ -118,6 +124,10 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+
+
 }
 
 .editUser:hover {

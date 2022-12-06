@@ -52,7 +52,7 @@ function populateUsers() {
 
                 var usersDiv = document.createElement("div");
                 usersDiv.classList.add("box")
-                usersDiv.innerHTML += "<p>User ID: " + id + "<br>" +
+                usersDiv.innerHTML += "<p class='userslist'>User ID: " + id + "<br>" +
                     "First Name: " + first_name + "<br>" +
                     "Last Name: " + last_name + "<br>" +
                     "Role: " + role + "<br>" +
