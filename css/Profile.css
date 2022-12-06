@@ -187,7 +187,7 @@ body {
     width: fit-content;
     height: 200px;
     background-color: white;
-    box-shadow: 2px 2px var(--backgroundButtonsShadow);
+    box-shadow: 2px 2px grey;
     border-radius: 5px;
 }
 
@@ -200,6 +200,6 @@ body {
     width: fit-content;
     height: fit-content;
     background-color: white;
-    box-shadow: 2px 2px var(--backgroundButtonsShadow);
+    box-shadow: 2px 2px grey;
     border-radius: 5px;
 }
