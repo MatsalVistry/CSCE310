@@ -126,10 +126,11 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin-top: 30px;
+    background-color: white;
 }
 
 .submitBtn:hover {
-    background-color: var(--backgroundButtonsShadow);
+    background-color: grey;
     transform: translateY(-2px);
 }
 

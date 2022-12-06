@@ -172,6 +172,7 @@
                 $class['tutor_fname'] = $row['User_First_Name'];
                 $class['tutor_lname'] = $row['User_Last_Name'];
                 $class['tutor_id'] = $row['User_ID'];
+                $class['class_id'] = $row['Class_ID'];
 
                 array_push($classes, $class);
             }

@@ -32,7 +32,7 @@ function populateNavbar() {
     Displays the users currently enrolled classes
 */
 function loadClasses() {
-    document.getElementsByClassName("studentClasses")[0] = "";
+    $("#myClasses").html("");
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -42,7 +42,7 @@ function loadClasses() {
         },
         success: function(response) {
             studentClasses = JSON.parse(response);
-            var myClasses = document.getElementsByClassName("myClasses")[0];
+            var myClasses = document.getElementById("myClasses");
             for (var i = 0; i < studentClasses.length; i++) {
                 var cc = studentClasses[i]["current_capacity"];
                 var mm = studentClasses[i]["max_capacity"];
@@ -53,6 +53,7 @@ function loadClasses() {
                 var tutor_fname = studentClasses[i]["tutor_fname"];
                 var tutor_lname = studentClasses[i]["tutor_lname"];
                 var tutorID = studentClasses[i]["tutor_id"];
+                var classID = studentClasses[i]["class_id"];
 
                 if(status=='C')
                     continue;
@@ -68,6 +69,8 @@ function loadClasses() {
                     "Max Capacity: " + mm + "<br><br>" +
                     "Status: Not Started<br></p>"; 
 
+                classesDiv.innerHTML += '<button class="cardButton" onclick="unenroll(this)" value=' +classID + '>Unenroll</button>';
+
                 classesDiv.innerHTML += "<button class='cardButton' onclick=goToTutor("+tutorID+")>Tutor Profile</button>";
 
                 myClasses.appendChild(classesDiv);
@@ -81,4 +84,24 @@ function loadClasses() {
 */
 function goToTutor(id){
     window.location.href = "../Tutor/TutorProfile.html?tutorID=" + id;
+}
+
+/*
+    Unenrolls the student from the specified class
+*/
+function unenroll(element) {
+    console.log(element.value);
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Classes.php",
+        data: {
+            functionName: "unenrollFromClass",
+            studentID: localStorage.getItem("id"),
+            classID: element.value
+        },
+        success: function(response) {
+            console.log(response);
+            loadClasses();
+        }
+    });
 }
