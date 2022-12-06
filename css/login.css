@@ -14,6 +14,11 @@ body {
     background-color: white;
     font-family: "lato", sans-serif;
     background-color: lightgrey;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .form {
