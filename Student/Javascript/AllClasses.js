@@ -74,6 +74,8 @@ function populateClasses() {
                             
                         var classDiv = document.createElement("div");
                         classDiv.classList.add("box");
+                        classDiv.innerHTML += "<div class='cname' style='font-size: 24px; text-shadow: 1px 1px darkgrey;' value=" + classes[i].name + "> " + classes[i].name + "</div><br>";
+
                         classDiv.innerHTML += "<div class='ctutorname' value=" + classes[i].tutor_name + "> Tutor Name: " + classes[i].tutor_name + "</div><br>";
                         classDiv.innerHTML += "<div class='cmaxcapacity' value=" + classes[i].max_capacity + "> Max Capacity: " + classes[i].max_capacity + "</div><br>";
                         classDiv.innerHTML += "<div class='ccurrentcapacity' value=" + classes[i].current_capacity + "> Current Capacity: " + classes[i].current_capacity + "</div><br>";

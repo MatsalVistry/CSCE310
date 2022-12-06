@@ -63,16 +63,15 @@ function refreshClasses()
                 var classDiv = document.createElement("div");
 
                 classDiv.classList.add("box")
-                classDiv.innerHTML += "<div class='cname' style='font-size: 24px; text-shadow: 2px 2px darkgrey;' value=" + classes[i].name + "> " + classes[i].name + "</div><br>";
+                classDiv.innerHTML += "<div class='cname' style='font-size: 24px; text-shadow: 1px 1px darkgrey;' value=" + classes[i].name + "> " + classes[i].name + "</div><br>";
 
                 classDiv.innerHTML += "<div class='cmaxcapacity' value=" + classes[i].max_capacity + "> Max Capacity: " + classes[i].max_capacity + "</div><br>";
                 classDiv.innerHTML += "<div class='ccurrentcapacity' value=" + classes[i].current_capacity + "> Current Capacity: " + classes[i].current_capacity + "</div><br>";
-                classDiv.innerHTML += "<div class='cname' value=" + classes[i].name + "> Name: " + classes[i].name + "</div><br>";
                 classDiv.innerHTML += "<div class='cdate' value=" + classes[i].date + "> Date: " + classes[i].date + "</div><br>";
                 classDiv.innerHTML += "<div class='cduration' value=" + classes[i].duration + "> Duration: " + classes[i].duration + " Hours</div><br>";
                 classDiv.innerHTML += "<div class='cstatus' value=" + classes[i].status + "> Status: Not Started</div>";
-                classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>EDIT</button>';
-                classDiv.innerHTML += '<button class="finishClass" onclick="finishClass(this)" value=' + classes[i].id + '>END SESSION</button>';
+                classDiv.innerHTML += '<button class="editClass" onclick="editClass(this)" value=' + classes[i].id + '>Edit</button>';
+                classDiv.innerHTML += '<button class="finishClass" onclick="finishClass(this)" value=' + classes[i].id + '>End Session</button>';
                 classDiv.innerHTML += '<button class="deleteClass" onclick="deleteClass(this)" value=' + classes[i].id + '>Delete</button>';
 
                 // classDiv.innerHTML += "<HR style='border: 1px solid #73AD21;'<br><br>";

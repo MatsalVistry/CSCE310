@@ -1,5 +1,5 @@
 :root {
-    --fontFam: "Georgia-bold";
+    --fontFam: "Roboto", sans-serif;
     --backgroundScreen: lightgrey;
     --backgroundButtons: #a3c585;
     --backgroundButtonsShadow: black;

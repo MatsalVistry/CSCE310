@@ -59,8 +59,10 @@ function loadClasses() {
 
                 var classesDiv = document.createElement("div");
                 classesDiv.className = "class";
+                classesDiv.innerHTML += "<div class='cname' style='font-size: 24px; text-shadow: 1px 1px darkgrey;' value=" + name + "> " + name + "</div>";
+
                 classesDiv.innerHTML += 
-                    "<p>Class Name: " + name + "<br><br>" +
+                    "<p>" +
                     "Tutor: " + tutor_fname + " " + tutor_lname + "<br><br>" +
                     "Date: " + date + "<br><br>" +
                     "Duration: " + duration + " Hours<br><br>" +

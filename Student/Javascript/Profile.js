@@ -34,7 +34,8 @@ function populateStudentInfo() {
             var last_name = student.last_name;
             var email = student.email;
 
-            var str = "<p>First Name: " + first_name + "</p>";
+            var str = "<h2> Student Profile </h2>";
+            str += "<p>First Name: " + first_name + "</p>";
             str += "<p>Last Name: " + last_name + "</p>";
             str += "<p>Email: " + email + "</p>";
 
