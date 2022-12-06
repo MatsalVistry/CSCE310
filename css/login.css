@@ -1,9 +1,9 @@
 :root {
     --fontFam: "Georgia-bold";
-    --backgroundScreen: lightgrey;
-    --backgroundButtons: #a3c585;
-    --backgroundButtonsShadow: #87ab69;
-    --backgroundLinear: linear-gradient(.25turn, #a6cb83, 70%, #718f58);
+    --backgroundScreen: grey;
+    --backgroundButtons: grey;
+    --backgroundButtonsShadow: black;
+    --backgroundLinear: white;
     --backgroundInput: #bde39d;
 }
 
@@ -13,6 +13,7 @@ body {
     padding: 0;
     background-color: white;
     font-family: "lato", sans-serif;
+    background-color: lightgrey;
 }
 
 .form {
@@ -26,12 +27,11 @@ body {
 .inputTxt {
     font-family: Arial Bold;
     padding: 5px 4px;
-    font-size: 12px;
-    border: none;
+    font-size: 20px;
+    border: 2px solid grey;
     background-color: white;
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
     color: black;
-    border-radius: 6px;
+    border-radius: 3px;
     background-position: 10px 10px;
     cursor: pointer;
     margin-top: 30px;
@@ -42,6 +42,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    border-radius: 5px;
 }
 
 .title {
@@ -53,6 +54,7 @@ body {
     height: 45px;
     width: 85%;
     margin-bottom: 10px;
+    padding: 10px;
     /* background-color: var(--backgroundButtons); */
 }
 
@@ -65,7 +67,7 @@ body {
     padding: -18px 3px;
     background-color: clear;
     color: black;
-    font-size: 16px;
+    font-size: 20px;
     transition: 0.5s;
     z-index: 0;
     background-color: clear;
@@ -92,8 +94,7 @@ body {
     /* margin-left: auto; */
     padding: 15px 30px;
     border: none;
-    background-color: var(--backgroundInput);
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    background-color: black;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -106,14 +107,6 @@ body {
     transform: translateY(-2px);
 }
 
-.input:focus+.label {
-    top: -7px;
-    left: 3px;
-    z-index: 10;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--backgroundButtons);
-}
 
 .buttons {
     display: flex;
