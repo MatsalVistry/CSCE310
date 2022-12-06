@@ -2,7 +2,7 @@
     --fontFam: "Georgia-bold";
     --backgroundScreen: lightgrey;
     --backgroundButtons: #a3c585;
-    --backgroundButtonsShadow: #87ab69;
+    --backgroundButtonsShadow: black;
     --backgroundBoxReview: #b9d4a4;
 }
 
@@ -14,17 +14,20 @@ body {
     font-family: var(--fontFam);
     margin-top: 50px;
     font-size: 18px;
+
 }
 
 .reviews {
     margin-left:20px;
     display: flex;
     flex-direction: column;
-    height: 300px;
+    height: 600px;
     overflow: scroll;
-    width: 300px;
+    width: 400px;
     border: 1px solid black;
     background-color: white;
+    border-radius: 10px;
+    padding: 10px;
   }
 
 .review {
@@ -117,7 +120,7 @@ body {
     padding: 15px 30px;
     border: none;
     font-family: var(--fontFam);
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    box-shadow: 2px 2px var(--backgroundButtonsShadow);
     /* color: var(--backgroundScreen); */
     border-radius: 6px;
     cursor: pointer;
@@ -139,11 +142,9 @@ body {
     width: fit-content;
     height: 200px;
     background-color: white;
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    box-shadow: 2px 2px var(--backgroundButtonsShadow);
     border-radius: 5px;
-
 }
-
 
 .deleteReview {
     display: block;
@@ -162,3 +163,64 @@ body {
     opacity: 0.8;
     transform: translateY(-2px);
 }
+
+/* make it a card */
+.tutorInfo
+{
+    margin-left: 20px;
+    padding: 20px;
+    margin: 20px;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    box-shadow: 2px 2px var(--backgroundButtonsShadow);
+    border-radius: 5px;
+}
+
+#sideVertical
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sideHorizontal
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.cardButton {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: color 0.5s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+#showChange
+{
+    /* center align everything */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: fit-content;
+}
+
+  .cardButton:hover{
+    background-color: grey;
+  }

@@ -45,6 +45,7 @@ function loadClasses() {
             var myClasses = document.getElementsByClassName("myClasses")[0];
             for (var i = 0; i < studentClasses.length; i++) {
                 var cc = studentClasses[i]["current_capacity"];
+                var mm = studentClasses[i]["max_capacity"];
                 var date = studentClasses[i]["date"];
                 var duration = studentClasses[i]["duration"];
                 var name = studentClasses[i]["name"];
@@ -58,14 +59,14 @@ function loadClasses() {
 
                 var classesDiv = document.createElement("div");
                 classesDiv.className = "class";
-                classesDiv.innerHTML += "<p>Class Name: " + name + "<br>" +
-                    "Date: " + date + "</br>" +
-                    "Duration: " + duration + "</br>" +
-                    "Current Capacity: " + cc + "</br>" +
-                    "Status: " + status + "</br>" +
-                    "Tutor ID: " + tutorID + "</br>" +
-                    "Tutor First Name: " + tutor_fname + "</br>" +
-                    "Tutor Last Name: " + tutor_lname;
+                classesDiv.innerHTML += 
+                    "<p>Class Name: " + name + "<br><br>" +
+                    "Tutor: " + tutor_fname + " " + tutor_lname + "<br><br>" +
+                    "Date: " + date + "<br><br>" +
+                    "Duration: " + duration + " Hours<br><br>" +
+                    "Current Capacity: " + cc + "<br><br>" +
+                    "Max Capacity: " + mm + "<br><br>" +
+                    "Status: Not Started<br></p>"; 
 
                 classesDiv.innerHTML += "<button class='cardButton' onclick=goToTutor("+tutorID+")>Tutor Profile</button>";
 

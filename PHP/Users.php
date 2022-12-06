@@ -164,6 +164,7 @@
                 $class = array();
                 
                 $class['current_capacity'] = $row['Class_CurrentCapacity'];
+                $class['max_capacity'] = $row['Class_MaxCapacity'];
                 $class['name'] =$row['Class_Name'];
                 $class['date'] = $row['Class_Date'];
                 $class['duration'] = $row['Class_Duration'];

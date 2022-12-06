@@ -19,14 +19,35 @@
     <div id="navbar"></div>
 
 
-    <div class="tutorInfo">
+    <div id="sideHorizontal">
+        <div id="sideVertical">
+            <div class="tutorInfo" id="tutorInfo"></div>
+            <div class="update" id="showChange">
+                <h2>Update User Information</h2>
+                <label>First Name: </label>
+                <input type="text" id="firstname" name="firstname">
+                <br>
+            
+                <label>Last Name: </label>
+                <input type="text" id="lastname" name="lastname">
+                <br>
 
+                <label>Email: </label>
+                <input type="text" id="email" name="email">
+                <br>
+
+                <label>Password: </label>
+                <input type="text" id="password" name="password">
+                <br><br>
+
+                <button type="submit" class="cardButton" onclick="saveChanges()">Save Modified</button><br/>  
+            </div>
+            <button class="submitBtn" id="addReview" onclick="addReview()">Add Review</button>
+            <button class="submitBtn" id="viewClasses" onclick="viewClasses()">View Classes</button>
+        </div>
+        <div class="reviews" id="reviews"></div>
     </div>
-    <div class="reviews"></div>
-    <!-- add review button that brings a popup modal -->
-    <button class="submitBtn" id="addReview" onclick="addReview()">Add Review</button>
 
-    <button class="submitBtn" id="viewClasses" onclick="viewClasses()">View Classes</button>
 
 
     <div id="myModal" class="modal">
@@ -40,25 +61,7 @@
         </div>
 
     </div>
-    <div class="update" id="showChange">
-        <h2>Update user information:</h2>
-        <label>First Name: </label>
-        <input type="text" id="firstname" name="firstname">
-        <button type="submit" onclick="changeFirstName()">Update</button><br/>
-    
-        <label>Last Name: </label>
-        <input type="text" id="lastname" name="lastname">
-        <button type="submit" onclick="changeLastName()">Update</button><br/>
-    
-        <label>Email: </label>
-        <input type="text" id="email" name="email">
-        <button type="submit" onclick="changeEmail()">Update</button><br/>
-    
-        <label>Password: </label>
-        <input type="text" id="password" name="password">
-        <button type="submit" onclick="changePassword()">Update</button><br/>  
 
-    </div>
 
 
     </div>

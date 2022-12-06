@@ -46,7 +46,8 @@ function populateNavbar() {
     Displays all of the reviews for a given tutor
 */
 function refreshReviews() {
-    document.getElementsByClassName("tutorInfo")[0] = "";
+    $("#tutorInfo").html("");
+    $("#reviews").html("");
     $.ajax({
         type: "GET",
         url: "../PHP/Users.php",
@@ -68,10 +69,12 @@ function refreshReviews() {
             var reviews = tutor.reviews;
 
 
-            var tutorInfo = document.getElementsByClassName("tutorInfo")[0];
-            tutorInfo.innerHTML = "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email + "<br><br><br>" + "Reviews: ";
+            var tutorInfo = document.getElementById("tutorInfo");
+            tutorInfo.innerHTML += "<h2>User Profile</h2> ";
+            tutorInfo.innerHTML += "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email;
 
-            var allReviews = document.getElementsByClassName("reviews")[0];
+            var allReviews = document.getElementById("reviews");
+            allReviews.innerHTML = "<h2>Reviews: </h2><br><br>";
             for (var i = 0; i < reviews.length; i++) {
                 var review = reviews[i];
                 var reviewID = review.id;
@@ -168,6 +171,7 @@ function changeFirstName() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changeFirstName",
             studentID: localStorage.getItem("id"),
@@ -175,7 +179,6 @@ function changeFirstName() {
         },
         success: function(response) {
             console.log(response);
-            refreshReviews();
         }
     });
 }
@@ -188,6 +191,7 @@ function changeLastName() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changeLastName",
             studentID: localStorage.getItem("id"),
@@ -195,7 +199,6 @@ function changeLastName() {
         },
         success: function(response) {
             console.log(response);
-            refreshReviews();
         }
     });
 }
@@ -208,6 +211,7 @@ function changeEmail() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changeEmail",
             studentID: localStorage.getItem("id"),
@@ -215,7 +219,6 @@ function changeEmail() {
         },
         success: function(response) {
             console.log(response);
-            refreshReviews();
         }
     });
 }
@@ -228,6 +231,7 @@ function changePassword() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changePassword",
             studentID: localStorage.getItem("id"),
@@ -235,7 +239,6 @@ function changePassword() {
         },
         success: function(response) {
             console.log(response);
-            refreshReviews();
         }
     });
 }
@@ -245,4 +248,32 @@ function changePassword() {
 */
 function viewClasses() {
     window.location.href = "../Student/AllClasses.html?tutorID=" + tutorID;
+}
+
+function saveChanges() 
+{
+    if(document.getElementById("firstname").value != "")
+    {
+        changeFirstName();
+    }
+    if(document.getElementById("lastname").value != "")
+    {
+        changeLastName();
+    }
+    if(document.getElementById("email").value != "")
+    {
+        changeEmail();
+    }
+    if(document.getElementById("password").value != "")
+    {
+        changePassword();
+    }
+
+    document.getElementById("firstname").value = "";
+    document.getElementById("lastname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    refreshReviews();
+
+
 }
