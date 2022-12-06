@@ -12,7 +12,8 @@
 
 <body>
     <div id="navbar"></div>
-    <button class="add" id="addNewClass" onclick="addClass()">+</button>
+    <br><br>
+    <button class="add" id="addNewClass" onclick="addClass()">Add Class</button>
     <div class="classDisplay"></div>
 
     
@@ -36,31 +37,6 @@
             <button class="submitBtn" onclick="submitClass()">Submit</button>
         </div>
     </div>
-    <!-- <script type="text/javascript">
-        function FilterInputName(event) {
-            // allows inputs of all characters and the use of the backspace and regular space and numbers
-            var keyCode = ('which' in event) ? event.which : event.keyCode;
-            isAlphabeticOrChars = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
-            modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
-            return !isAlphabeticOrChars || modifiers;
-        }
-
-        function FilterInputNums(event) {
-            // allows inputs of all numbers and the use of the backspace 
-            var keyCode = ('which' in event) ? event.which : event.keyCode;
-            isNumeric = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
-            modifiers = (keyCode == 8);
-            return !isNumeric || modifiers;
-        }
-
-        function FilterInputTime(event) {
-            // allows inputs of all numbers, the . character, and the use of the backspace 
-            var keyCode = ('which' in event) ? event.which : event.keyCode;
-            isTime = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
-            modifiers = (keyCode == 8 || keyCode == 190);
-            return !isTime || modifiers;
-        }
-    </script> -->
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
