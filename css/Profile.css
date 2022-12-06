@@ -140,3 +140,65 @@ body {
     opacity: 0.8;
     transform: translateY(-2px);
 }
+
+#sideVertical
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardButton {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: color 0.5s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+#showChange
+{
+    /* center align everything */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: fit-content;
+}
+
+  .cardButton:hover{
+    background-color: grey;
+  }
+
+  .update {
+    padding: 20px;
+    margin: 20px;
+    width: fit-content;
+    height: 200px;
+    background-color: white;
+    box-shadow: 2px 2px var(--backgroundButtonsShadow);
+    border-radius: 5px;
+}
+
+/* make it a card */
+.studentInfo
+{
+    margin-left: 20px;
+    padding: 20px;
+    margin: 20px;
+    width: fit-content;
+    height: fit-content;
+    background-color: white;
+    box-shadow: 2px 2px var(--backgroundButtonsShadow);
+    border-radius: 5px;
+}

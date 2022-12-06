@@ -12,12 +12,9 @@ $(document).ready(function() {
     studentID = localStorage.getItem("id");
 
     populateStudentInfo();
-});
-
-
-function clickUpdateButton() {
     document.getElementById("isClicked").style.display = 'block';
-}
+
+});
 
 /*
     Displays the student's current profile information
@@ -69,6 +66,7 @@ function changeFirstName() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changeFirstName",
             studentID: localStorage.getItem("id"),
@@ -91,6 +89,7 @@ function changeLastName() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changeLastName",
             studentID: localStorage.getItem("id"),
@@ -111,6 +110,7 @@ function changeEmail() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changeEmail",
             studentID: localStorage.getItem("id"),
@@ -131,6 +131,7 @@ function changePassword() {
     $.ajax({
         type: "POST",
         url: "../PHP/Users.php",
+        async: false,
         data: {
             functionName: "changePassword",
             studentID: localStorage.getItem("id"),
@@ -141,4 +142,33 @@ function changePassword() {
             console.log(response);
         }
     });
+}
+
+/*
+    Decides which fields were updated and sends the appropriate requests
+*/
+function saveChanges() 
+{
+    if(document.getElementById("firstname").value != "")
+    {
+        changeFirstName();
+    }
+    if(document.getElementById("lastname").value != "")
+    {
+        changeLastName();
+    }
+    if(document.getElementById("email").value != "")
+    {
+        changeEmail();
+    }
+    if(document.getElementById("password").value != "")
+    {
+        changePassword();
+    }
+
+    document.getElementById("firstname").value = "";
+    document.getElementById("lastname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+    refreshReviews();
 }

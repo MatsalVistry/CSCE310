@@ -250,6 +250,9 @@ function viewClasses() {
     window.location.href = "../Student/AllClasses.html?tutorID=" + tutorID;
 }
 
+/*
+    Decides which fields were updated and sends the appropriate requests
+*/
 function saveChanges() 
 {
     if(document.getElementById("firstname").value != "")
@@ -274,6 +277,4 @@ function saveChanges()
     document.getElementById("email").value = "";
     document.getElementById("password").value = "";
     refreshReviews();
-
-
 }
