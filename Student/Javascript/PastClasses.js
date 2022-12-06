@@ -51,6 +51,7 @@ function loadClasses() {
                 var status = studentClasses[i]["status"];
                 var tutor_fname = studentClasses[i]["tutor_fname"];
                 var tutor_lname = studentClasses[i]["tutor_lname"];
+                var tutorID = studentClasses[i]["tutor_id"];
 
                 if(status!='C')
                     continue;
@@ -62,6 +63,7 @@ function loadClasses() {
                     "Duration: " + duration + "</br>" +
                     "Current Capacity: " + cc + "</br>" +
                     "Status: " + status + "</br>" +
+                    "Tutor ID: " + tutorID + "</br>" +
                     "Tutor First Name: " + tutor_fname + "</br>" +
                     "Tutor Last Name: " + tutor_lname + "</br>";
                 myClasses.appendChild(classesDiv);

@@ -143,7 +143,8 @@
             $statement = "SELECT 
             c.*,
             u2.User_First_Name,
-            u2.User_Last_Name
+            u2.User_Last_Name,
+            u2.User_ID
             FROM 
             enrollments as e
             INNER JOIN users as u
@@ -169,6 +170,7 @@
                 $class['status'] = $row['Class_Status'];
                 $class['tutor_fname'] = $row['User_First_Name'];
                 $class['tutor_lname'] = $row['User_Last_Name'];
+                $class['tutor_id'] = $row['User_ID'];
 
                 array_push($classes, $class);
             }
