@@ -125,6 +125,7 @@ body {
 .add:hover
 {
     opacity: 0.8;
+    transform: translateY(-2px);
 }
 
 .submitBtn {
