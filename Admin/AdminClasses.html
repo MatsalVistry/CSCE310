@@ -13,25 +13,22 @@
 <body>
     <div id="navbar"></div>
     <br><br>
-    <button class="submitBtn1" id="addNewClass" onclick="addClass()">+</button>
-
-    <select class="inputExp" id="cid">
-
-    </select>
-
-    <select class="inputExp" id="sid">
-
-    </select>
+    <button class="add" id="addNewClass" onclick="addClass()">Add Class</button>
 
 
-    <!-- <input class="inputExp" id="cid" type="text" placeholder="Enter Class ID">
-    <input class="inputExp" id="sid" type="text" placeholder="Enter Student ID"> -->
-    <select class="inputExp" id="expType">
-        <option value="Enroll">Enroll</option>
-        <option value="Unenroll">Unenroll</option>
-    </select>
+    <div class="expHolder">
+        <select class="inputExp" id="cid"></select>
+        <select class="inputExp" id="sid"></select>
+
+        <select class="inputExp" id="expType">
+            <option value="Enroll">Enroll</option>
+            <option value="Unenroll">Unenroll</option>
+        </select>
+
+        <button class="submitBtn" onclick="modifyExp()">Change Enrollment</button>
+
+    </div>
     </br>
-    <button class="submitBtn" onclick="modifyExp()">Change Enrollment</button>
     <div class="classDisplay" id="classDisplay"></div>
 
     <br><br><br><br>
@@ -62,29 +59,6 @@
             <button class="submitBtn" onclick="submitClass()">Submit</button>
         </div>
     </div>
-    <!-- <script type="text/javascript">
-        function FilterInputName(event) {
-            // allows inputs of all characters and the use of the backspace and regular space and numbers
-            var keyCode = ('which' in event) ? event.which : event.keyCode;
-            isAlphabeticOrChars = (keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105);
-            modifiers = (event.altKey || event.ctrlKey || event.shiftKey || event.spaceKey);
-            return !isAlphabeticOrChars || modifiers;
-        }
-        function FilterInputNums(event) {
-            // allows inputs of all numbers and the use of the backspace 
-            var keyCode = ('which' in event) ? event.which : event.keyCode;
-            isNumeric = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
-            modifiers = (keyCode == 8);
-            return !isNumeric || modifiers;
-        }
-        function FilterInputTime(event) {
-            // allows inputs of all numbers, the . character, and the use of the backspace 
-            var keyCode = ('which' in event) ? event.which : event.keyCode;
-            isTime = !((keyCode >= 48 && keyCode <= 57) || (keyCode >= 96 && keyCode <= 105));
-            modifiers = (keyCode == 8 || keyCode == 190);
-            return !isTime || modifiers;
-        }
-    </script> -->
 
     <head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

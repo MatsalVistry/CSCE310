@@ -157,8 +157,8 @@ body {
     display: block;
     padding: 15px 30px;
     border: none;
-    background-color: var(--backgroundButtons);
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    background-color: black;
+    box-shadow: 2px 2px gray;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -166,7 +166,7 @@ body {
     margin-top: 30px;
     /* centered */
     margin: auto;
-    width: 50%;
+    width: fit-content;
     padding: 10px;
 }
 
@@ -206,11 +206,13 @@ body {
 
 .submitBtn[disabled]hover {
     background-color: black;
+    opacity: 0.8;
     transform: translateY(-2px);
 }
 
 .submitBtn:hover {
     /* background-color: var(--backgroundButtons); */
+    opacity: 0.8;
     transform: translateY(-2px);
 }
 
@@ -251,8 +253,8 @@ body {
     display: block;
     padding: 5px 15px;
     border: none;
-    background-color: var(--backgroundButtons);
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    background-color: black;
+    box-shadow: 2px 2px grey;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -265,8 +267,8 @@ body {
     display: block;
     padding: 5px 15px;
     border: none;
-    background-color: var(--backgroundButtons);
-    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    background-color: black;
+    box-shadow: 2px 2px grey;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -274,7 +276,62 @@ body {
     margin-top: 30px;
 }
 
+.finishClass:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
 .editClass:hover {
     opacity: 0.8;
     transform: translateY(-2px);
+}
+
+.add {
+    font-family: var(--fontFam);
+    display: block;
+    border: none;
+    background-color: rgb(2, 78, 2);
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    font-size: 20px;
+    padding: 5px 10px;
+
+    width: fit-content;
+    height: 50px;
+}
+
+.add:hover
+{
+    opacity: 0.8;
+    transform: translateY(-2px);
+
+}
+
+/* make it a card */
+.expHolder
+{
+    background-color: white;
+    width: 50%;
+    border-radius: 8px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    padding: 15px;
+
+}
+
+select {
+  box-sizing: content-box;
+  /* padding: 6px 10px; */
+  font-size: 12px;
+  border: 2px solid black;
+  border-radius: 12px;
+  /* line-height: 1.5; */
+  min-width: 20%;
 }

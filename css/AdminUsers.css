@@ -1,7 +1,7 @@
 :root {
     --fontFam: "Roboto", sans-serif;
     --backgroundScreen: lightgrey;
-    --backgroundButtons: #a3c585;
+    --backgroundButtons: black;
     --backgroundButtonsShadow: #87ab69;
     --backgroundLinear: linear-gradient(.25turn, #a6cb83, 70%, #718f58);
 }
@@ -175,3 +175,29 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+.add {
+    font-family: var(--fontFam);
+    display: block;
+    border: none;
+    background-color: rgb(2, 78, 2);
+    box-shadow: 3px 3px var(--backgroundButtonsShadow);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    font-size: 20px;
+    padding: 5px 10px;
+
+    width: fit-content;
+    height: 50px;
+}
+
+.add:hover
+{
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+

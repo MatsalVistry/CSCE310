@@ -58,8 +58,8 @@ function populateUsers() {
                     "Role: " + role + "<br>" +
                     "Email: " + email + "<br>" +
                     "Password: " + password + "<br>" +
-                    '<button class="deleteUser" onclick="deleteUser(this)" input='+role+' value=' + users[i].id + '>&times;</button>' +
-                    '<button class="editUser" onclick="openModal2(this)" value=' + users[i].id + '>EDIT</button>' +
+                    '<button class="editUser" onclick="openModal2(this)" value=' + users[i].id + '>Edit</button>' +
+                    '<button class="deleteUser" onclick="deleteUser(this)" input='+role+' value=' + users[i].id + '>Delete</button>' +
 
                     "</p>";
 
