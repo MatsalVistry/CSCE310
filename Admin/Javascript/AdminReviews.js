@@ -53,7 +53,7 @@ function tutorClick()
                 reviewDiv.className = "review";
 
                 reviewDiv.innerHTML += "<p>Student Name: " + studentName + "<br><br>" + "Review: " + reviewString + "</p>";
-                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
+                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>Delete</button>';
                 allInfo.appendChild(reviewDiv);
             }
         }
@@ -108,7 +108,7 @@ function studentClick()
                 reviewDiv.className = "review";
 
                 reviewDiv.innerHTML += "<p>Tutor Name: " + tutorName + "<br>" + "Review: " + reviewString + "</p>";
-                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
+                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>Delete</button>';
                 allInfo.appendChild(reviewDiv);
             }
         }
