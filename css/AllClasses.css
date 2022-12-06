@@ -52,7 +52,7 @@ body {
   }
 
 
-  .unenroll {
+  .cardButton {
     background-color: black;
     border: none;
     color: white;
@@ -68,7 +68,7 @@ body {
     margin: 10px;
   }
 
-  .unenroll:hover{
+  .cardButton:hover{
     background-color: grey;
   }
   

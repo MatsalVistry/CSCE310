@@ -90,10 +90,10 @@ function populateClasses() {
                         }
 
                         if (currentClasses.includes(classes[i].id)) {
-                            classDiv.innerHTML += '<button class="unenroll" onclick="unenroll(this)" value=' + classes[i].id + '>Unenroll</button>';
+                            classDiv.innerHTML += '<button class="cardButton" onclick="unenroll(this)" value=' + classes[i].id + '>Unenroll</button>';
                         }
                         
-                        classDiv.innerHTML += "<button class='unenroll' onclick=goToTutor("+classes[i].tutor_id+")>Tutor Profile</button>";
+                        classDiv.innerHTML += "<button class='cardButton' onclick=goToTutor("+classes[i].tutor_id+")>Tutor Profile</button>";
                         classDiv.innerHTML += "<br><br>";
 
                         display.appendChild(classDiv);

@@ -66,8 +66,18 @@ function loadClasses() {
                     "Tutor ID: " + tutorID + "</br>" +
                     "Tutor First Name: " + tutor_fname + "</br>" +
                     "Tutor Last Name: " + tutor_lname + "</br>";
+
+                classesDiv.innerHTML += "<button class='cardButton' onclick=goToTutor("+tutorID+")>Tutor Profile</button>";
+
                 myClasses.appendChild(classesDiv);
             }
         }
     });
+}
+
+/*
+    Visits the tutors profile
+*/
+function goToTutor(id){
+    window.location.href = "../Tutor/TutorProfile.html?tutorID=" + id;
 }
