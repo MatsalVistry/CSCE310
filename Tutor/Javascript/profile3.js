@@ -70,7 +70,7 @@ function refreshReviews() {
 
 
             var tutorInfo = document.getElementById("tutorInfo");
-            tutorInfo.innerHTML = "<h2>User Profile</h2> ";
+            tutorInfo.innerHTML = "<h2>Tutor Profile</h2> ";
             tutorInfo.innerHTML += "First Name: " + firstName + "<br>" + "Last Name: " + lastName + "<br>" + "Email: " + email;
 
             var allReviews = document.getElementById("reviews");
