@@ -12,8 +12,6 @@ $(document).ready(function() {
     studentID = localStorage.getItem("id");
 
     populateStudentInfo();
-    document.getElementById("isClicked").style.display = 'block';
-
 });
 
 /*

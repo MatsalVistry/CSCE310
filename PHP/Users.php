@@ -46,11 +46,16 @@
             // Add each review as an associative array to the reviews array
             while($row = mysqli_fetch_array($result))
             {
-                $review = array();
-                $review['id'] = $row['review_id'];
-                $review['student_id'] = $row['student_id'];
-                $review['Review_String'] = $row['review_string'];
-                $review['Student_Name'] = $row['student_first_name']." ".$row['student_last_name'];
+
+                if($row['review_id'] != null)
+                {
+                    $review = array();
+                    $review['id'] = $row['review_id'];
+                    $review['student_id'] = $row['student_id'];
+                    $review['Review_String'] = $row['review_string'];
+                    $review['Student_Name'] = $row['student_first_name']." ".$row['student_last_name'];
+                    array_push($reviews, $review);
+                }
 
                 // If this is the first review, grab the tutors information, no need to do it multiple times
                 if($first)
@@ -61,7 +66,6 @@
                     $first = false;
                 }
 
-                array_push($reviews, $review);
             }
 
             $user['reviews'] = $reviews;
