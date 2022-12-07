@@ -196,14 +196,10 @@ function submitEditClass() {
             tutorID: tutorID
         },
         success: function(response) {
-            console.log(response);
             refreshClasses();
             closeClass();
         }
     });
-
-    closeClass();
-    refreshClasses();
 }
 
 /*
