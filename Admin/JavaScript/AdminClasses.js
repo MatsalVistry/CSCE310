@@ -260,7 +260,7 @@ function submitClass() {
             name: name,
             date: date,
             duration: duration,
-            status: "i"
+            status: "N"
         },
         success: function(response) {
             refreshClasses();
