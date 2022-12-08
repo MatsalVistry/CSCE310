@@ -53,7 +53,7 @@ function tutorClick()
                 reviewDiv.className = "review";
 
                 reviewDiv.innerHTML += "<p>Student Name: " + studentName + "<br><br>" + "Review: " + reviewString + "</p>";
-                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>Delete</button>';
+                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this, true)" value=' + reviewID + '>Delete</button>';
                 allInfo.appendChild(reviewDiv);
             }
         }
@@ -63,7 +63,7 @@ function tutorClick()
 /*
     Deletes a review for a specific tutor
 */
-function deleteReview(element) {
+function deleteReview(element, isTutorDelete) {
     var reviewID = element.getAttribute("value");
     $.ajax({
         type: "POST",
@@ -73,7 +73,11 @@ function deleteReview(element) {
             reviewID: reviewID
         },
         success: function(response) {
-            tutorClick();
+
+            if (isTutorDelete) 
+                tutorClick();
+            else 
+                studentClick();
         }
     });
 }
@@ -108,7 +112,7 @@ function studentClick()
                 reviewDiv.className = "review";
 
                 reviewDiv.innerHTML += "<p>Tutor Name: " + tutorName + "<br>" + "Review: " + reviewString + "</p>";
-                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>Delete</button>';
+                reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this, false)" value=' + reviewID + '>Delete</button>';
                 allInfo.appendChild(reviewDiv);
             }
         }
