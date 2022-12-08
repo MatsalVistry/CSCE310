@@ -17,7 +17,7 @@
             $users = array();
 
             // Add each user as an associative array to the users array
-            while($row = mysqli_fetch_array($result))
+            while($row = mysqli_fetch_array($result)) 
             {
                 $user = array();
                 $user['id'] = $row['User_ID'];
@@ -32,15 +32,15 @@
 
             echo json_encode($users);
         }
-        else if($_GET['functionName'] == "getTutorInformation")
+        else if($_GET['functionName'] == "getTutorInformation") 
         {
             $user = array();
             $reviews = array();
 
-            // Pull in all of the reviews for the specified tutor (using tutorID) - Isabelle (user profile)
+            // Isabelle (user profile) - Pull in all of the reviews for the specified tutor (using tutorID)
             // The ExpandedReviews View here is specifically used to display the review and name of a tutor on the:
-                // user: to pull in for the students to view the tutors reviews - Vatsal (user reviews)
-                // admin: to allow the admin to get the reviews for a tutor, as they can filter on their page - Isabelle (admin reviews)
+                // Vatsal (user reviews) - user: to pull in for the students to view the tutors reviews
+                // Isabelle (admin reviews) - admin: to allow the admin to get the reviews for a tutor, as they can filter on their page
             $statement = "SELECT * FROM ExpandedReviews WHERE tutor_id =".$_GET['tutorID'].";";
             $result = mysqli_query($conn, $statement);
 
@@ -77,7 +77,7 @@
         }
         else if($_GET['functionName'] == "getStudentInformation")
         {
-            // Get the information (first, last name, email) for the specified student (based on their studentID) - Isabelle (user profile)
+            //  Isabelle (user profile) - Get the information (first, last name, email) for the specified student (based on their studentID)
             $statement = 
                 "SELECT
                 u.User_First_Name as student_first_name,
@@ -99,7 +99,7 @@
         }
         else if($_GET['functionName'] == "verifyLogin") 
         {
-            // checks the users table to ensure the inputted email and password match one in the users table - Isabelle (user profile)
+            // Isabelle (user profile) - checks the users table to ensure the inputted email and password match one in the users table
             $statement = "SELECT * FROM users WHERE User_Email='".$_GET['email']."' AND User_Password='".$_GET['password']."';";
             $result = mysqli_query($conn, $statement);
 
@@ -119,9 +119,9 @@
 
             echo json_encode($user);
         }
-        else if($_GET['functionName'] == "getTutorClasses")
+        else if($_GET['functionName'] == "getTutorClasses") // John Liu (user item/experience)
         {
-            $statement = "SELECT * FROM ExpandedClasses WHERE Tutor_ID=".$_GET['tutorID'].";";
+            $statement = "SELECT * FROM ExpandedClasses WHERE Tutor_ID=".$_GET['tutorID'].";"; // Justin Han (admin item/experience)
             $result = mysqli_query($conn, $statement);
 
             $classes = array();
@@ -145,10 +145,11 @@
 
             echo json_encode($classes);
         }
-        else if($_GET['functionName'] == "getStudentClasses") 
+        else if($_GET['functionName'] == "getStudentClasses") // John Liu (user item/experience)
         {
 
             // Grab all of the classes that the student is enrolled in along with the tutors name
+            // Justin Han (admin item/experience)
             $statement = "SELECT 
             c.*,
             u2.User_First_Name,
@@ -162,7 +163,7 @@
             ON e.Class_ID = c.Class_ID
             INNER JOIN users as u2
             ON c.Tutor_ID = u2.User_ID
-            WHERE u.User_ID=" . $_GET['studentID'] . ";";
+            WHERE u.User_ID=" . $_GET['studentID'] . ";"; 
             
             $result = mysqli_query($conn, $statement);
             $classes = array();
@@ -190,7 +191,7 @@
         }
         else if($_GET['functionName'] == "getUser")
         {
-            $statement = "SELECT * FROM users WHERE User_ID=".$_GET['id'].";";
+            $statement = "SELECT * FROM users WHERE User_ID=".$_GET['id'].";"; // Isabelle (user profile)
             $result = mysqli_query($conn, $statement);
             $row = mysqli_fetch_array($result);
 
@@ -205,7 +206,7 @@
         }
         else if($_GET['functionName'] == "getAllClasses")
         {
-            $statement = "SELECT * FROM ExpandedClasses;";
+            $statement = "SELECT * FROM ExpandedClasses;"; // Justin Han (user schedule)
             $result = mysqli_query($conn, $statement);
 
             $classes = array();
@@ -231,6 +232,7 @@
         }
         else if($_GET['functionName'] == "getTutorIDs")
         {
+            // Isabelle (user profile)
             $statement = "SELECT User_ID FROM users WHERE User_Role='t';";
             $result = mysqli_query($conn, $statement);
 
@@ -246,6 +248,7 @@
         }
         else if($_GET['functionName'] == "getStudentIDs")
         {
+            // Isabelle (user profile)
             $statement = "SELECT User_ID FROM users WHERE User_Role='s';";
             $result = mysqli_query($conn, $statement);
 
@@ -268,35 +271,41 @@
 
             if($isStudent)
             {
+                // Isabelle (admin reviews)
                 // Delete all the reviews that the student has made
                 $statement = "DELETE FROM reviews WHERE Student_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
-    
+                
+                // Vatsal (user schedule)
                 // Find all of the classes that the student is enrolled in
                 $statement = "SELECT * FROM enrollments WHERE Student_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
     
+                // Vatsal (user schedule)
                 // For each class that the student is enrolled in, decrement the current capacity
                 while($row = mysqli_fetch_array($result))
                 {
                     $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$row['Class_ID'].";";
                     $result = mysqli_query($conn, $statement);
                 }
-    
+                // Vatsal (user schedule)
                 // Delete all of the enrollments that the student has
                 $statement = "DELETE FROM enrollments WHERE Student_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
-    
+
+                // John (admin profile)
                 // Delete the student
                 $statement = "DELETE FROM users WHERE User_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
             }
             else
             {
+                //  Vatsal (admin schedule)
                 // Grab all of the classes that the tutor is teaching
                 $statement = "SELECT * FROM classes WHERE Tutor_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
 
+                //  Vatsal (admin schedule)
                 // For each class that the tutor is teaching, delete all of the enrollments
                 while($row = mysqli_fetch_array($result))
                 {
@@ -304,14 +313,17 @@
                     $result = mysqli_query($conn, $statement);
                 }
 
+                //  Vatsal (admin schedule)
                 // Delete all of the classes that the tutor is teaching
                 $statement = "DELETE FROM classes WHERE Tutor_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
 
+                // Isabelle (user profile) & John (admin profile)
                 // Delete all reviews that the tutor has received
                 $statement = "DELETE FROM reviews WHERE Tutor_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
 
+                // Isabelle (user profile) & John (admin profile)
                 // Delete the tutor
                 $statement = "DELETE FROM users WHERE User_ID=".$_POST['id'].";";
                 $result = mysqli_query($conn, $statement);
@@ -319,32 +331,32 @@
 
             
         }
-        else if($_POST['functionName'] == "addUser")
+        else if($_POST['functionName'] == "addUser") // Isabelle (user profile) & John (admin profile)
         {
             $statement = "INSERT INTO users (User_First_Name, User_Last_Name, User_Role, User_Email, User_Password) VALUES ('".$_POST['first_name']."', '".$_POST['last_name']."', '".$_POST['role']."', '".$_POST['email']."', '".$_POST['password']."');";
             $result = mysqli_query($conn, $statement);
         }
-        else if($_POST['functionName'] == "editUser")
+        else if($_POST['functionName'] == "editUser") // Isabelle (user profile) & John (admin profile)
         {
             $statement = "UPDATE users SET User_First_Name='".$_POST['first_name']."', User_Last_Name='".$_POST['last_name']."', User_Email='".$_POST['email']."', User_Password='".$_POST['password']."' WHERE User_ID=".$_POST['id'].";";
             $result = mysqli_query($conn, $statement);
         }
-        else if($_POST['functionName'] == "changeFirstName")
+        else if($_POST['functionName'] == "changeFirstName") // Isabelle (user profile) & John (admin profile)
         {
             $statement = "UPDATE users SET User_First_Name='".$_POST['first_name']."' WHERE User_ID=".$_POST['studentID'].";"; 
             $result = mysqli_query($conn, $statement);
         }
-        else if($_POST['functionName'] == "changeLastName")
+        else if($_POST['functionName'] == "changeLastName") // Isabelle (user profile) & John (admin profile)
         {
             $statement = "UPDATE users SET User_Last_Name='".$_POST['last_name']."' WHERE User_ID=".$_POST['studentID'].";"; 
             $result = mysqli_query($conn, $statement);
         }
-        else if($_POST['functionName'] == "changeEmail")
+        else if($_POST['functionName'] == "changeEmail") // Isabelle (user profile) & John (admin profile)
         {
             $statement = "UPDATE users SET User_Email='".$_POST['email']."' WHERE User_ID=".$_POST['studentID'].";"; 
             $result = mysqli_query($conn, $statement);
         }
-        else if($_POST['functionName'] == "changePassword")
+        else if($_POST['functionName'] == "changePassword") // Isabelle (user profile) & John (admin profile)
         {
             $statement = "UPDATE users SET User_Password='".$_POST['password']."' WHERE User_ID=".$_POST['studentID'].";"; 
             $result = mysqli_query($conn, $statement);
