@@ -90,7 +90,7 @@ function refreshReviews() {
                 if (authorizedToDelete)
                 {
                     reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>Delete</button>';
-                    reviewDiv.innerHTML += '<button class="editReview" onclick="editReview(this)" value=' + reviewID + '>Edit</button>';
+                    reviewDiv.innerHTML += '<button class="editReview" onclick="editReview(this)" input="'+reviewString+'" value=' + reviewID + '>Edit</button>';
                 }
                 allReviews.appendChild(reviewDiv);
             }
@@ -101,15 +101,51 @@ function refreshReviews() {
 /*
     Edits a review for a tutor
 */
-function editReview()
+function editReview(element)
 {
     document.getElementById("editReviewModal").style.display = "block";
+
+    var reviewID = element.getAttribute("value");
+    var reviewString = element.getAttribute("input");
+
+    document.getElementById("reviewEdit").value = reviewString;
+    document.getElementById("editReviewModal").value = reviewID;
+
 }
 
+/*
+    Closes the popup modal for editing a review
+*/
 function closeEditReview()
 {
     document.getElementById("editReviewModal").style.display = "none";
 }
+
+/*
+    Submits a review for a tutor based on inputted fields
+*/
+function submitEditReview()
+{
+    var reviewString = document.getElementById("reviewEdit").value;
+    var reviewID = document.getElementById("editReviewModal").value;
+
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Reviews.php",
+        data: {
+            functionName: "editReview",
+            reviewID: reviewID,
+            reviewString: reviewString
+        },
+        success: function(response) 
+        {
+            refreshReviews();
+            closeEditReview();
+        }
+    });
+}
+
+
 
 /*
     Deletes a review for a tutor

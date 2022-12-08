@@ -21,6 +21,12 @@
             $statement = "DELETE FROM reviews WHERE Review_ID=".$_POST['reviewID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        // Vatsal (User Review)
+        else if($_POST['functionName'] == "editReview")
+        {
+            $statement = "UPDATE reviews SET Review_String='".$_POST['reviewString']."' WHERE Review_ID=".$_POST['reviewID'].";";
+            $result = mysqli_query($conn, $statement);
+        }
     }
     else
     {

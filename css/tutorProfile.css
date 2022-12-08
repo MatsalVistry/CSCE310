@@ -152,6 +152,24 @@ body {
     transform: translateY(-2px);
 }
 
+.editReview {
+    display: block;
+    padding: 5px 15px;
+    border: none;
+    background-color: black;
+    box-shadow: 2px 2px grey;
+    color: var(--backgroundScreen);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+}
+
+.editReview:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
 /* make it a card */
 .tutorInfo
 {
