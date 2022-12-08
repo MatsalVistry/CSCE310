@@ -88,13 +88,28 @@ function refreshReviews() {
 
                 reviewDiv.innerHTML += "<p>Name: " + studentName + "<br>" + "Review: " + reviewString + "</p>";
                 if (authorizedToDelete)
-                    reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>&times;</button>';
+                {
+                    reviewDiv.innerHTML += '<button class="deleteReview" onclick="deleteReview(this)" value=' + reviewID + '>Delete</button>';
+                    reviewDiv.innerHTML += '<button class="editReview" onclick="editReview(this)" value=' + reviewID + '>Edit</button>';
+                }
                 allReviews.appendChild(reviewDiv);
             }
         }
     });
 }
 
+/*
+    Edits a review for a tutor
+*/
+function editReview()
+{
+    document.getElementById("editReviewModal").style.display = "block";
+}
+
+function closeEditReview()
+{
+    document.getElementById("editReviewModal").style.display = "none";
+}
 
 /*
     Deletes a review for a tutor
