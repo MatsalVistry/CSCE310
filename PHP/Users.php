@@ -9,7 +9,7 @@
 
     if($is_get)
     {
-        if($_GET['functionName'] == "getAllUsers")
+        if($_GET['functionName'] == "getAllUsers") // John (admin profile)
         {
             $statement = "SELECT * FROM users;";
             $result = mysqli_query($conn, $statement);
@@ -37,7 +37,10 @@
             $user = array();
             $reviews = array();
 
-            // Grab all of the reviews for a tutor (view also contains tutors name)
+            // Pull in all of the reviews for the specified tutor (using tutorID) - Isabelle (user profile)
+            // The ExpandedReviews View here is specifically used to display the review and name of a tutor on the:
+                // user: to pull in for the students to view the tutors reviews - Vatsal (user reviews)
+                // admin: to allow the admin to get the reviews for a tutor, as they can filter on their page - Isabelle (admin reviews)
             $statement = "SELECT * FROM ExpandedReviews WHERE tutor_id =".$_GET['tutorID'].";";
             $result = mysqli_query($conn, $statement);
 
@@ -57,7 +60,7 @@
                     array_push($reviews, $review);
                 }
 
-                // If this is the first review, grab the tutors information, no need to do it multiple times
+                // If this is the first review, get the tutors information (only need to get the tutors info once)
                 if($first)
                 {
                     $user['first_name'] = $row['tutor_first_name'];
@@ -74,6 +77,7 @@
         }
         else if($_GET['functionName'] == "getStudentInformation")
         {
+            // Get the information (first, last name, email) for the specified student (based on their studentID) - Isabelle (user profile)
             $statement = 
                 "SELECT
                 u.User_First_Name as student_first_name,
@@ -93,8 +97,9 @@
 
             echo json_encode($user);
         }
-        else if($_GET['functionName'] == "verifyLogin")
+        else if($_GET['functionName'] == "verifyLogin") 
         {
+            // checks the users table to ensure the inputted email and password match one in the users table - Isabelle (user profile)
             $statement = "SELECT * FROM users WHERE User_Email='".$_GET['email']."' AND User_Password='".$_GET['password']."';";
             $result = mysqli_query($conn, $statement);
 

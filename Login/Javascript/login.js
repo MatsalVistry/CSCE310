@@ -9,7 +9,7 @@ function verify() {
         type: "GET",
         url: "../PHP/Users.php",
         data: {
-            functionName: "verifyLogin",
+            functionName: "verifyLogin", // Isabelle (user profile)
             email: email,
             password: password
         },
