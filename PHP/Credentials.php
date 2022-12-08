@@ -1,5 +1,5 @@
 <?php
-    // open a connection to the database with the credentials
+    // Vatsal - open a connection to the database with the credentials
     function OpenCon()
     {
         $dbhost = "localhost";
@@ -11,7 +11,7 @@
         return $conn;
     }
     
-    // close the connection to the database
+    // Vatsal - close the connection to the database
     function CloseCon($conn)
     {
         $conn -> close();

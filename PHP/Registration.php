@@ -9,6 +9,7 @@
 
     if($is_post)
     {
+        // Isabelle (User Profile)
         if($_POST['functionName'] == "register")
         {
             $fname = $_POST['fname'];

@@ -9,6 +9,7 @@
 
     if($is_post)
     {
+        // John (User Item/Experience)
         if($_POST['functionName'] == "submitClass")
         {
             $statement = 
@@ -17,6 +18,7 @@
 
             $result = mysqli_query($conn, $statement);
         }
+        // John (User Item/Experience)
         else if($_POST['functionName'] == "deleteClass")
         {
             // delete all enrollments for a specific class
@@ -27,16 +29,19 @@
             $statement = "DELETE FROM classes WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        // John (User Item/Experience)
         else if($_POST['functionName'] == "editClass")
         {
             $statement = "UPDATE classes SET Class_MaxCapacity=".$_POST['maxCapacity'].", Class_Name='".$_POST['name']."', Class_Date='".$_POST['date']."', Class_Duration='".$_POST['duration']."' WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }    
+        // Justin (Admin Item/Experience)
         else if($_POST['functionName'] == "editClassAdmin")
         {
             $statement = "UPDATE classes SET Tutor_ID=".$_POST['tutorID'].", Class_MaxCapacity=".$_POST['maxCapacity'].", Class_Name='".$_POST['name']."', Class_Date='".$_POST['date']."', Class_Duration='".$_POST['duration']."' WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }    
+        // Justin (User Schedule)
         else if($_POST['functionName'] == "enrollInClass")
         {
             // insert into the enrollments table
@@ -47,6 +52,7 @@
             $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity+1 WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        //  Justin (User Schedule)
         else if($_POST['functionName'] == "unenrollFromClass")
         {
             // first delete from the enrollments table
@@ -57,11 +63,13 @@
             $statement = "UPDATE classes SET Class_CurrentCapacity=Class_CurrentCapacity-1 WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        // Vatsal (Admin Schedule)
         else if($_POST['functionName'] == "finishClass")
         {
             $statement = "UPDATE classes SET Class_Status='C' WHERE Class_ID=".$_POST['classID'].";";
             $result = mysqli_query($conn, $statement);
         }
+        //  Vatsal (Admin Schedule)
         else if($_POST['functionName'] == "enrollStudent")
         {
             // Check if class is full
@@ -95,6 +103,7 @@
                 return;
             }
         }
+        // Vatsal (Admin Schedule)
         else if($_POST['functionName'] == "unenrollStudent")
         {
             // Delete the enrollment and grab how many rows were affected
@@ -117,6 +126,7 @@
     }
     else
     {
+        // Justin (Admin Item/Experience)
         if($_GET['functionName'] == "getAllClasses")
         {
             $statement = "SELECT * FROM ExpandedClasses;";
@@ -143,6 +153,7 @@
 
             echo json_encode($classes);
         }
+        // John (User Item/Experience)
         if($_GET['functionName'] == "getCurrentStudentClasses")
         {
             $statement = "SELECT Class_ID FROM classes WHERE Class_ID IN (SELECT Class_ID FROM enrollments WHERE Student_ID=".$_GET['studentID'].");";
@@ -158,6 +169,7 @@
 
             echo json_encode($classes);
         }    
+        // Vatsal (Admin Schedule)
         if($_GET['functionName'] == "getClassIDs")
         {
             $statement = "SELECT Class_ID FROM classes;";

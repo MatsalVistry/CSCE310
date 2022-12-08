@@ -9,11 +9,13 @@
 
     if($is_post)
     {
+        // Vatsal (User Review)
         if($_POST['functionName'] == "submitReview")
         {
             $statement = "INSERT INTO reviews (Tutor_ID, Student_ID, Review_String) VALUES (".$_POST['tutorID'].", ".$_POST['studentID'].", '".$_POST['reviewString']."');";
             $result = mysqli_query($conn, $statement);
         }
+        // Vatsal (User Review)
         else if($_POST['functionName'] == "deleteReview")
         {
             $statement = "DELETE FROM reviews WHERE Review_ID=".$_POST['reviewID'].";";
@@ -22,6 +24,7 @@
     }
     else
     {
+        // Vatsal (User Review)
         if($_GET['functionName'] == "getTutorReviews")
         {
             $statement = "SELECT * FROM ExpandedReviews WHERE tutor_id=".$_GET['tutorID'].";";
@@ -43,6 +46,7 @@
 
             echo json_encode($reviews);
         }
+        // Isabelle (Admin Review)
         else if($_GET['functionName'] == "getStudentReviews")
         {
             $statement = "SELECT * FROM ExpandedReviews WHERE student_id=".$_GET['studentID'].";";
